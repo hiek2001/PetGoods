@@ -25,5 +25,6 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/04. 개발/210128_Mall Project/db2jcc4.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
