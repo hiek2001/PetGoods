@@ -29,7 +29,7 @@
 		<interceptor>
 			<mapping path="/**" />
 			<mapping path="/**/*.do" />
-			<beans:bean id="loggerInterceptor" class="com.spring.board.common.Interceptor.LoggerInterceptor"></beans:bean>
+			<beans:bean id="loggerInterceptor" class="com.practive.study.common.Interceptor.LoggerInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>
 </beans:beans>
