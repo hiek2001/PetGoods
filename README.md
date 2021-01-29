@@ -1,6 +1,6 @@
 
 
-< 개발 환경 >
+## < 개발 환경 >
 ```
   DB : Virtual box의 Linux : Db2 V11.5 (ip 192.168.56.104) / port 50000
   Development Environment : Windows 10
@@ -12,11 +12,13 @@
   Build tool : Maven 3.1.1 Release
 ```
 
-+ 목적
+
+### - 목적
 해당 프로젝트는 잊어버린 Java 개발을 복기하고자 합니다.
 
 
-+ 진행 예정
+
+### - 진행 예정
 1. index.jsp로 기본적인 화면 구현 진행
 ```
   JavaScript, JQuery, HTML, CSS 
@@ -26,5 +28,7 @@
 로그인 
 게시판 
 ```  
+  
+  
   
 해당 프로젝트를 이용해 이후 쇼핑몰 개발 예정입니다.
