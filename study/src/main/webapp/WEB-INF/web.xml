@@ -29,6 +29,8 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+
+		
 		
 	<!-- appServlet에 대한 url-pattern을 정의-->
 	<servlet-mapping>
