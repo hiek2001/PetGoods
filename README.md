@@ -1,0 +1,24 @@
+
+
+해당 프로젝트는 잊어버린 Java 개발을 복기하고자 시작하는 것입니다.
+
+< 개발 환경 >
+DB : Virtual box의 Linux : Db2 V11.5 (ip 192.168.56.104) / port 50000
+Development Environment : Windows 10
+Data Tool : Dbeaver 7.3.3
+Language : Java 1.8.0_281 (JDK 1.8.0_281)
+WEB/WAS Server : Tomcat v9.0
+JDBC 4.26.14
+Framework : Spring 3.9.13
+Build tool : Maven 3.1.1 Release
+
+
+- 진행 예정
+1. index.jsp로 기본적인 화면 구현 진행
+  ㄴ JavaScript, JQuery, HTML, CSS 
+2. Spring MVC 구조로 Controller, Service, Dao 진행
+  ㄴ 로그인 
+  ㄴ 게시판 
+  
+  
+해당 프로젝트를 이용해 이후 쇼핑몰 개발 예정임
