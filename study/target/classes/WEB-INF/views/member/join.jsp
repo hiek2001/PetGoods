@@ -43,19 +43,19 @@
 				<div class="mail_input_box">
 					<input class="mail_input">
 				</div>
-				<div class="mail_check_wrap">
+				<!-- <div class="mail_check_wrap">
 					<div class="mail_check_input_box">
 						<input class="mail_check_input">
 					</div>
-					<div class="mail_check_button">
+				<div class="mail_check_button">
 						<span>인증번호 전송</span>
-					</div>
+					</div> 
 					<div class="clearfix"></div>
-				</div>
+				</div> -->
 			</div>
 			<div class="address_wrap">
 				<div class="address_name">주소</div>
-				<div class="address_input_1_wrap">
+				<!-- <div class="address_input_1_wrap">
 					<div class="address_input_1_box">
 						<input class="address_input_1">
 					</div>
@@ -63,17 +63,17 @@
 						<span>주소 찾기</span>
 					</div>
 					<div class="clearfix"></div>
-				</div>
+				</div>  -->
 				<div class ="address_input_2_wrap">
 					<div class="address_input_2_box">
 						<input class="address_input_2">
 					</div>
 				</div>
-				<div class ="address_input_3_wrap">
+				<!-- <div class ="address_input_3_wrap">
 					<div class="address_input_3_box">
 						<input class="address_input_3">
 					</div>
-				</div>
+				</div>  -->
 			</div>
 			<div class="join_button_wrap">
 				<input type="button" class="join_button" value="가입하기">
