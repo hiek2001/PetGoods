@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<!-- WAS(TOMCAT)이 최초 구동될 때 web.xml을 읽고 이에 해당되는 설정을 구성 -->
+
+	<!-- root-context로 모든 서블릿과 필터를 공유 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<!-- <param-value>/WEB-INF/spring/root-context.xml</param-value> -->
+		<param-value>
+			/WEB-INF/spring/root-context.xml
+		</param-value>
+	</context-param>
+	
+	<!-- listener로써 root-context에 정의 되어 있는 것들을 모든 서블릿과 필터가 공유할 수 있도록 함 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- servlet 설정 -->
+	<!-- servlet class : DispatcherServlet으로 앞단에서 요청정보를 핸들링 함 -->
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+		
+		
+	<!-- appServlet에 대한 url-pattern을 정의-->
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list> 
+		<welcome-file>index.jsp</welcome-file> 
+	</welcome-file-list>
+	
+	  <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+</web-app>
