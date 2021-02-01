@@ -18,4 +18,6 @@ public class MemberJoinController {
 		Logger.info("회원가입 페이지 진입");
 		return "/member/join";
 	}
+	
+	
 }
