@@ -110,6 +110,12 @@
 			<version>1.2</version>
 		</dependency>
 		
+		<!-- PostgreSQL 9.4 -->
+		 <dependency>
+		     <groupId>org.postgresql</groupId>
+		     <artifactId>postgresql</artifactId>
+		     <version>9.4.1209.jre6</version>
+		 </dependency>
 		<!-- 스프링 jdbc 모듈 설치 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -153,12 +159,6 @@
             <version>1.4</version>
         </dependency>
     
-    <!-- db2 jcc -->
-    <dependency>
-      <groupId>com.ibm.db2.jcc</groupId>
-      <artifactId>db2jcc4</artifactId>
-      <version>4.26.14</version>
-    </dependency>
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
