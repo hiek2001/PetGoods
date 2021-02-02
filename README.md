@@ -25,6 +25,7 @@
 ```
 2. Spring MVC 구조로 Controller, Service, Dao 진행
 ```
+회원가입
 로그인 
 게시판 
 ```  
