@@ -2,7 +2,7 @@
 
 ## < 개발 환경 >
 ```
-  DB : Virtual box의 Linux : Db2 V11.5 (ip 192.168.56.104) / port 50000
+  DB : PostgreSQL V11.10 
   Development Environment : Windows 10
   Data Tool : Dbeaver 7.3.3
   Language : Java 1.8.0_281 (JDK 1.8.0_281)
@@ -25,6 +25,7 @@
 ```
 2. Spring MVC 구조로 Controller, Service, Dao 진행
 ```
+회원가입
 로그인 
 게시판 
 ```  
