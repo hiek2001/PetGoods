@@ -115,6 +115,11 @@
 	font-size:28px;
 }
 
+/* 생년월일 */
+.user_birth{
+	font-size: 25px;
+    font-weight: bold;
+}
 /* 메일 영역 */
 .mail_wrap{
 	width: 100%;
