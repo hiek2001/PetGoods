@@ -31,13 +31,13 @@ public class MemberController {
 	// 02 회원가입 등록
 	@RequestMapping(value = "/joinEnd.do", method = RequestMethod.POST)
 	public ModelAndView joinEnd(Member Member) {
-		
-		System.out.println("1) Controller입니댯!!!!!!!!");
-		
+				
 		// 팝업 띄우기
 		ModelAndView mv=new ModelAndView();
 		
 		int result=service.joinEnd(Member);
+		
+		System.out.println("1) Controller입니댯!!!!!!!!");
 		
 		String msg = "";
 		String loc = "";

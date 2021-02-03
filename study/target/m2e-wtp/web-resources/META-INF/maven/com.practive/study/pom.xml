@@ -143,6 +143,14 @@
 			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
 			<version>1.16</version>
 		</dependency>
+		
+		<!-- query와 resultSet을 logging할 수 있는 log4jdbc-remix 라이브러리추가 -->
+       <!-- https://mvnrepository.com/artifact/org.lazyluke/log4jdbc-remix/0.2.7 -->
+       <dependency>
+           <groupId>org.lazyluke</groupId>
+           <artifactId>log4jdbc-remix</artifactId>
+           <version>0.2.7</version>
+       </dependency>
         <!-- spring-jdbc -->
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
         <dependency>
