@@ -20,11 +20,8 @@ public class MemberEndServiceImpl implements MemberEndService {
 
 	@Override
 	public int insertMember(Member member) {
-		int result=0;
-		System.out.println("2) Service입니댯!!!!!!!!");
-		result=dao.insertMember(sqlSession,member);
-		System.out.println("Service의 result 값:::"+result);
-		return result;
+		System.out.println("2) Service입니댯!!!!!!!!");		
+		return dao.insertMember(sqlSession,member);
 	}
 
 }

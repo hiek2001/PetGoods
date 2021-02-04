@@ -30,7 +30,7 @@ public class MemberController {
 	
 	// 02 회원가입 등록
 	@RequestMapping(value = "/insertMember.do", method = RequestMethod.POST)
-	public ModelAndView joinEnd(Member member) throws Exception{
+	public ModelAndView insertMember(Member member) throws Exception{
 				
 		// 팝업 띄우기
 		ModelAndView mv=new ModelAndView();

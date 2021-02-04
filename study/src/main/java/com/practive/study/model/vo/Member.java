@@ -27,27 +27,27 @@ public class Member {
 	}
 	
 	/*getter*/
-	public String getUserId() {
+	public String getUser_id() {
 		return user_id;
 	}
-	
-	public String getUserPw() {
+
+	public String getUser_pw() {
 		return user_pw;
 	}
-	
-	public String getUserName() {
+
+	public String getUser_name() {
 		return user_name;
 	}
-	
-	public Date getUserBirth() {
+
+	public Date getUser_birth() {
 		return user_birth;
 	}
-	
-	public String getUserMail() {
+
+	public String getUser_mail() {
 		return user_mail;
 	}
-	
-	public String getUserAddr() {
+
+	public String getUser_addr() {
 		return user_addr;
 	}
 	
@@ -56,4 +56,5 @@ public class Member {
 		return "Member [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", user_birth=" + user_birth + ", user_mail=" + user_mail
 				+", user_addr=" + user_addr + "]";
 	}
+
 }

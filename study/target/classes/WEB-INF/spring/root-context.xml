@@ -36,7 +36,7 @@
    <!-- 2 mybatis SessionFactory 생성하기! -->
    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
       <property name="dataSource" ref="dataSource"/>
-      <property name="mapperLocations" value="classpath*:*/mapper/**/*.xml"/> 
+      <property name="mapperLocations" value="classpath*:/mapper/*-mapper.xml"/> 
       <property name="configLocation" value="classpath:mybatis-config.xml"/>
    </bean>
    <!-- 3. mybatis Session생성 -->
@@ -44,4 +44,10 @@
       <constructor-arg index="0" ref="sqlSessionFactoryBean"/>
    </bean>
    
+       <!-- 트랜잭션 -->
+    <bean id="transactionManager"
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
 </beans>

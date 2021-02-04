@@ -3,7 +3,7 @@
 <!-- 외부에서 접근할수 있는 이름을 namespace 속성에 기입 -->
 <!-- resultType은 vo에 있는것을 가져오는것을 말함/ resultMap은 db에 있는걸 바로 가져올때. jsp에 쏴줄땐 대문자로 적음 -->
 <!-- parameterType : 속성에 지정한 객체의 프로퍼티값이 sql문의 입력 파라미터에 지정됨 -->
-<mapper namespace="com.practive.study.model.vo.Member">
+<mapper namespace="member">
 	<insert id="insertMember" parameterType="member">
 		INSERT INTO PJ.MEMBER_INFO
 		VALUES (#{user_id},#{user_pw},#{user_name},#{user_birth},#{user_mail},#{user_addr});
