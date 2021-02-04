@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.practive.study.dao.MemberEndDao;
+import com.practive.study.model.dao.MemberEndDao;
 import com.practive.study.model.vo.Member;
 
 @Service
@@ -19,11 +19,11 @@ public class MemberEndServiceImpl implements MemberEndService {
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public int joinEnd(Member member) {
+	public int insertMember(Member member) {
 		int result=0;
-		result=dao.joinEnd(sqlSession,member);
-		ModelAndView mv=new ModelAndView();
 		System.out.println("2) Service입니댯!!!!!!!!");
+		result=dao.insertMember(sqlSession,member);
+		System.out.println("Service의 result 값:::"+result);
 		return result;
 	}
 

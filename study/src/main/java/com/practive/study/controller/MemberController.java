@@ -29,15 +29,14 @@ public class MemberController {
 	}
 	
 	// 02 회원가입 등록
-	@RequestMapping(value = "/joinEnd.do", method = RequestMethod.POST)
-	public ModelAndView joinEnd(Member Member) {
+	@RequestMapping(value = "/insertMember.do", method = RequestMethod.POST)
+	public ModelAndView joinEnd(Member member) throws Exception{
 				
 		// 팝업 띄우기
 		ModelAndView mv=new ModelAndView();
 		
-		int result=service.joinEnd(Member);
-		
-		System.out.println("1) Controller입니댯!!!!!!!!");
+		System.out.println("1) Controller입니댯!!!!!!!!");		
+		int result=service.insertMember(member);
 		
 		String msg = "";
 		String loc = "";

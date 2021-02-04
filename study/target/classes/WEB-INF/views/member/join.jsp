@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="wrapper">
-	<form action="${path}/member/joinEnd.do" method="post">
+	<form action="${path}/member/insertMember.do" method="post">
 	<div class="wrap">
 			<div class="subjecet">
 				<span>회원가입</span>
@@ -82,7 +82,7 @@
 				</div>  -->
 			</div>
 			<div class="join_button_wrap">
-				<input type="submit" class="join_button" value="가입하기">
+				<input id="submit" type="submit" class="join_button" value="가입하기">
 			</div>
 		</div>
 	</form>

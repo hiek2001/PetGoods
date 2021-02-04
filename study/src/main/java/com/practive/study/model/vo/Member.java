@@ -53,7 +53,7 @@ public class Member {
 	
 	@Override
 	public String toString() {
-		return "Member [userId=" + user_id + ", userPw=" + user_pw + ", userName=" + user_name + ", userBirth=" + user_birth + ", userMail=" + user_mail
-				+", userAddr=" + user_addr + "]";
+		return "Member [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", user_birth=" + user_birth + ", user_mail=" + user_mail
+				+", user_addr=" + user_addr + "]";
 	}
 }

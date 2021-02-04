@@ -1,4 +1,4 @@
-package com.practive.study.dao;
+package com.practive.study.model.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -10,9 +10,9 @@ public class MemberEndDaoImpl implements MemberEndDao {
 
 	// 회원가입 등록
 	@Override
-	public int joinEnd(SqlSessionTemplate sqlSession, Member member) {
+	public int insertMember(SqlSessionTemplate sqlSession, Member member){
 		System.out.println("3) DAO입니댯!!!!!!!!");
-		return sqlSession.insert("member.joinEnd",member);
+		return sqlSession.insert("member.insertMember", member);
 	}
 
 }
