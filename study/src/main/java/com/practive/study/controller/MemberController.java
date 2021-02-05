@@ -37,6 +37,7 @@ public class MemberController {
 		
 		System.out.println("1) Controller입니댯!!!!!!!!");		
 		int result=service.insertMember(member);
+		System.out.println("Controller에서 result 값 확인::::::"+result);
 		
 		String msg = "";
 		String loc = "";
@@ -44,7 +45,7 @@ public class MemberController {
 		
 		if(result>0) { 
 			msg="가입이 성공적으로 완료되었습니다.";
-			loc="/main.do";
+			loc="redirect:/main.do";
 			status="Success";
 		}
 		else {
@@ -53,8 +54,11 @@ public class MemberController {
 		}
 		
 		mv.addObject("msg",msg);
+		System.out.println("msg 확인::::::"+msg);
 		mv.addObject("loc",loc);
+		System.out.println("loc확인:::::::"+loc);
 		mv.addObject("status",status);
+		System.out.println("status::::::"+status);
 		mv.setViewName("common/msg");
 		return mv;
 	}

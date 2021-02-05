@@ -16,6 +16,6 @@ public class MainController {
 	public String main() {
 		logger.info("메인 페이지 진입");
 		
-		return "main";
+		return "index";
 	}
 }

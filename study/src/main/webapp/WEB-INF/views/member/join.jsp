@@ -1,11 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:set value="${pageContext.request.contextPath}" var="path"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${path}/resources/css/member/join.css">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+// 회원가입 창 예외처리
+$(function(){
+	if($("#user_id").val() == ""){
+		alert("아이디를 입력해주세요");
+		$("#user_id").focus();
+		return false;
+	}
+	if($("#user_pw").val() == ""){
+		alert("비밀번호를 입력해주세요");
+		$("#user_pw").focus();
+		return false;
+	}
+	if($("#user_name").val() == ""){
+		alert("이름을 입력해주세요");
+		$("#user_name").focus();
+		return false;
+	}
+	if($("#user_birth").val() == ""){
+		alert("생년월일을 입력해주세요");
+		$("#user_birth").focus();
+		return false;
+	}
+	if($("#user_mail").val() == ""){
+		alert("메일을 입력해주세요");
+		$("#user_mail").focus();
+		return false;
+	}
+	if($("#user_addr").val() == ""){
+		alert("주소를 입력해주세요");
+		$("#user_addr").focus();
+		return false;
+	}
+});
+</script>
+
 </head>
 <body>
 <div class="wrapper">
