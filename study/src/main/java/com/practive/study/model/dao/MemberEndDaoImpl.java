@@ -12,6 +12,7 @@ public class MemberEndDaoImpl implements MemberEndDao {
 	@Override
 	public int insertMember(SqlSessionTemplate sqlSession, Member member){
 		System.out.println("3) DAO입니댯!!!!!!!!");
+		System.out.println("Member::::"+member);
 		return sqlSession.insert("member.insertMember", member);
 	}
 

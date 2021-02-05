@@ -17,13 +17,13 @@
 			<div class="id_wrap">
 				<div class="id_name">아이디</div>
 				<div class="id_input_box">
-					<input id="user_id" class="id_input">
+					<input id="user_id" name="userId" class="id_input">
 				</div>
 			</div>
 			<div class="pw_wrap">
 				<div class="pw_name">비밀번호</div>
 				<div class="pw_input_box">
-					<input id="user_pw" class="pw_input">
+					<input id="user_pw" name="userPw" class="pw_input">
 				</div>
 			</div>
 			<!-- <div class="pwck_wrap">
@@ -35,19 +35,19 @@
 			<div class="user_wrap">
 				<div class="user_name">이름</div>
 				<div class="user_input_box">
-					<input id="user_name" class="user_input">
+					<input id="user_name" name="userName" class="user_input">
 				</div>
 			</div>
 			<div class="user_wrap">
 				<div class="user_birth">생년월일</div>
 				<div class="user_input_box">
-					<input id="user_birth" class="user_input" placeholder="0000/00/00">
+					<input id="user_birth" class="user_input" name="userBirth" placeholder="ex) 2000-12-25">
 				</div>
 			</div>
 			<div class="mail_wrap">
 				<div class="mail_name">이메일</div> 
 				<div class="mail_input_box">
-					<input id="user_mail" class="mail_input" placeholder="xxx123@gmail">
+					<input id="user_mail" class="mail_input" name="userMail" placeholder="ex) xxx123@gmail">
 				</div>
 				<!-- <div class="mail_check_wrap">
 					<div class="mail_check_input_box">
@@ -72,7 +72,7 @@
 				</div>  -->
 				<div class ="address_input_2_wrap">
 					<div class="address_input_2_box">
-						<input id="user_addr" class="address_input_2" placeholder="xx시  xx구">
+						<input id="user_addr" class="address_input_2" name="userAddr" placeholder="ex) xx시  xx구">
 					</div>
 				</div>
 				<!-- <div class ="address_input_3_wrap">

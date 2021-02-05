@@ -5,56 +5,69 @@ import java.sql.Date;
 public class Member {
 
 	/*회원가입*/
-	private String user_id;
-	private String user_pw;
-	private String user_name;
-	private Date user_birth;
-	private String user_mail;
-	private String user_addr;
+	private String userId;
+	private String userPw;
+	private String userName;
+	private Date userBirth;
+	private String userMail;
+	private String userAddr;
 	
 	public Member() {}
 	
 	/*setter*/
-	public Member(String user_id, String user_pw, String user_name, Date user_birth, String user_mail, String user_addr) {
-		super();
-		this.user_id=user_id;
-		this.user_pw=user_pw;
-		this.user_name=user_name;
-		this.user_birth=user_birth;
-		this.user_mail=user_mail;
-		this.user_addr=user_addr;
-	
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public void setUserPw(String userPw) {
+		this.userPw = userPw;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public void setUserBirth(Date userBirth) {
+		this.userBirth = userBirth;
+	}
+
+	public void setUserMail(String userMail) {
+		this.userMail = userMail;
+	}
+
+	public void setUserAddr(String userAddr) {
+		this.userAddr = userAddr;
 	}
 	
 	/*getter*/
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
 
-	public String getUser_pw() {
-		return user_pw;
+	public String getUserPw() {
+		return userPw;
 	}
 
-	public String getUser_name() {
-		return user_name;
+	public String getUserName() {
+		return userName;
 	}
 
-	public Date getUser_birth() {
-		return user_birth;
+	public Date getUserBirth() {
+		return userBirth;
 	}
 
-	public String getUser_mail() {
-		return user_mail;
+	public String getUserMail() {
+		return userMail;
 	}
 
-	public String getUser_addr() {
-		return user_addr;
+	public String getUserAddr() {
+		return userAddr;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Member [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", user_birth=" + user_birth + ", user_mail=" + user_mail
-				+", user_addr=" + user_addr + "]";
+		return "Member [userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", userBirth=" + userBirth
+				+ ", userMail=" + userMail + ", userAddr=" + userAddr + "]";
 	}
 
 }
