@@ -8,4 +8,7 @@
 		INSERT INTO PJ.MEMBER_INFO VALUES (#{userId},#{userPw},#{userName},#{userBirth},#{userMail},#{userAddr});
 	</insert>
 	
+	<select id="userIdCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM PJ.MEMBER_INFO WHERE USERID = #{userId};
+	</select>
 </mapper>
