@@ -11,30 +11,89 @@
 <link rel="stylesheet" href="${path}/resources/css/member/join.css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
-<script>
-// 아이디 유효성 검사(1 = 중복 / 0 != 중복) : ajax
-// .blur : 이벤트가 포커스를 잃었을 때 요소를 전달
-//	$('.id_input').on("propertychange change keyup paste input", function() {
-//		// jQuery 접근시 $("#id") / $(".class") 
-//		// name으로 접근시 $(tag_name[name=name]) : $("input[name=search_value]")
-//		var userid = $('.id_input').val();
-//		$.ajax({
-//			url : '${path}/member/idCheck.do?userId='+userid,
-//			type : 'GET',
-//			contentType : "application/json; charset=UTF-8",
-//			success : function(data) {
-//				console.log("1 = 중복o / 0 = 중복x : "+ data);
-//				if(data == 1) {
-//					// 1 : 아이디가 중복되는 문구
-//					$("#id_check").text("사용중인 아이디입니다 :D");
-//					$("#id_check").css("color", "red");
-//					$("#submit").attr("disabled", true);
-//				} 
-//			}, error : function(error) {
-//				console.log("error ::::" + error);
-//			}
-//		});
-//	});
+<script type="text/javascript">
+var id = $('#user_id').val();
+// 아이디 유효성 검사 : ajax
+function idCheck() {
+	// jQuery 접근시 $("#id") / $(".class") 
+	// name으로 접근시 $(tag_name[name=name]) : $("input[name=search_value]")
+
+	$.ajax({
+		url : '${path}/member/idCheck.do?userId='+id,
+		//url : '${path}/member/idCheck.do',
+		type : 'POST',
+		dataType : 'text',
+		contentType : "application/json; charset=UTF-8", // 내가 서버로 보내는 데이터 타입 / dataType : 서버로부터 내가 받는 데이터의 타입
+		success : function(data) {
+			console.log("1 = 중복o / 0 = 중복x : "+ data);
+			if(data == 1) {
+				// 1 : 아이디가 중복되는 문구
+			//	$("#id_check").text("사용중인 아이디입니다 :D");
+			//	$("#id_check").css("color", "red");
+			//	$("#submit").attr("disabled", true);
+			console.log('아이디 있음');
+			alert('중복된 아이디가 존재합니다.');
+			} else {
+				console.log("아이디 없음");
+				alert('사용할 수 있는 아이디입니다.');
+			}
+		}, error : function(error) {
+			console.log("error ::::" + error);
+		}
+	});
+}
+
+// 회원가입 ajax
+//$(document).ready(function(){
+//	$('#join_submit').submit(function(){
+//		var id = $('#user_id').val();
+//		var pw = $('#user_pw').val();
+//		var name = $('#user_name').val();
+//		var birth = $('#user_birth').val();
+//		var mail = $('#user_mail').val();
+//		var addr = $('#user_addr').val();
+//		
+//		console.log(id);
+//		console.log(pw);
+//		console.log(name);
+//		console.log(birth);
+//		console.log(mail);
+//		console.log(addr);
+//		// 01 입력이 다 되었나 확인
+//		// !변수이름 : 입력되지 않았을 때 실행할 행동
+//		if(!id) {
+//			alert('아이디를 입력하세요.')
+//			document.getElementById('user_id').focus(); 
+//			return;
+//		}
+//		if(!pw) {
+//			alert('비밀번호를 입력하세요.')
+//			document.getElementById('user_pw').focus(); 
+//			return;
+//		}
+//		if(!name) {
+//			alert('이름을 입력하세요.')
+//			document.getElementById('user_name').focus(); 
+//			return;
+//		}
+//		if(!birth) {
+//			alert('생년월일을 입력하세요.')
+//			document.getElementById('user_birth').focus(); 
+//			return;
+//		}
+//		if(!mail) {
+//			alert('이메일을 입력하세요.')
+//			document.getElementById('user_mail').focus(); 
+//			return;
+//		}
+//		if(!addr) {
+//			alert('주소를 입력하세요.')
+//			document.getElementById('user_addr').focus(); 
+//			return;
+//		}
+//		return false;
+//	}
+//});
 </script>
 <body>
 <div class="wrapper">
@@ -46,10 +105,11 @@
 			<div class="id_wrap">
 				<div class="id_name">아이디</div>
 				<div class="id_input_box">
-					<input id="user_id" name="userId" class="id_input" required>
+					<input id="user_id" name="userId" class="id_input">
 				</div>
-				<span class="id_input_re_1">사용 가능한 아이디입니다 :D</span>
-				<span class="id_input_re_2">아이디가 이미 존재합니다 :)</span>
+				<button id="duplicate_check" type="button" onclick="idCheck();">중복체크</button>
+				<!-- <span class="id_input_re_1">사용 가능한 아이디입니다 :D</span>
+				<span class="id_input_re_2">아이디가 이미 존재합니다 :)</span>  -->
 			</div>
 			<div class="pw_wrap">
 				<div class="pw_name">비밀번호</div>
@@ -113,7 +173,7 @@
 				</div>  -->
 			</div>
 			<div class="join_button_wrap">
-				<input id="submit" type="submit" class="join_button" value="가입하기">
+				<input id="join_submit" type="submit" class="join_button" value="가입하기"> 
 			</div>
 		</div>
 	</form>
