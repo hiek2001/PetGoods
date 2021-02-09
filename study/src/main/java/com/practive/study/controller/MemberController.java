@@ -68,9 +68,10 @@ public class MemberController {
 	// 03 아이디 중복
 	// ResponseBody : Form Data가 아닌 JSON 형식의 데이터를 가진 요청이 들어왔을 경우, Handler method는 setter없는 클래스의 객체로 만들어줌
 	// RequestParam : json의 key 값 형태로 받음
-	@RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/idCheck.do")
 	@ResponseBody
-	public int idCheck(@RequestParam("userId") String userId) {
+	public int idCheck(@RequestParam("id") String userId) throws Exception{
+		System.out.println("userId:::"+ userId);
 		Logger.info("idCheck() 진입");
 		return service.userIdCheck(userId);
 	}

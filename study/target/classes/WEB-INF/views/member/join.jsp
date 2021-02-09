@@ -9,39 +9,43 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${path}/resources/css/member/join.css">
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js" charset="utf-8"></script>
 </head>
 <script type="text/javascript">
-var id = $('#user_id').val();
-// 아이디 유효성 검사 : ajax
-function idCheck() {
-	// jQuery 접근시 $("#id") / $(".class") 
-	// name으로 접근시 $(tag_name[name=name]) : $("input[name=search_value]")
 
-	$.ajax({
-		url : '${path}/member/idCheck.do?userId='+id,
-		//url : '${path}/member/idCheck.do',
-		type : 'POST',
-		dataType : 'text',
-		contentType : "application/json; charset=UTF-8", // 내가 서버로 보내는 데이터 타입 / dataType : 서버로부터 내가 받는 데이터의 타입
-		success : function(data) {
-			console.log("1 = 중복o / 0 = 중복x : "+ data);
-			if(data == 1) {
-				// 1 : 아이디가 중복되는 문구
-			//	$("#id_check").text("사용중인 아이디입니다 :D");
-			//	$("#id_check").css("color", "red");
-			//	$("#submit").attr("disabled", true);
-			console.log('아이디 있음');
-			alert('중복된 아이디가 존재합니다.');
-			} else {
-				console.log("아이디 없음");
-				alert('사용할 수 있는 아이디입니다.');
+// 아이디 유효성 검사 : ajax
+$(function() {
+	$("#duplicate_check").click(function() {
+		// jQuery 접근시 $("#id") / $(".class") 
+		// name으로 접근시 $(tag_name[name=name]) : $("input[name=search_value]")
+		var id = $('#user_id').val();
+		$.ajax({
+			//url : '${path}/member/idCheck.do?userId='+id,
+			url : '${path}/member/idCheck.do',
+			data : id,			// 서버에 요청시 보낼 파라미터 기입
+			type : 'POST',
+			contentType : "application/json; charset=UTF-8", // 내가 서버로 보내는 데이터 타입 / dataType : 서버로부터 내가 받는 데이터의 타입
+			success : function(data, result) {
+				console.log(data);
+				console.log(result);
+				if(data == 1) {
+					// 1 : 아이디가 중복되는 문구
+				//	$("#id_check").text("사용중인 아이디입니다 :D");
+				//	$("#id_check").css("color", "red");
+				//	$("#submit").attr("disabled", true);
+				console.log('아이디 있음');
+				alert('중복된 아이디가 존재합니다.');
+				} else {
+					console.log("아이디 없음");
+					alert('사용할 수 있는 아이디입니다.');
+				}
+			}, error : function(error) {
+				console.log(error);
 			}
-		}, error : function(error) {
-			console.log("error ::::" + error);
-		}
-	});
-}
+		});
+	}); 	
+});
+
 
 // 회원가입 ajax
 //$(document).ready(function(){
@@ -107,7 +111,7 @@ function idCheck() {
 				<div class="id_input_box">
 					<input id="user_id" name="userId" class="id_input">
 				</div>
-				<button id="duplicate_check" type="button" onclick="idCheck();">중복체크</button>
+				<button id="duplicate_check" type="button">중복체크</button>
 				<!-- <span class="id_input_re_1">사용 가능한 아이디입니다 :D</span>
 				<span class="id_input_re_2">아이디가 이미 존재합니다 :)</span>  -->
 			</div>
