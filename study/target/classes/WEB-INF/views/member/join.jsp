@@ -18,10 +18,11 @@ $(function() {
 	$("#duplicate_check").click(function() {
 		// jQuery 접근시 $("#id") / $(".class") 
 		// name으로 접근시 $(tag_name[name=name]) : $("input[name=search_value]")
+		var userId = $("#user_id").val();
 		$.ajax({
 			//url : '${path}/member/idCheck.do?userId='+id,
 			url : "${path}/member/idCheck.do",
-			data : {"userId" : $("#user_id").val()},			// 서버에 요청시 보낼 파라미터 기입
+			data : userId,			// 서버에 요청시 보낼 파라미터 기입
 			type : "POST",
 			dataType : "json",
 			contentType : "application/json; charset=UTF-8", // 내가 서버로 보내는 데이터 타입 / dataType : 서버로부터 내가 받는 데이터의 타입

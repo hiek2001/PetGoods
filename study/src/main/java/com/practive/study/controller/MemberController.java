@@ -1,9 +1,12 @@
 package com.practive.study.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -70,7 +73,7 @@ public class MemberController {
 	// RequestParam : json의 key 값 형태로 받음
 	@ResponseBody
 	@RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
-	public int idCheck(String userId) throws Exception{
+	public int idCheck(@RequestBody String userId, HttpServletRequest request) throws Exception{
 		System.out.println("userId:::"+ userId);
 		Logger.info("idCheck() 진입");
 		return service.userIdCheck(userId);
