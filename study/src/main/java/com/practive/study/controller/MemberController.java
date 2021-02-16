@@ -76,6 +76,8 @@ public class MemberController {
 	public int idCheck(@RequestBody String userId, HttpServletRequest request) throws Exception{
 		System.out.println("userId:::"+ userId);
 		Logger.info("idCheck() 진입");
-		return service.userIdCheck(userId);
+		int result = service.userIdCheck(userId);
+		System.out.println("result::::"+result);		
+		return result;
 	}
 }

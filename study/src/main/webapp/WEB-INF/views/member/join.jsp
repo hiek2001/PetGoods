@@ -26,19 +26,21 @@ $(function() {
 			type : "POST",
 			dataType : "json",
 			contentType : "application/json; charset=UTF-8", // 내가 서버로 보내는 데이터 타입 / dataType : 서버로부터 내가 받는 데이터의 타입
-			success : function(data, result) {
+			success : function(data) {
 				console.log(data);
-				console.log(result);
 				if(data == 1) {
 					// 1 : 아이디가 중복되는 문구
-				//	$("#id_check").text("사용중인 아이디입니다 :D");
-				//	$("#id_check").css("color", "red");
+					$("#id_input_msg").text("사용중인 아이디입니다 :D");
+					$("#id_input_msg").css("color", "red");
 				//	$("#submit").attr("disabled", true);
 				console.log('아이디 있음');
-				alert('중복된 아이디가 존재합니다.');
+				//alert('중복된 아이디가 존재합니다.');
 				} else {
+					// 2 : 사용중인 아이디가 없는 문구
 					console.log("아이디 없음");
-					alert('사용할 수 있는 아이디입니다.');
+					$("#id_input_msg").text("사용할 수 있는 아이디입니다 :)");
+					$("#id_input_msg").css("color", "green");
+				//	alert('사용할 수 있는 아이디입니다.');
 				}
 			}, error : function(error) {
 				console.log(error);
@@ -113,8 +115,7 @@ $(function() {
 					<input id="user_id" name="userId" class="id_input">
 				</div>
 				<button id="duplicate_check" type="button">중복체크</button>
-				<!-- <span class="id_input_re_1">사용 가능한 아이디입니다 :D</span>
-				<span class="id_input_re_2">아이디가 이미 존재합니다 :)</span>  -->
+				<span id="id_input_msg"></span>
 			</div>
 			<div class="pw_wrap">
 				<div class="pw_name">비밀번호</div>
