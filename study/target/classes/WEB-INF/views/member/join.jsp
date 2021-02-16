@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${path}/resources/css/member/join.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js" charset="utf-8"></script>
 </head>
 <script type="text/javascript">
@@ -32,7 +33,6 @@ $(function() {
 					// 1 : 아이디가 중복되는 문구
 					$("#id_input_msg").text("사용중인 아이디입니다 :D");
 					$("#id_input_msg").css("color", "red");
-				//	$("#submit").attr("disabled", true);
 				console.log('아이디 있음');
 				//alert('중복된 아이디가 존재합니다.');
 				} else {
@@ -51,56 +51,56 @@ $(function() {
 
 
 // 회원가입 ajax
-//$(document).ready(function(){
-//	$('#join_submit').submit(function(){
-//		var id = $('#user_id').val();
-//		var pw = $('#user_pw').val();
-//		var name = $('#user_name').val();
-//		var birth = $('#user_birth').val();
-//		var mail = $('#user_mail').val();
-//		var addr = $('#user_addr').val();
-//		
-//		console.log(id);
-//		console.log(pw);
-//		console.log(name);
-//		console.log(birth);
-//		console.log(mail);
-//		console.log(addr);
-//		// 01 입력이 다 되었나 확인
-//		// !변수이름 : 입력되지 않았을 때 실행할 행동
-//		if(!id) {
-//			alert('아이디를 입력하세요.')
-//			document.getElementById('user_id').focus(); 
-//			return;
-//		}
-//		if(!pw) {
-//			alert('비밀번호를 입력하세요.')
-//			document.getElementById('user_pw').focus(); 
-//			return;
-//		}
-//		if(!name) {
-//			alert('이름을 입력하세요.')
-//			document.getElementById('user_name').focus(); 
-//			return;
-//		}
-//		if(!birth) {
-//			alert('생년월일을 입력하세요.')
-//			document.getElementById('user_birth').focus(); 
-//			return;
-//		}
-//		if(!mail) {
-//			alert('이메일을 입력하세요.')
-//			document.getElementById('user_mail').focus(); 
-//			return;
-//		}
-//		if(!addr) {
-//			alert('주소를 입력하세요.')
-//			document.getElementById('user_addr').focus(); 
-//			return;
-//		}
-//		return false;
-//	}
-//});
+$(function() {
+	$('#join_submit').click(function(){
+		var id = $('#user_id').val();
+		var pw = $('#user_pw').val();
+		var name = $('#user_name').val();
+		var birth = $('#user_birth').val();
+		var mail = $('#user_mail').val();
+		var addr = $('#user_addr').val();
+		
+		console.log(id);
+		console.log(pw);
+		console.log(name);
+		console.log(birth);
+		console.log(mail);
+		console.log(addr);
+		// 01 입력이 다 되었나 확인
+		// !변수이름 : 입력되지 않았을 때 실행할 행동
+		if(!id) {
+			alert('아이디를 입력하세요.')
+			document.getElementById('user_id').focus(); 
+			return;
+		}
+		if(!pw) {
+			alert('비밀번호를 입력하세요.')
+			document.getElementById('user_pw').focus(); 
+			return;
+		}
+		if(!name) {
+			alert('이름을 입력하세요.')
+			document.getElementById('user_name').focus(); 
+			return;
+		}
+		if(!birth) {
+			alert('생년월일을 입력하세요.')
+			document.getElementById('user_birth').focus(); 
+			return;
+		}
+		if(!mail) {
+			alert('이메일을 입력하세요.')
+			document.getElementById('user_mail').focus(); 
+			return;
+		}
+		if(!addr) {
+			alert('주소를 입력하세요.')
+			document.getElementById('user_addr').focus(); 
+			return;
+		}
+		return false;
+	}
+});
 </script>
 <body>
 <div class="wrapper">
@@ -114,13 +114,13 @@ $(function() {
 				<div class="id_input_box">
 					<input id="user_id" name="userId" class="id_input">
 				</div>
-				<button id="duplicate_check" type="button">중복체크</button>
+				<button id="duplicate_check" type="button" class="btn btn-info btn-sm">중복체크</button>
 				<span id="id_input_msg"></span>
 			</div>
 			<div class="pw_wrap">
 				<div class="pw_name">비밀번호</div>
 				<div class="pw_input_box">
-					<input id="user_pw" name="userPw" class="pw_input" required>
+					<input id="user_pw" name="userPw" class="pw_input">
 				</div>
 			</div>
 			<!-- <div class="pwck_wrap">
@@ -132,19 +132,19 @@ $(function() {
 			<div class="user_wrap">
 				<div class="user_name">이름</div>
 				<div class="user_input_box">
-					<input id="user_name" name="userName" class="user_input" required>
+					<input id="user_name" name="userName" class="user_input">
 				</div>
 			</div>
 			<div class="user_wrap">
 				<div class="user_birth">생년월일</div>
 				<div class="user_input_box">
-					<input id="user_birth" class="user_input" name="userBirth" placeholder="ex) 2000-12-25" required>
+					<input id="user_birth" class="user_input" name="userBirth" placeholder="ex) 2000-12-25">
 				</div>
 			</div>
 			<div class="mail_wrap">
 				<div class="mail_name">이메일</div> 
 				<div class="mail_input_box">
-					<input id="user_mail" class="mail_input" name="userMail" placeholder="ex) xxx123@gmail" requried>
+					<input id="user_mail" class="mail_input" name="userMail" placeholder="ex) xxx123@gmail">
 				</div>
 				<!-- <div class="mail_check_wrap">
 					<div class="mail_check_input_box">
@@ -169,7 +169,7 @@ $(function() {
 				</div>  -->
 				<div class ="address_input_2_wrap">
 					<div class="address_input_2_box">
-						<input id="user_addr" class="address_input_2" name="userAddr" placeholder="ex) xx시  xx구" required>
+						<input id="user_addr" class="address_input_2" name="userAddr" placeholder="ex) xx시  xx구">
 					</div>
 				</div>
 				<!-- <div class ="address_input_3_wrap">
@@ -179,7 +179,7 @@ $(function() {
 				</div>  -->
 			</div>
 			<div class="join_button_wrap">
-				<input id="join_submit" type="submit" class="join_button" value="가입하기"> 
+				<button id="join_submit" class="join_button">가입하기</button>
 			</div>
 		</div>
 	</form>
