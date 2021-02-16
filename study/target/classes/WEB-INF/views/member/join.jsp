@@ -52,7 +52,7 @@ $(function() {
 
 // 회원가입 ajax
 $(function() {
-	$('#join_submit').click(function(){
+	$('#join_submit').click(function() {
 		var id = $('#user_id').val();
 		var pw = $('#user_pw').val();
 		var name = $('#user_name').val();
@@ -99,7 +99,7 @@ $(function() {
 			return;
 		}
 		return false;
-	}
+	});
 });
 </script>
 <body>
@@ -112,7 +112,7 @@ $(function() {
 			<div class="id_wrap">
 				<div class="id_name">아이디</div>
 				<div class="id_input_box">
-					<input id="user_id" name="userId" class="id_input">
+					<input id="user_id" name="userId" class="id_input" style="font-size:20px;height:50px;">
 				</div>
 				<button id="duplicate_check" type="button" class="btn btn-info btn-sm">중복체크</button>
 				<span id="id_input_msg"></span>
