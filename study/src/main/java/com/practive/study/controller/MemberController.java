@@ -35,9 +35,10 @@ public class MemberController {
 	}
 	
 	// 02 회원가입 등록
+	// @RequestBody를 명시해주지 않는 파라미터는 get 방식으로 데이터를 바인딩하기 때문에 null이 들어감.
 	@ResponseBody
 	@RequestMapping(value = "/insertMember.do", method = RequestMethod.POST)
-	public int insertMember(@ModelAttribute Member member, HttpServletRequest request) throws Exception{
+	public int insertMember(@RequestBody Member member, HttpServletRequest request) throws Exception{
 		Logger.info("insertMember() 진입");	
 		int result=service.insertMember(member);
 		System.out.println("Controller에서 result 값 확인::::::"+result);

@@ -105,14 +105,11 @@ $(function() {
 			return;
 		}
 		else {
+			
+			var param = {"userId" : id, "userPw" : pw, "userName" : name, "userBirth" : birth, "userMail" : mail, "userAddr" : addr}
 			$.ajax({
 				url : "${path}/member/insertMember.do",
-				data : { userId : id,
-						 userPw : pw,
-						 userName : name,
-						 userBirth : birth,
-						 userMail : mail,
-						 userAddr : addr},
+				data : JSON.stringify(param),						
 				type : "POST",
 				dataType : "json",
 				contentType : "application/json; charset=UTF-8",
