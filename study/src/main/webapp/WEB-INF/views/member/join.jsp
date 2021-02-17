@@ -107,7 +107,12 @@ $(function() {
 		else {
 			$.ajax({
 				url : "${path}/member/insertMember.do",
-				data : id, pw, name, birth, mail, addr,
+				data : { userId : id,
+						 userPw : pw,
+						 userName : name,
+						 userBirth : birth,
+						 userMail : mail,
+						 userAddr : addr},
 				type : "POST",
 				dataType : "json",
 				contentType : "application/json; charset=UTF-8",

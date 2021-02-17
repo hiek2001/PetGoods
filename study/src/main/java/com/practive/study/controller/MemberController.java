@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,9 +35,10 @@ public class MemberController {
 	}
 	
 	// 02 회원가입 등록
+	@ResponseBody
 	@RequestMapping(value = "/insertMember.do", method = RequestMethod.POST)
-	public int insertMember(Member member) throws Exception{
-		System.out.println("1) Controller입니댯!!!!!!!!");		
+	public int insertMember(@ModelAttribute Member member, HttpServletRequest request) throws Exception{
+		Logger.info("insertMember() 진입");	
 		int result=service.insertMember(member);
 		System.out.println("Controller에서 result 값 확인::::::"+result);
 		
