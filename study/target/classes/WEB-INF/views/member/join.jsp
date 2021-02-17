@@ -105,7 +105,6 @@ $(function() {
 			return;
 		}
 		else {
-			
 			var param = {"userId" : id, "userPw" : pw, "userName" : name, "userBirth" : birth, "userMail" : mail, "userAddr" : addr}
 			$.ajax({
 				url : "${path}/member/insertMember.do",
@@ -117,7 +116,7 @@ $(function() {
 					console.log(data);
 					if(data == 1) {
 						alert("회원가입이 완료되었습니다 :D");
-						return "redirect:";
+						return "/main.do";
 					}
 				}, error : function(error) {
 					console.log(error);

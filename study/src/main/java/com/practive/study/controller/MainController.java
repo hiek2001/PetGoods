@@ -15,7 +15,6 @@ public class MainController {
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String main() {
 		logger.info("메인 페이지 진입");
-		
 		return "index";
 	}
 }
