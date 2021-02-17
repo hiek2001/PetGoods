@@ -19,11 +19,10 @@ $(function() {
 		// jQuery 접근시 $("#id") / $(".class") 
 		// name으로 접근시 $(tag_name[name=name]) : $("input[name=search_value]")
 		var userId = $("#user_id").val();
-		if(userId.replace(/\s|　/gi, '') != -1){
+		if(userId == ''){
 			$("#id_input_msg").text("아이디를 입력하세요 :P");
 			$("#id_input_msg").css("color", "red");
 			$("#user_id").focus();
-			return false;
 		} else {
 			$.ajax({
 				//url : '${path}/member/idCheck.do?userId='+id,
