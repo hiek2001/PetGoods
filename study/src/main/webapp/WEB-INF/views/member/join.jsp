@@ -9,7 +9,6 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${path}/resources/css/member/join.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js" charset="utf-8"></script>
 </head>
 <script type="text/javascript">
@@ -20,32 +19,39 @@ $(function() {
 		// jQuery 접근시 $("#id") / $(".class") 
 		// name으로 접근시 $(tag_name[name=name]) : $("input[name=search_value]")
 		var userId = $("#user_id").val();
-		$.ajax({
-			//url : '${path}/member/idCheck.do?userId='+id,
-			url : "${path}/member/idCheck.do",
-			data : userId,			// 서버에 요청시 보낼 파라미터 기입
-			type : "POST",
-			dataType : "json",
-			contentType : "application/json; charset=UTF-8", // 내가 서버로 보내는 데이터 타입 / dataType : 서버로부터 내가 받는 데이터의 타입
-			success : function(data) {
-				console.log(data);
-				if(data == 1) {
-					// 1 : 아이디가 중복되는 문구
-					$("#id_input_msg").text("사용중인 아이디입니다 :D");
-					$("#id_input_msg").css("color", "red");
-				console.log('아이디 있음');
-				//alert('중복된 아이디가 존재합니다.');
-				} else {
-					// 2 : 사용중인 아이디가 없는 문구
-					console.log("아이디 없음");
-					$("#id_input_msg").text("사용할 수 있는 아이디입니다 :)");
-					$("#id_input_msg").css("color", "green");
-				//	alert('사용할 수 있는 아이디입니다.');
+		if(userId.replace(/\s|　/gi, '') != -1){
+			$("#id_input_msg").text("아이디를 입력하세요 :P");
+			$("#id_input_msg").css("color", "red");
+			$("#user_id").focus();
+			return false;
+		} else {
+			$.ajax({
+				//url : '${path}/member/idCheck.do?userId='+id,
+				url : "${path}/member/idCheck.do",
+				data : userId,			// 서버에 요청시 보낼 파라미터 기입
+				type : "POST",
+				dataType : "json",
+				contentType : "application/json; charset=UTF-8", // 내가 서버로 보내는 데이터 타입 / dataType : 서버로부터 내가 받는 데이터의 타입
+				success : function(data) {
+					console.log(data);
+					if(data == 1) {
+						// 1 : 아이디가 중복되는 문구
+						$("#id_input_msg").text("사용중인 아이디입니다 :D");
+						$("#id_input_msg").css("color", "red");
+					console.log('아이디 있음');
+					//alert('중복된 아이디가 존재합니다.');
+					} else {
+						// 2 : 사용중인 아이디가 없는 문구
+						console.log("아이디 없음");
+						$("#id_input_msg").text("사용할 수 있는 아이디입니다 :)");
+						$("#id_input_msg").css("color", "green");
+					//	alert('사용할 수 있는 아이디입니다.');
+					}
+				}, error : function(error) {
+					console.log(error);
 				}
-			}, error : function(error) {
-				console.log(error);
-			}
-		});
+			});
+		}
 	}); 	
 });
 
@@ -112,9 +118,9 @@ $(function() {
 			<div class="id_wrap">
 				<div class="id_name">아이디</div>
 				<div class="id_input_box">
-					<input id="user_id" name="userId" class="id_input" style="font-size:20px;height:50px;">
+					<input id="user_id" name="userId" class="id_input">
 				</div>
-				<button id="duplicate_check" type="button" class="btn btn-info btn-sm">중복체크</button>
+				<button id="duplicate_check" type="button">중복체크</button>
 				<span id="id_input_msg"></span>
 			</div>
 			<div class="pw_wrap">
