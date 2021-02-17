@@ -35,37 +35,12 @@ public class MemberController {
 	
 	// 02 회원가입 등록
 	@RequestMapping(value = "/insertMember.do", method = RequestMethod.POST)
-	public ModelAndView insertMember(Member member) throws Exception{
-				
-		// 팝업 띄우기
-		ModelAndView mv=new ModelAndView();
-		
+	public int insertMember(Member member) throws Exception{
 		System.out.println("1) Controller입니댯!!!!!!!!");		
 		int result=service.insertMember(member);
 		System.out.println("Controller에서 result 값 확인::::::"+result);
 		
-		String msg = "";
-		String loc = "";
-		String status = "";
-		
-		if(result>0) { 
-			msg="가입이 성공적으로 완료되었습니다.";
-			loc="redirect:/main.do";
-			status="Success";
-		}
-		else {
-			msg="가입이 실패하였습니다. <br> 관리자에게 문의해보세요.";
-			status="Fail";
-		}
-		
-		mv.addObject("msg",msg);
-		System.out.println("msg 확인::::::"+msg);
-		mv.addObject("loc",loc);
-		System.out.println("loc확인:::::::"+loc);
-		mv.addObject("status",status);
-		System.out.println("status::::::"+status);
-		mv.setViewName("common/msg");
-		return mv;
+		return result;
 	}
 	
 	// 03 아이디 중복

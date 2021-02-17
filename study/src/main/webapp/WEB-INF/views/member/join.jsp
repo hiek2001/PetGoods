@@ -17,11 +17,12 @@
 $(function() {
 	$("#duplicate_check").click(function() {
 		// jQuery 접근시 $("#id") / $(".class") 
-		// name으로 접근시 $(tag_name[name=name]) : $("input[name=search_value]")
+		// name으로 접근시 $(tag_name[name=name]) : $("input[name=search_value]")	
 		var userId = $("#user_id").val();
+		
 		if(userId == ''){
-			$("#id_input_msg").text("아이디를 입력하세요 :P");
-			$("#id_input_msg").css("color", "red");
+			$("#id_msg").text("아이디를 입력하세요 :P");
+			$("#id_msg").css("color", "red");
 			$("#user_id").focus();
 		} else {
 			$.ajax({
@@ -35,15 +36,15 @@ $(function() {
 					console.log(data);
 					if(data == 1) {
 						// 1 : 아이디가 중복되는 문구
-						$("#id_input_msg").text("사용중인 아이디입니다 :D");
-						$("#id_input_msg").css("color", "red");
+						$("#id_msg").text("사용중인 아이디입니다 :D");
+						$("#id_msg").css("color", "red");
 					console.log('아이디 있음');
 					//alert('중복된 아이디가 존재합니다.');
 					} else {
 						// 2 : 사용중인 아이디가 없는 문구
 						console.log("아이디 없음");
-						$("#id_input_msg").text("사용할 수 있는 아이디입니다 :)");
-						$("#id_input_msg").css("color", "green");
+						$("#id_msg").text("사용할 수 있는 아이디입니다 :)");
+						$("#id_msg").css("color", "green");
 					//	alert('사용할 수 있는 아이디입니다.');
 					}
 				}, error : function(error) {
@@ -51,21 +52,18 @@ $(function() {
 				}
 			});
 		}
-	}); 	
+	}); 
 });
-
-
-// 회원가입 ajax
+//회원가입 ajax
 $(function() {
 	$('#join_submit').click(function() {
-		var id = $('#user_id').val();
+		var id = $("#user_id").val();
 		var pw = $('#user_pw').val();
 		var name = $('#user_name').val();
 		var birth = $('#user_birth').val();
 		var mail = $('#user_mail').val();
 		var addr = $('#user_addr').val();
 		
-		console.log(id);
 		console.log(pw);
 		console.log(name);
 		console.log(birth);
@@ -73,43 +71,63 @@ $(function() {
 		console.log(addr);
 		// 01 입력이 다 되었나 확인
 		// !변수이름 : 입력되지 않았을 때 실행할 행동
-		if(!id) {
-			alert('아이디를 입력하세요.')
-			document.getElementById('user_id').focus(); 
+		if(id == '') {
+			$("#id_msg").text("아이디를 입력하세요 :P");
+			$("#id_msg").css("color", "red");
+			$("#user_id").focus();
 			return;
 		}
-		if(!pw) {
-			alert('비밀번호를 입력하세요.')
-			document.getElementById('user_pw').focus(); 
+		if(pw == '') {
+			$("#pw_msg").text("비밀번호를 입력하세요 :P");
+			$("#pw_msg").css("color", "red");
+			$("#user_pw").focus;
 			return;
 		}
-		if(!name) {
-			alert('이름을 입력하세요.')
-			document.getElementById('user_name').focus(); 
+		if(name == '') {
+			$("#name_msg").text("이름을 입력하세요 :P");
+			$("#name_msg").css("color", "red");
+			$("#user_name").focus;
 			return;
 		}
-		if(!birth) {
-			alert('생년월일을 입력하세요.')
-			document.getElementById('user_birth').focus(); 
+		if(birth == '') {
+			$("#birth_msg").css("color", "red");
+			$("#user_birth").focus;
 			return;
 		}
-		if(!mail) {
-			alert('이메일을 입력하세요.')
-			document.getElementById('user_mail').focus(); 
+		if(mail == '') {
+			$("#mail_msg").css("color", "red");
+			$("#user_mail").focus;
 			return;
 		}
-		if(!addr) {
-			alert('주소를 입력하세요.')
-			document.getElementById('user_addr').focus(); 
+		if(addr == '') {
+			$("#addr_msg").css("color", "red");
+			$("#user_addr").focus;
 			return;
 		}
-		return false;
+		else {
+			$.ajax({
+				url : "${path}/member/insertMember.do",
+				data : id, pw, name, birth, mail, addr,
+				type : "POST",
+				dataType : "json",
+				contentType : "application/json; charset=UTF-8",
+				success : function(data) {
+					console.log(data);
+					if(data == 1) {
+						alert("회원가입이 완료되었습니다 :D");
+						return "redirect:";
+					}
+				}, error : function(error) {
+					console.log(error);
+				}
+			});
+		}
 	});
 });
+
 </script>
 <body>
 <div class="wrapper">
-	<form action="${path}/member/insertMember.do" method="post">
 	<div class="wrap">
 			<div class="subjecet">
 				<span>회원가입</span>
@@ -120,13 +138,14 @@ $(function() {
 					<input id="user_id" name="userId" class="id_input">
 				</div>
 				<button id="duplicate_check" type="button">중복체크</button>
-				<span id="id_input_msg"></span>
+				<span id="id_msg"></span>
 			</div>
 			<div class="pw_wrap">
 				<div class="pw_name">비밀번호</div>
 				<div class="pw_input_box">
 					<input id="user_pw" name="userPw" class="pw_input">
 				</div>
+				<span id="pw_msg"></span>
 			</div>
 			<!-- <div class="pwck_wrap">
 				<div class="pwck_name">비밀번호 확인</div>
@@ -139,18 +158,21 @@ $(function() {
 				<div class="user_input_box">
 					<input id="user_name" name="userName" class="user_input">
 				</div>
+				<span id="name_msg"></span>
 			</div>
 			<div class="user_wrap">
 				<div class="user_birth">생년월일</div>
 				<div class="user_input_box">
-					<input id="user_birth" class="user_input" name="userBirth" placeholder="ex) 2000-12-25">
+					<input id="user_birth" class="user_input" name="userBirth">
 				</div>
+				<span id="birth_msg">ex) 2000-12-25 형식에 맞춰서 입력하세요</span>
 			</div>
 			<div class="mail_wrap">
 				<div class="mail_name">이메일</div> 
 				<div class="mail_input_box">
-					<input id="user_mail" class="mail_input" name="userMail" placeholder="ex) xxx123@gmail">
+					<input id="user_mail" class="mail_input" name="userMail">
 				</div>
+				<span id="mail_msg">ex) xxx123@gmail 형식에 맞춰서 입력하세요</span>
 				<!-- <div class="mail_check_wrap">
 					<div class="mail_check_input_box">
 						<input class="mail_check_input">
@@ -174,8 +196,9 @@ $(function() {
 				</div>  -->
 				<div class ="address_input_2_wrap">
 					<div class="address_input_2_box">
-						<input id="user_addr" class="address_input_2" name="userAddr" placeholder="ex) xx시  xx구">
+						<input id="user_addr" class="address_input_2" name="userAddr">
 					</div>
+					<span id="addr_msg">ex) xx시  xx구 형식에 맞춰서 입력하세요</span>
 				</div>
 				<!-- <div class ="address_input_3_wrap">
 					<div class="address_input_3_box">
@@ -187,7 +210,6 @@ $(function() {
 				<button id="join_submit" class="join_button">가입하기</button>
 			</div>
 		</div>
-	</form>
 </div>
 </body>
 </html>
