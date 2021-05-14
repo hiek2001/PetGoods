@@ -116,7 +116,8 @@ $(function() {
 					console.log(data);
 					if(data == 1) {
 						alert("회원가입이 완료되었습니다 :D");
-						return "/main.do";
+						//return "redirect:/";
+						window.location.href = '/index.jsp';
 					}
 				}, error : function(error) {
 					console.log(error);

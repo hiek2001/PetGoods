@@ -40,6 +40,7 @@ public class MemberController {
 	@RequestMapping(value = "/insertMember.do", method = RequestMethod.POST)
 	public int insertMember(@RequestBody Member member, HttpServletRequest request) throws Exception{
 		Logger.info("insertMember() 진입");	
+		ModelAndView mv = new ModelAndView();
 		int result=service.insertMember(member);
 		System.out.println("Controller에서 result 값 확인::::::"+result);
 		
