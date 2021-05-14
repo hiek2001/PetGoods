@@ -145,7 +145,7 @@ $(function() {
 			<div class="pw_wrap">
 				<div class="pw_name">비밀번호</div>
 				<div class="pw_input_box">
-					<input id="user_pw" name="userPw" class="pw_input">
+					<input id="user_pw" name="userPw" class="pw_input" type="password">
 				</div>
 				<span id="pw_msg"></span>
 			</div>

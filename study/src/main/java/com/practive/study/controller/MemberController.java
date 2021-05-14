@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +28,10 @@ public class MemberController {
 	@Autowired
 	private MemberEndService service;
 	
+	// 비밀번호 암호화를 위해 필요한 것
+	@Autowired
+	BCryptPasswordEncoder pwdEncoder;
+	
 	// 01 회원가입 페이지로 이동
 	@RequestMapping(value = "/join.do", method = RequestMethod.GET)
 	public String join() {
@@ -40,7 +45,10 @@ public class MemberController {
 	@RequestMapping(value = "/insertMember.do", method = RequestMethod.POST)
 	public int insertMember(@RequestBody Member member, HttpServletRequest request) throws Exception{
 		Logger.info("insertMember() 진입");	
-		ModelAndView mv = new ModelAndView();
+		// 비밀번호 암호화
+		String pwdBycrypt = pwdEncoder.encode(member.getUserPw());
+		member.setUserPw(pwdBycrypt);
+		
 		int result=service.insertMember(member);
 		System.out.println("Controller에서 result 값 확인::::::"+result);
 		
