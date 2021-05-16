@@ -11,8 +11,15 @@
 ul {list-style-type:none;}
 li {float: left; margin-right:5px; cursor:pointer;}
 nav {float: right; display: inline-block;}
-.logo {position: relative; text-align: center; top:70px;}
-.header {width:100%; height:20%; text-align:center;}
+.logo {
+	position: relative; 
+	text-align: center; 
+	top:70px;}
+.header {width:100%; height:20%; text-align:center; background-color:white;}
+#serve-navbar {
+	position: absolute;
+	top:150px;
+}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,34 +36,42 @@ nav {float: right; display: inline-block;}
 		      <li><a href="#">BEST</a></li>
 		      <li><a href="#">강아지 용품</a></li>
 		      <li><a href="#">고양이 용품</a></li>
+		      <li><a href="#">고객센터</a></li>
 		    </ul>
  		 </div>
 	</nav>
+	<div id="serve-navbar">
+	  <nav>
+	    <ul>
+	      <li>Hi, '로그인'회원님</li>
+	      <li> | </li>
+	      <li>
+	      	<a href="${path}/member/login.do">로그인</a>
+	      </li>
+	      <li> | </li>
+	      <li>
+	      	<a href="${path}/member/join.do">회원가입</a>
+	      </li>
+	      <li> | </li>
+	      <li>
+	      	<a href="#">로그아웃</a>
+	      </li>
+	      <li> | </li>
+	      <li>
+	      	<a href="#">마이페이지</a>
+	      </li>
+	      <li> | </li>
+	      <li>
+	      	<a href="#">장바구니</a>
+	      </li>
+	      </ul>
+	  </nav>
+	</div>
 	<div class="logo">
 		<p>
 			<img width="500px" src="${path }/resources/img/logo.jpg" alt="로고이미지">
 		</p>
 	</div>	
-	<div>
-	  <nav>
-	    <ul>
-	      <li>Hi, '로그인'회원님</li>
-	      <li> | </li>
-	      <li><a href="#">로그인</li>
-	      <li> | </li>
-	      <li><a href="${path}/member/join.do" target="_self">회원가입</li>
-	      <li> | </li>
-	      <li><a href="#">로그아웃</a></li>
-	      <li> | </li>
-	      <li><a href="#">마이페이지</a></li>
-	      <li> | </li>
-	      <li><a href="#">장바구니</a></li>
-	      <li> | </li>
-	      <li><a href="#">고객센터</a></li>
-	      </ul>
-	  </nav>
-	</div>
-	
 </div>
 </head>
 

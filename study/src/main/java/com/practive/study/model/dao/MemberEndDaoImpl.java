@@ -21,4 +21,10 @@ public class MemberEndDaoImpl implements MemberEndDao {
 	public int userIdCheck(SqlSessionTemplate sqlSession, String userId) {
 		return sqlSession.selectOne("member.userIdCheck", userId);
 	}
+	
+	// 로그인 값 확인
+	@Override
+	public int loginCheck(SqlSessionTemplate sqlSession, String userId) {
+		return sqlSession.selectOne("member.loginCheck", userId);
+	}
 }

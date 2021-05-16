@@ -67,4 +67,23 @@ public class MemberController {
 		System.out.println("result::::"+result);		
 		return result;
 	}
+	
+	// 04 로그인 페이지로 이동
+	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
+	public String login() {
+		Logger.info("로그인 페이지 진입");
+		return "/member/login";
+	}
+	
+	// 05 로그인 확인
+	@ResponseBody
+	@RequestMapping(value = "/loginCheck.do", method = RequestMethod.POST) 
+	public int loginCheck(@RequestBody String userId, HttpServletRequest request) throws Exception{
+		System.out.println("값 넘어왔는지 확인 :::::"+userId);
+		Logger.info("loginEnd() 진입");
+		int result = service.loginCheck(userId);
+		System.out.println("result::::::"+result);
+		return result;
+	}
+	
 }

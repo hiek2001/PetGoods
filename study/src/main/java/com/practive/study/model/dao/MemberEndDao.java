@@ -10,4 +10,6 @@ public interface MemberEndDao {
 	int insertMember(SqlSessionTemplate sqlSession, Member member);
 	
 	int userIdCheck(SqlSessionTemplate sqlSession, String userId);
+	
+	int loginCheck(SqlSessionTemplate sqlSession, String userId);
 }

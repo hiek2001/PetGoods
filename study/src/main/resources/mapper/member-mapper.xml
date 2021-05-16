@@ -11,4 +11,8 @@
 	<select id="userIdCheck" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM PJ.MEMBER_INFO WHERE USERID = #{userId};
 	</select>
+	
+	<select id="loginCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM PJ.MEMBER_INFO WHERE USERID = #{userId};
+	</select>
 </mapper>

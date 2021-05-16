@@ -29,4 +29,10 @@ public class MemberEndServiceImpl implements MemberEndService {
 		int result = dao.userIdCheck(sqlSession,userId);
 		return result;
 	}
+	
+	@Override
+	public int loginCheck(String userId) {
+		int result = dao.loginCheck(sqlSession,userId);
+		return result;
+	}
 }
