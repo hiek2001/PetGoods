@@ -11,5 +11,5 @@ public interface MemberEndDao {
 	
 	int userIdCheck(SqlSessionTemplate sqlSession, String userId);
 	
-	int loginCheck(SqlSessionTemplate sqlSession, String userId);
+	int loginCheck(SqlSessionTemplate sqlSession, Member member);
 }

@@ -9,5 +9,5 @@ public interface MemberEndService {
 	// 아이디 중복 체크
 	int userIdCheck(String userId);
 	// 로그인 값 확인
-	int loginCheck(String userId);
+	int loginCheck(Member member);
 }

@@ -78,10 +78,10 @@ public class MemberController {
 	// 05 로그인 확인
 	@ResponseBody
 	@RequestMapping(value = "/loginCheck.do", method = RequestMethod.POST) 
-	public int loginCheck(@RequestBody String userId, HttpServletRequest request) throws Exception{
-		System.out.println("값 넘어왔는지 확인 :::::"+userId);
+	public int loginCheck(@RequestBody Member member, HttpServletRequest request) throws Exception{
+		System.out.println("값 넘어왔는지 확인 :::::"+member);
 		Logger.info("loginEnd() 진입");
-		int result = service.loginCheck(userId);
+		int result = service.loginCheck(member);
 		System.out.println("result::::::"+result);
 		return result;
 	}

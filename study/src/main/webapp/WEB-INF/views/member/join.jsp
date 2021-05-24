@@ -39,6 +39,7 @@ $(function() {
 						$("#id_msg").text("사용중인 아이디입니다 :D");
 						$("#id_msg").css("color", "red");
 					console.log('아이디 있음');
+					
 					//alert('중복된 아이디가 존재합니다.');
 					} else {
 						// 2 : 사용중인 아이디가 없는 문구
