@@ -20,12 +20,6 @@ public class MemberEndDaoImpl implements MemberEndDao {
 		System.out.println("Member::::"+member);
 		return sqlSession.insert("member.insertMember", member);
 	}
-
-	// 아이디 중복 체크
-	@Override
-	public int userIdCheck(SqlSessionTemplate sqlSession, String userId) {
-		return sqlSession.selectOne("member.userIdCheck", userId);
-	}
 	
 	// 로그인 값 확인
 	@Override

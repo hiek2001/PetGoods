@@ -23,12 +23,6 @@ public class MemberEndServiceImpl implements MemberEndService {
 		System.out.println("2) Service입니댯!!!!!!!!");		
 		return dao.insertMember(sqlSession,member);
 	}
-
-	@Override
-	public int userIdCheck(String userId) {
-		int result = dao.userIdCheck(sqlSession,userId);
-		return result;
-	}
 	
 	@Override
 	public int loginCheck(Member member) {
