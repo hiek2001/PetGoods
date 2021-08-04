@@ -5,74 +5,64 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:set value="${pageContext.request.contextPath}" var="path"/>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<style type="text/css">
-ul {list-style-type:none;}
-li {float: left; margin-right:5px; cursor:pointer;}
-nav {float: right; display: inline-block;}
-.logo {
-	position: relative; 
-	text-align: center; 
-	top:70px;}
-.header {width:100%; height:20%; text-align:center; background-color:white;}
-#serve-navbar {
-	position: absolute;
-	top:150px;
-}
-</style>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="${path}/resources/css/member/join.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
-<title>Dog&Cat Shop</title>
-<div class="header">
-	<nav class="navbar navbar-default navbar-fixed-top">
-  		<div class="container-fluid">
-		    <ul class="nav navbar-nav">
-		      <li class="active"><a href="#">Home</a></li>
-		      <li><a href="#">BEST</a></li>
-		      <li><a href="#">강아지 용품</a></li>
-		      <li><a href="#">고양이 용품</a></li>
-		      <li><a href="#">고객센터</a></li>
-		    </ul>
- 		 </div>
-	</nav>
-	<div id="serve-navbar">
-	  <nav>
-	    <ul>
-	      <li>Hi, '로그인'회원님</li>
-	      <li> | </li>
-	      <li>
-	      	<a href="${path}/member/login.do">로그인</a>
-	      </li>
-	      <li> | </li>
-	      <li>
-	      	<a href="${path}/member/join.do">회원가입</a>
-	      </li>
-	      <li> | </li>
-	      <li>
-	      	<a href="#">로그아웃</a>
-	      </li>
-	      <li> | </li>
-	      <li>
-	      	<a href="#">마이페이지</a>
-	      </li>
-	      <li> | </li>
-	      <li>
-	      	<a href="#">장바구니</a>
-	      </li>
-	      </ul>
-	  </nav>
-	</div>
-	<div class="logo">
-		<p>
-			<img width="500px" src="${path }/resources/img/logo.jpg" alt="로고이미지">
-		</p>
-	</div>	
-</div>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>메인 페이지</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="${path}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="${path}/resources/css/modern-business.css" rel="stylesheet">
+
+  <link href="${path}/resources/css/index.banner.css" rel="stylesheet">
 </head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">멍멍아냐옹해봐</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">강아지</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">고양이</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">리뷰/Q&A</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="${path}/member/join.do">로그인/회원가입</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Other Pages
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
+              <a class="dropdown-item" href="full-width.html">Full Width Page</a>
+              <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
+              <a class="dropdown-item" href="faq.html">FAQ</a>
+              <a class="dropdown-item" href="404.html">404</a>
+              <a class="dropdown-item" href="pricing.html">Pricing Table</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
 

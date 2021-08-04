@@ -1,0 +1,13 @@
+@charset "UTF-8";
+ .displaynone 
+ {display: none !important;}
+ body.eMobilePopup
+#main_section_2{overflow:hidden;cursor:pointer;width:100%;margin:90px 0 0;}
+#main_section_2 > ul{margin:0 0 0 5% }
+#main_section_2 > ul > li{display:inline-block;}
+#main_section_2 .left{width:65%;float:left;margin:50px 0 0;}
+#main_section_2 .left .title{font-size:40px;font-weight:500;font-weight:bold;letter-spacing:2px;padding:0 0 35px;}
+#main_section_2 .left .con{font-size:22px;font-weight:300;line-height:38px;color:#555 }
+#main_section_2 .right{width:35%;float:right;text-align:right;}
+#main_section_3 .title{font-size:40px;font-weight:500;letter-spacing:10px;padding:130px 0 5px;}
+@font-face{font-family: 'Noto Sans KR';font-style: normal;font-weight:100;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.otf) format('opentype');}@font-face{font-family: 'Noto Sans KR';font-style: normal;font-weight:300;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf) format('opentype');}@font-face{font-family: 'Noto Sans KR';font-style: normal;font-weight:400;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype');}@font-face{font-family: 'Noto Sans KR';font-style: normal;font-weight:500;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf) format('opentype');}@font-face{font-family: 'Noto Sans KR';font-style: normal;font-weight:700;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf) format('opentype');}
