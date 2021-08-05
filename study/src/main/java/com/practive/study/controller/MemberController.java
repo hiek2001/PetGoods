@@ -44,9 +44,8 @@ public class MemberController {
 	
 	// 02 회원가입 등록
 	@RequestMapping(value = "/insertMember.do", method = RequestMethod.POST)
-	public String insertMember(Member member) throws Exception{
+	public String insertMember(Member member){
 		Logger.info("insertMember() 진입");		
-		ModelAndView mv = new ModelAndView();
 		
 		// 비밀번호 암호화
 		String pwdBycrypt = pwdEncoder.encode(member.getUserPw());
@@ -55,7 +54,7 @@ public class MemberController {
 		int result=service.insertMember(member);
 		System.out.println("Controller에서 result 값 확인::::::"+result);
 		
-		return "redirect:";
+		return "redirect:/";
 	}
 	
 	// 03 로그인 페이지로 이동
