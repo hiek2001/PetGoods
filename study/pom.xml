@@ -162,13 +162,6 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.9.8</version>
 		</dependency>
-		<!-- PostgreSQL 9.4 -->
-		 <dependency>
-		     <groupId>org.postgresql</groupId>
-		     <artifactId>postgresql</artifactId>
-		     <version>42.2.5</version>
-		   <!--   <version>9.4.1209.jre6</version> -->
-		 </dependency>
 		 <!-- Oracle 11g -->
 		<dependency>
 		    <groupId>oracle</groupId>

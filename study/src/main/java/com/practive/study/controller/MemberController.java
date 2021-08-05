@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,11 +43,11 @@ public class MemberController {
 	}
 	
 	// 02 회원가입 등록
-	// @RequestBody를 명시해주지 않는 파라미터는 get 방식으로 데이터를 바인딩하기 때문에 null이 들어감.
-	@ResponseBody
 	@RequestMapping(value = "/insertMember.do", method = RequestMethod.POST)
-	public String insertMember(@RequestBody Member member, HttpServletRequest request) throws Exception{
-		Logger.info("insertMember() 진입");	
+	public String insertMember(Member member) throws Exception{
+		Logger.info("insertMember() 진입");		
+		ModelAndView mv = new ModelAndView();
+		
 		// 비밀번호 암호화
 		String pwdBycrypt = pwdEncoder.encode(member.getUserPw());
 		member.setUserPw(pwdBycrypt);
@@ -54,15 +55,7 @@ public class MemberController {
 		int result=service.insertMember(member);
 		System.out.println("Controller에서 result 값 확인::::::"+result);
 		
-		// alert 띄우기
-		String resultMsg="";
-		if(result > 0) {
-			resultMsg="<script>alert('회원가입이 완료되었습니다! 로그인해주세요!');</script>";
-		}
-		else {
-			resultMsg="<script>alert('회원가입이 실패하였습니다. 관리자에게 문의해주세요!');</script>";
-		}
-		return resultMsg;
+		return "redirect:";
 	}
 	
 	// 03 로그인 페이지로 이동
@@ -73,9 +66,8 @@ public class MemberController {
 	}
 	
 	// 04 로그인 확인
-	@ResponseBody
 	@RequestMapping(value = "/loginCheck.do", method = RequestMethod.POST) 
-	public int loginCheck(@RequestBody Member member, HttpServletRequest request) throws Exception{
+	public int loginCheck(Member member, HttpServletRequest request) throws Exception{
 		System.out.println("값 넘어왔는지 확인 :::::"+member);
 		Logger.info("loginEnd() 진입");
 		int result = service.loginCheck(member);

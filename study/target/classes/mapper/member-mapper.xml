@@ -5,7 +5,7 @@
 <!-- parameterType : 속성에 지정한 객체의 프로퍼티값이 sql문의 입력 파라미터에 지정됨 -->
 <mapper namespace="member">
 	<insert id="insertMember" parameterType="member">
-		INSERT INTO PJ.MEMBER_INFO VALUES (#{userId},#{userPw},#{userName},#{userBirth},#{userMail},#{userAddr});
+		INSERT INTO SHOP_USER VALUES (#{userEmail},#{userName},#{userPw},#{userPhone},#{platformType})
 	</insert>
 	
 	<select id="loginCheck" parameterType="member" resultType="int">

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set value="${pageContext.request.contextPath}" var="path"/>
 <!DOCTYPE html>
 <html>
@@ -8,14 +10,6 @@
         <link href="${path}/resources/css/style.css" rel="stylesheet">
         <script language="javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
         <script>
-      //  $(function(){
-       //     $("#loginbtn").click(function(){
-      //          if((String)request.getAttribute("loginFailMsg") != null) {
-      //    	     	alert('${loginFailMsg}');	
-      //          } 
-       //     });
-       // });
-        
         
         function checks() {
         	var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
@@ -53,8 +47,19 @@
         		return false;
         	}
         	
+        	// 비밀번호 자릿수 유효성 검사
+        	var pw = $("#password").val();
+        	var num = pw.search(/[0-9]/g);
+        	var eng = pw.search(/[a-z]/ig);
+        	if(pw.length < 8 || pw.length > 15) {
+				alert("비밀번호는 8~15자리로 작성해주세요.");
+        		$("#password").val("");
+        		$("#password").focus();
+        		return false;
+        	}
         	return true;
         }
+        
         </script>
     </head>
     <body>
@@ -71,18 +76,18 @@
         			</a>
                     <img src="${path}/resources/img/member/gl.png" alt="google">
                 </div>
-                <form method="post" id="login" action="${path}/normal-login" class="input-group">
-                    <input type="email" name="email" class="input-field" placeholder="User Email" required>
-                    <input type="password" name="password" class="input-field" placeholder="Enter Password" required>
+                <form method="post" id="login" action="${path}/loginCheck.do" class="input-group">
+                    <input type="email" name="userEmail" class="input-field" placeholder="User Email" required>
+                    <input type="password" name="userPw" class="input-field" placeholder="Enter Password" required>
                     <button type="submit" class="submit" id="loginbtn">Login</button>
                 </form> 
-             <form method="post" id="register" action="${path}/insertMember.do" class="input-group" onclick="return check();">
-                	<input type="hidden" name="platformtype" value="normal">
-                    <input type="text" id="name" name="name" class="input-field" placeholder="User name" required>
-                    <input type="email" id="email" name="email" class="input-field" placeholder="Your Email" required>
-                    <input type="password" name="password" class="input-field" placeholder="Enter Password" required>
-                    <input type="text" id="phone" name="phone" class="input-field" placeholder="Your Phone number" required>
-                    <button type="submit" class="submit" >REGISTER</button>
+             <form method="post" id="register" action="${path}/insertMember.do" class="input-group">
+                	<input type="hidden" name="platformType" value="normal">
+                    <input type="text" id="name" name="userName" class="input-field" placeholder="User name" required>
+                    <input type="email" id="email" name="userEmail" class="input-field" placeholder="Your Email" required>
+                    <input type="password" id="password" name="userPw" class="input-field" placeholder="Enter Password" required>
+                    <input type="text" id="phone" name="userPhone" class="input-field" placeholder="Your Phone number" required>
+                    <button type="submit" class="submit" id="joinbtn" onclick="return checks();">REGISTER</button>
              </form>     
             </div>
         </div>
