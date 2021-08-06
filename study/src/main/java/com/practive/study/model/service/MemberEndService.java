@@ -8,5 +8,8 @@ public interface MemberEndService {
 	int insertMember(Member member);
 
 	// 로그인 값 확인
-	int loginCheck(Member member);
+	Member loginCheck(Member member);
+	
+	// 암호화된 비밀번호 db에서 가져오기
+	String loginPw(String userEmail);
 }

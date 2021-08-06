@@ -8,7 +8,11 @@
 		INSERT INTO SHOP_USER VALUES (#{userEmail},#{userName},#{userPw},#{userPhone},#{platformType})
 	</insert>
 	
-	<select id="loginCheck" parameterType="member" resultType="int">
-		SELECT COUNT(*) FROM PJ.MEMBER_INFO WHERE USERID = #{userId} AND USERPW = #{userPw};
+	<select id="loginCheck" parameterType="member" resultType="member">
+		SELECT USEREMAIL, USERNAME FROM SHOP_USER WHERE USEREMAIL = #{userEmail} AND USERPW = #{userPw}
+	</select>
+	
+	<select id="loginPw" parameterType="String" resultType="String">
+		SELECT USERPW FROM SHOP_USER WHERE USEREMAIL = #{userEmail}
 	</select>
 </mapper>

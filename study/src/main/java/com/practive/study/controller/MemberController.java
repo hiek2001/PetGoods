@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.practive.study.model.service.MemberEndService;
 import com.practive.study.model.vo.Member;
@@ -34,6 +36,7 @@ public class MemberController {
 	// 비밀번호 암호화를 위해 필요한 것
 	@Autowired
 	BCryptPasswordEncoder pwdEncoder;
+
 	
 	// 01 회원가입 / 로그인 페이지로 이동
 	@RequestMapping(value = "/member.do", method = RequestMethod.GET)
@@ -52,26 +55,33 @@ public class MemberController {
 		member.setUserPw(pwdBycrypt);
 		
 		int result=service.insertMember(member);
-		System.out.println("Controller에서 result 값 확인::::::"+result);
 		
 		return "redirect:/";
 	}
-	
-	// 03 로그인 페이지로 이동
-	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
-	public String login() {
-		Logger.info("로그인 페이지 진입");
-		return "/member/login";
-	}
-	
-	// 04 로그인 확인
+		
+	// 03 로그인 확인
 	@RequestMapping(value = "/loginCheck.do", method = RequestMethod.POST) 
-	public int loginCheck(Member member, HttpServletRequest request) throws Exception{
-		System.out.println("값 넘어왔는지 확인 :::::"+member);
+	public String loginCheck(Member member, HttpServletRequest request, RedirectAttributes rttr) throws Exception{
 		Logger.info("loginEnd() 진입");
-		int result = service.loginCheck(member);
-		System.out.println("result::::::"+result);
-		return result;
+		HttpSession session = request.getSession();
+		// 암호화된 비밀번호 가져오기
+		String pw = service.loginPw(member.getUserEmail());
+		// 암호 비밀번호와 입력된 password 비교
+		boolean result = pwdEncoder.matches(member.getUserPw(), pw);
+
+		if(result) {
+			member.setUserPw(pw);	
+		}
+		Member login = service.loginCheck(member);
+		// 로그인 	
+		if(login == null) {
+			session.setAttribute("member", null);
+			rttr.addFlashAttribute("msg", false);
+		}
+		else {
+			session.setAttribute("member", login);
+		}
+		return "redirect:/";
 	}
 	
 }

@@ -9,5 +9,7 @@ public interface MemberEndDao {
 	/*회원가입 등록*/
 	int insertMember(SqlSessionTemplate sqlSession, Member member);
 	
-	int loginCheck(SqlSessionTemplate sqlSession, Member member);
+	Member loginCheck(SqlSessionTemplate sqlSession, Member member);
+	
+	String loginPw(SqlSessionTemplate sqlSession, String userEmail);
 }

@@ -18,15 +18,21 @@ public class MemberEndServiceImpl implements MemberEndService {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
+	// 01) 회원가입
 	@Override
 	public int insertMember(Member member) {
-		System.out.println("2) Service입니댯!!!!!!!!");
 		return dao.insertMember(sqlSession,member);
 	}
 	
+	// 02) 로그인
 	@Override
-	public int loginCheck(Member member) {
-		int result = dao.loginCheck(sqlSession,member);
-		return result;
+	public Member loginCheck(Member member) {
+		return dao.loginCheck(sqlSession,member);
+	}
+	
+	// 03) 암호화된 비밀번호 db에서 가져오기
+	@Override
+	public String loginPw(String userEmail) {
+		return dao.loginPw(sqlSession, userEmail);
 	}
 }

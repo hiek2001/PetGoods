@@ -45,21 +45,23 @@
           <li class="nav-item">
             <a class="nav-link" href="services.html">리뷰/Q&A</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="${path}/member.do">로그인/회원가입</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Other Pages
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-              <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
-              <a class="dropdown-item" href="faq.html">FAQ</a>
-              <a class="dropdown-item" href="404.html">404</a>
-              <a class="dropdown-item" href="pricing.html">Pricing Table</a>
-            </div>
-          </li>
+          <c:if test="${member == null}">
+	          <li class="nav-item">
+	            <a class="nav-link" href="${path}/member.do">로그인/회원가입</a>
+	          </li>
+          </c:if>
+          <c:if test="${member != null}">
+			  <li class="nav-item dropdown">
+	            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	              ${member.userName}님 안녕하세요!
+	            </a>
+	            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
+	              <a class="dropdown-item" href="full-width.html">마이페이지</a>
+	              <a class="dropdown-item" href="${path}/logout.do">로그아웃</a>
+	            </div>
+	          </li>
+          </c:if>
+          
         </ul>
       </div>
     </div>
