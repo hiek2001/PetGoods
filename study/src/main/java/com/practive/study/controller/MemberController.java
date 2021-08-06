@@ -62,17 +62,20 @@ public class MemberController {
 	// 03 로그인 확인
 	@RequestMapping(value = "/loginCheck.do", method = RequestMethod.POST) 
 	public String loginCheck(Member member, HttpServletRequest request, RedirectAttributes rttr) throws Exception{
-		Logger.info("loginEnd() 진입");
+		Logger.info("loginCheck() 진입");
 		HttpSession session = request.getSession();
 		// 암호화된 비밀번호 가져오기
 		String pw = service.loginPw(member.getUserEmail());
 		// 암호 비밀번호와 입력된 password 비교
 		boolean result = pwdEncoder.matches(member.getUserPw(), pw);
-
-		if(result) {
-			member.setUserPw(pw);	
+		Member login = new Member();
+		if(result==true) {
+			member.setUserPw(pw);
+			login = service.loginCheck(member);
 		}
-		Member login = service.loginCheck(member);
+		else {
+			login = service.loginCheck(member);
+		}
 		// 로그인 	
 		if(login == null) {
 			session.setAttribute("member", null);
@@ -84,4 +87,14 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
+	// 04 로그아웃
+		@RequestMapping(value="/logout.do", method = RequestMethod.GET)
+		public String logout(HttpServletRequest request) throws Exception {
+			Logger.info("logout() 메소드 진입");
+			HttpSession session = request.getSession();
+			session.invalidate();
+			Logger.info("logout 완료");
+			return "redirect:/";
+			
+		}
 }

@@ -43,7 +43,7 @@
             <a class="nav-link" href="about.html">고양이</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="services.html">리뷰/Q&A</a>
+            <a class="nav-link" href="services.html">리뷰/Q&A</a> 
           </li>
           <c:if test="${member == null}">
 	          <li class="nav-item">
@@ -53,15 +53,14 @@
           <c:if test="${member != null}">
 			  <li class="nav-item dropdown">
 	            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	              ${member.userName}님 안녕하세요!
+	              ${member.userName}님 안녕하세요! 
 	            </a>
 	            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
 	              <a class="dropdown-item" href="full-width.html">마이페이지</a>
 	              <a class="dropdown-item" href="${path}/logout.do">로그아웃</a>
 	            </div>
 	          </li>
-          </c:if>
-          
+          </c:if>         
         </ul>
       </div>
     </div>

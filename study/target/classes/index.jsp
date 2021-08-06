@@ -46,7 +46,7 @@
     </div>
   </header>
 <div style="height:100px;"></div>
-<div id="main_section_2" onclick="window.location.href='/product/list.html?cate_no=124';">
+ <div id="main_section_2" onclick="window.location.href='/product/list.html?cate_no=124';">
     <ul><li class="left ">       
             <p class="title scroll-fade dj-viewport motion1">
             Pet, People, Pick
@@ -59,7 +59,7 @@
         </li>
         <li class="right  scroll-fade dj-viewport motion2"><img src="${path}/resources/img/index/배너.JPG" alt="피피픽 오른쪽이미지"/></li>
      </ul>
-</div>
+</div> 
 
 </div>
   <!-- Page Content -->
