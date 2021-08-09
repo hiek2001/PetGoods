@@ -37,10 +37,10 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="about.html">강아지</a>
+            <a class="nav-link" href="${path}/snackShop.do">간식</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">고양이</a>
+            <a class="nav-link" href="about.html">용품</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="services.html">리뷰/Q&A</a> 

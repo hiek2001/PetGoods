@@ -14,21 +14,21 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" type="image/jpeg" style="background-image: url(${path}/resources/img/index/main1.jpeg); height:870px;">
+        <div class="carousel-item active" type="image/JPG" style="background-image: url(${path}/resources/img/index/main_1.JPG); height:900px;">
           <div class="carousel-caption d-none d-md-block">
             <h3></h3>
             <p></p>
           </div>
         </div>
         <!-- Slide Two - Set the background image for this slide in the line below -->
-        <div class="carousel-item" type="image/JPG" style="background-image: url(${path}/resources/img/index/main2.JPG); height:870px;">
+        <div class="carousel-item" type="image/JPG" style="background-image: url(${path}/resources/img/index/main_2.JPG); height:900px;">
           <div class="carousel-caption d-none d-md-block">
             <h3></h3>
             <p></p>
           </div>
         </div>
         <!-- Slide Three - Set the background image for this slide in the line below -->
-        <div class="carousel-item" type="image/JPG" style="background-image: url(${path}/resources/img/index/main3.JPG); height:870px;">
+        <div class="carousel-item" type="image/JPG" style="background-image: url(${path}/resources/img/index/main_3.JPG); height:900px;">
           <div class="carousel-caption d-none d-md-block">
             <h3></h3>
             <p></p>
@@ -46,7 +46,7 @@
     </div>
   </header>
 <div style="height:100px;"></div>
- <div id="main_section_2" onclick="window.location.href='/product/list.html?cate_no=124';">
+ <div id="main_section_2">
     <ul><li class="left ">       
             <p class="title scroll-fade dj-viewport motion1">
             Pet, People, Pick
@@ -64,50 +64,50 @@
 </div>
   <!-- Page Content -->
   <div class="container">
-    <h1>당신께 추천합니다</h2>
+    <h1 style="font-family: 'Noto Sans KR';">당신께 추천합니다</h2>
 
     <div class="row">
       <div class="col-lg-4 col-sm-6 portfolio-item">
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <a href="#"><img class="card-img-top" src="${path}/resources/img/index/배변판.jpg" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
-              <a href="#">고양이 강아지 피부 보습제</a>
+              <a style="font-family: 'Noto Sans KR'; href="#">제로슬립매트 강아지 배변판</a>
             </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+            <p class="card-text"><strong>35,000원</strong><br> 99.9% 항균 방수 코딩으로 간편하게 세척할 수 있고, 큰 사이즈로 배변 실수 ZERO! 세균성 질환과 슬개골 탈구도 예방할 수..</p>
           </div>
         </div>
       </div>
       <div class="col-lg-4 col-sm-6 portfolio-item">
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <a href="#"><img class="card-img-top" src="${path}/resources/img/index/배변판.jpg" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
-              <a href="#">고양이 강아지 턱드름 치유제</a>
+              <a style="font-family: 'Noto Sans KR'; href="#">제로슬립매트 강아지 배변판</a>
             </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            <p class="card-text"><strong>35,000원</strong><br> 99.9% 항균 방수 코딩으로 간편하게 세척할 수 있고, 큰 사이즈로 배변 실수 ZERO! 세균성 질환과 슬개골 탈구도 예방할 수..</p>
           </div>
         </div>
       </div>
       <div class="col-lg-4 col-sm-6 portfolio-item">
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <a href="#"><img class="card-img-top" src="${path}/resources/img/index/배변판.jpg" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
-              <a href="#">고양이 반려묘 캔닢 공</a>
+              <a style="font-family: 'Noto Sans KR'; href="#">제로슬립매트 강아지 배변판</a>
             </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
+            <p class="card-text"><strong>35,000원</strong><br> 99.9% 항균 방수 코딩으로 간편하게 세척할 수 있고, 큰 사이즈로 배변 실수 ZERO! 세균성 질환과 슬개골 탈구도 예방할 수..</p>
           </div>
         </div>
       </div>
       <div class="col-lg-4 col-sm-6 portfolio-item">
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <a href="#"><img class="card-img-top" src="${path}/resources/img/index/배변판.jpg" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
-              <a href="#">고양이 강아지 바디워시</a>
+              <a style="font-family: 'Noto Sans KR'; href="#">제로슬립매트 강아지 배변판</a>
             </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            <p class="card-text"><strong>35,000원</strong><br> 99.9% 항균 방수 코딩으로 간편하게 세척할 수 있고, 큰 사이즈로 배변 실수 ZERO! 세균성 질환과 슬개골 탈구도 예방할 수..</p>
           </div>
         </div>
       </div>
@@ -116,9 +116,9 @@
           <a href="#"><img class="card-img-top" src="${path}/resources/img/index/토이.JPG" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
-              <a href="#">강아지 노즈워크 토이</a>
+              <a style="font-family: 'Noto Sans KR'; href="#">강아지 노즈워크 토이</a>
             </h4>
-            <p class="card-text"><strong>9,800원</strong><br> 멍멍이들의 덴탈케어를 책임졌던 장난감이 다시 돌아왔다! 스트레스 해소와 호기심 유발을 책임집니다! 바스락 소리와 터그놀이도...</p>
+            <p style="font-family: 'NotoSansKR-Thin'; class="card-text"><strong>9,800원</strong><br> 멍멍이들의 덴탈케어를 책임졌던 장난감이 다시 돌아왔다! 스트레스 해소와 호기심 유발을 책임집니다! 바스락 소리와 터그놀이도...</p>
           </div>
         </div>
       </div>
@@ -127,7 +127,7 @@
           <a href="#"><img class="card-img-top" src="${path}/resources/img/index/살균탈취제.JPG" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
-              <a href="#">고양이 강아지 살균탈취제</a>
+              <a style="font-family: 'Noto Sans KR'; href="#">고양이 강아지 살균탈취제</a>
             </h4>
             <p class="card-text"><strong>14,000원</strong><br> 드디어 진짜가 나타났다 마실 수 있을 정도로 물과 미네랄이온수로만 이루어져있어 안전합니다. 물보다 미세한 입자로 변환해주는...</p>
           </div>
