@@ -6,7 +6,7 @@
 <c:set value="${pageContext.request.contextPath}" var="path"/>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
   <header>
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"></div>
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -14,21 +14,21 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" type="image/JPG" style="background-image: url(${path}/resources/img/index/main_1.JPG); height:900px;">
+        <div class="carousel-item active" type="image/JPG" style="background-image: url(${path}/resources/img/index/main_1.JPG); width:100%; heigth:1000px;">
           <div class="carousel-caption d-none d-md-block">
             <h3></h3>
             <p></p>
           </div>
         </div>
         <!-- Slide Two - Set the background image for this slide in the line below -->
-        <div class="carousel-item" type="image/JPG" style="background-image: url(${path}/resources/img/index/main_2.JPG); height:900px;">
+        <div class="carousel-item" type="image/JPG" style="background-image: url(${path}/resources/img/index/main_2.JPG); width:100%; heigth:1000px;">
           <div class="carousel-caption d-none d-md-block">
             <h3></h3>
             <p></p>
           </div>
         </div>
         <!-- Slide Three - Set the background image for this slide in the line below -->
-        <div class="carousel-item" type="image/JPG" style="background-image: url(${path}/resources/img/index/main_3.JPG); height:900px;">
+        <div class="carousel-item" type="image/JPG" style="background-image: url(${path}/resources/img/index/main_3.JPG); width:100%; heigth:1000px;">
           <div class="carousel-caption d-none d-md-block">
             <h3></h3>
             <p></p>

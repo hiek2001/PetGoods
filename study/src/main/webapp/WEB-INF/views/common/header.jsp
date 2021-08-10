@@ -14,8 +14,6 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>메인 페이지</title>
-
   <!-- Bootstrap core CSS -->
   <link href="${path}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -23,6 +21,7 @@
   <link href="${path}/resources/css/modern-business.css" rel="stylesheet">
 
   <link href="${path}/resources/css/index.banner.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -30,7 +29,7 @@
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">멍멍아냐옹해봐</a>
+      <a style="font-family: 'Noto Sans KR';" class="navbar-brand" href="index.html">멍멍아냐옹해봐</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -56,11 +55,11 @@
 	              ${member.userName}님 안녕하세요! 
 	            </a>
 	            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-	              <a class="dropdown-item" href="full-width.html">마이페이지</a>
+	              <a class="dropdown-item" href="${path}/mypage.do">마이페이지</a>
 	              <a class="dropdown-item" href="${path}/logout.do">로그아웃</a>
 	            </div>
 	          </li>
-          </c:if>         
+          </c:if>    
         </ul>
       </div>
     </div>
