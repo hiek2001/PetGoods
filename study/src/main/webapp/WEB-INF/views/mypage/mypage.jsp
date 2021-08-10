@@ -58,6 +58,7 @@ window.onload = function() {
 			     <div class="chatMiddle">
 			     	<ul>
 			     		<!-- 동적 생성 -->
+			     		<div class="hr-sect">08월 10일</div>
 			     		<li class="mar-btm">
     							<div class="media-body pad-hor">
     								<div class="speech">
