@@ -61,7 +61,7 @@ window.onload = function() {
 			     		<li class="mar-btm">
     							<div class="media-body pad-hor">
     								<div class="speech">
-    									<a href="#" class="media-heading">누구님</a>
+    									<p class="media-heading"> ${member.userName}님</p>
     									<p>구매내역은 어디서 확인해야 하나요?</p>
     									<p class="speech-time">
     										<i class="fa fa-clock-o fa-fw"></i> 09:32
@@ -72,7 +72,7 @@ window.onload = function() {
     						<li class="mar-btm">
     							<div class="media-body pad-hor speech-right">
     								<div class="speech">
-    									<a href="#" class="media-heading">관리자</a>
+    									<p class="media-heading">관리자</p>
     									<p>마이페이지에서 확인하시면 됩니다.</p>
     									<p class="speech-time">
     										<i class="fa fa-clock-o fa-fw"></i> 09:35
