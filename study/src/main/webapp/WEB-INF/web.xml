@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://Java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	xsi:schemaLocation="http://JAVA.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 <!-- WAS(TOMCAT)이 최초 구동될 때 web.xml을 읽고 이에 해당되는 설정을 구성 -->
 
 	<!-- root-context로 모든 서블릿과 필터를 공유 -->
@@ -31,6 +31,7 @@
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		<async-suppoerted>true</async-suppoerted> <!-- 웹소켓을 위한 설정(비동기 지원) -->
 	</servlet>
 
 		

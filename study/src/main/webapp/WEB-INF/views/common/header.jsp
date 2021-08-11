@@ -19,7 +19,7 @@
 
   <!-- Custom styles for this template -->
   <link href="${path}/resources/css/modern-business.css" rel="stylesheet">
-
+  
   <link href="${path}/resources/css/index.banner.css" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
@@ -29,7 +29,7 @@
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a style="font-family: 'Noto Sans KR';" class="navbar-brand" href="index.html">멍멍아냐옹해봐</a>
+      <a style="font-family: 'Noto Sans KR';" class="navbar-brand" href="${path}/">멍멍아냐옹해봐</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

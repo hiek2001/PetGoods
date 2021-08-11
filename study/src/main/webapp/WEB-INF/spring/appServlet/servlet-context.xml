@@ -4,9 +4,11 @@
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 
 	<!-- DispatcherServlet Context: 서블릿의 요청 처리 인프라를 정의 (View 지원 bean 설정 : Controller) -->
 	
@@ -24,7 +26,7 @@
 	
 	<context:component-scan base-package="com.practive.study" />
 	<!-- 베이스패키지 하위 모든 어노테이션을 스캔해서 빈으로 등록하겠다는 것-->
-	
+
 	<interceptors>
 		<interceptor>
 			<mapping path="/**" />
@@ -32,4 +34,13 @@
 			<beans:bean id="loggerInterceptor" class="com.practive.study.common.Interceptor.LoggerInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>
+	
+	<!-- 웹 소켓 사용을 위한 bean 객체 등록 -->
+	<websocket:handlers>
+		<websocket:mapping handler="websocketHandler" path="/websocket" />
+		<websocket:sockjs />
+	</websocket:handlers>
+	<beans:bean id="websocketHandler" class="com.practive.study.websocketHandler"/>
 </beans:beans>
+
+	
