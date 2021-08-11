@@ -4,5 +4,6 @@
 	<!-- 여기서 등록해야 member-mapper.xml에서 alias로 등록된 member를 사용할 수 있음 -->
 	<typeAliases>
 		<typeAlias alias="member" type="com.practive.study.model.vo.Member"/>
+		<typeAlias alias="chat" type="com.practive.study.model.vo.Chat"/>
 	</typeAliases>
 </configuration>

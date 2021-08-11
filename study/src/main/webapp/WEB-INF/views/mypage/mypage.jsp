@@ -52,8 +52,16 @@ window.onload = function() {
 	
 	// 메시지 전송
 	function sendMessage() {
+		var message = $("#message").val();
+		const data = {
+			"userEmail" : "${member.userEmail}",
+			"message" : message
+		};
+		
+	//	CheckLR(data);
+		let jsonData = JSON.stringify(data);
 		// 웹 소켓으로 메시지를 보냄
-		websocket.send($("#message").val());
+		websocket.send(jsonData);
 	}
 	
 	// 소켓에서 정보를 수신했을 때 실행됨
@@ -66,6 +74,20 @@ window.onload = function() {
 		websocket.close
 		console.log("연결 끊김");
 	}
+	
+	// 내가 보낸 것인지, 상대방이 보낸 것인지 확인하기
+	function CheckLR(data) {
+		// email이 loginSession의 email과 다르면 왼쪽, 같으면 오른쪽
+		const LR = (data.email != "${member.userEmail}") ? "" : "speech-right";
+		// 메세지 추가
+		appendMessageTag(LR, data.message, data.userEmail, data.chatDate);
+	}
+	
+	// 메세지 태그 append
+	//function appendMessageTag(LR_className, message, userEmail, chatDate) {
+		
+	//}
+	
 
 
 </script>

@@ -19,7 +19,7 @@
 
   <!-- Custom styles for this template -->
   <link href="${path}/resources/css/modern-business.css" rel="stylesheet">
-
+  
   <link href="${path}/resources/css/index.banner.css" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
