@@ -29,6 +29,29 @@ window.onload = function() {
 	let websocket;
 	// 1:1 상담 버튼을 눌렀을 때 호출되는 함수
 	function openSocket() {
+		// 채팅방의 메시지 목록 불러오기
+		$.ajax({
+			url: "/messageList.do",
+			data: {
+				userEmail: "${member.userEmail}"
+			},
+			async: false,
+			dataType: "json",
+			success:function(data) {
+				console.log("성공적으로 목록 불러옴!!");
+				$('div.chatMiddle ul').append("");
+				$.each(data, function(index, item){
+					console.log(index+":"+item.USEREMAIL);
+					console.log(item);
+					CheckLR(index,item);
+				});
+			},
+			error:function(request, status, error) {
+				console.log(request.status);
+				console.log(request.reponseText);
+				console.log(error);
+			}
+		});
 		// 아래 function에서 websocket 변수를 쓰기 위함.
 		var wsUri ="ws://localhost:8083/websocket/websocket";
 		websocket = new WebSocket(wsUri);
@@ -64,10 +87,16 @@ window.onload = function() {
 		websocket.send(jsonData);
 	}
 	
-	// 소켓에서 정보를 수신했을 때 실행됨
+	// 메시지 수신 : 소켓에서 정보를 수신했을 때 실행됨
 	function onMessage(evt) {
-		var data = evt.data;
-		console.log(data);
+		let receive = evt.data.split(",");
+		console.log(receive);
+		
+		const data = {
+			"userEmail" : receive[0],
+			"message" : receive[1]
+		};
+		createMessageTag(data.userEmail, data.message);
 	}
 	
 	function onClose(evt) {
@@ -76,18 +105,36 @@ window.onload = function() {
 	}
 	
 	// 내가 보낸 것인지, 상대방이 보낸 것인지 확인하기
-	function CheckLR(data) {
+	function CheckLR(index,item) {
 		// email이 loginSession의 email과 다르면 왼쪽, 같으면 오른쪽
-		const LR = (data.email != "${member.userEmail}") ? "" : "speech-right";
+		console.log("CheckLR::"+index+":::"+item.USEREMAIL);
+		var LR = " ";
+		if("${member.userEmail}" != item.USEREMAIL)
+			LR = "speech-right";
+		else
+			LR = "speech-left";
+		console.log(index+":::"+LR);
 		// 메세지 추가
-		appendMessageTag(LR, data.message, data.userEmail, data.chatDate);
+		appendMessageTag(LR, index, item);
 	}
 	
 	// 메세지 태그 append
-	//function appendMessageTag(LR_className, message, userEmail, chatDate) {
+	function appendMessageTag(LR, index, item) {
+		//const chatDiv = createMessageTag(LR, item);
+		var html ='';
+		html += '<li class="mar-btm"><div class="media-body pad-hor" id=div_'+index+'><div class="speech">';
+		html += '<p class="media-heading">' + item.USERNAME + '</p>';
+		html += '<p>' + item.MESSAGE + '</p>';
+		html += '<p class="speech-time"><i class="fa fa-clock-o fa-fw"></i>' + item.CHATDATE + '</p>';
+		html += '</div></div></li>';
+		$('div.chatMiddle ul').append(html);
+		$('#div_'+index).addClass(LR);
+	}
+	
+	// 메세지 태그 생성
+	//function createMessageTag(userEmail, message) {
 		
 	//}
-	
 
 
 </script>
@@ -125,30 +172,8 @@ window.onload = function() {
 			     <!-- 채팅 메세지 나오는 부분 -->
 			     <div class="chatMiddle">
 			     	<ul>
-			     		<!-- 동적 생성 -->
-			     		<div class="hr-sect">08월 10일</div>
-			     		<li class="mar-btm">
-    							<div class="media-body pad-hor">
-    								<div class="speech">
-    									<p class="media-heading"> ${member.userName}님</p>
-    									<p>구매내역은 어디서 확인해야 하나요?</p>
-    									<p class="speech-time">
-    										<i class="fa fa-clock-o fa-fw"></i> 09:32
-    									</p>
-    								</div>
-    							</div>
-    						</li>
-    						<li class="mar-btm">
-    							<div class="media-body pad-hor speech-right">
-    								<div class="speech">
-    									<p class="media-heading">관리자</p>
-    									<p>마이페이지에서 확인하시면 됩니다.</p>
-    									<p class="speech-time">
-    										<i class="fa fa-clock-o fa-fw"></i> 09:35
-    									</p>
-    								</div>
-    							</div>
-    						</li>
+			     		<!-- 동적 생성 
+			     		<div class="hr-sect">08월 10일</div>-->
 			     	  </ul>
 			     </div>
 			     <div class="portlet-footer">

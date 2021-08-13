@@ -19,11 +19,12 @@ public class Chat {
 		this.chatNo = chatNo;
 	}
 
+
 	public String getUserEmail() {
 		return userEmail;
 	}
 
-	public void setUserEmail(String userEmail) {
+	public void setUserEmail(String email) {
 		this.userEmail = userEmail;
 	}
 

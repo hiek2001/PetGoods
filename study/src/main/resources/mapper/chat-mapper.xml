@@ -5,6 +5,15 @@
 		<selectKey keyProperty="chatNo" resultType="int" order="BEFORE">
 			SELECT CHAT_SEQ.NEXTVAL FROM SYS.DUAL
 		</selectKey> 
-		INSERT INTO CHAT VALUES (#{chatNo}, #{userEmail}, #{message}, sysdate)
+		INSERT INTO CHAT VALUES (#{chatNo}, #{email}, #{message}, timestamp)
 	</insert> 
+	
+	<select id="messageList" parameterType="String" resultType="hashmap">
+	<![CDATA[
+		SELECT A.CHATNO, A.USEREMAIL, B.USERNAME, A.MESSAGE, A.CHATDATE
+		FROM CHAT A, SHOP_USER B 
+		WHERE A.USEREMAIL = B.USEREMAIL
+		ORDER BY A.CHATDATE
+		]]>
+	</select>
 </mapper>

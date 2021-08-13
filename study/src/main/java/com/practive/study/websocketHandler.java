@@ -45,14 +45,12 @@ public class websocketHandler extends TextWebSocketHandler{
 		Logger.info("{} 번호, {} 받음", session.getId(), message.getPayload());
 		// json -> java		
 		Chat chat = objectMapper.readValue(msg, Chat.class);
-		Logger.info("1) Controller :: chat:::"+chat);
 		int result = service.insertChat(chat);
-		Logger.info("result:::"+result);
 		
-		// 모든 유저에게 메시지 출력
-		//for(WebSocketSession sess : sessionList) {
-		//	sess.sendMessage(new TextMessage(message.getPayload()));
-		//}
+		if(result == 1)
+			Logger.info("메세지 전송 및 db 저장 성공");
+		else
+			Logger.info("메시지 전송 실패!!! db 저장 실패!!!!");
 	}
 	
 	// 03) 클라이언트 연결을 끊었을 때 실행
