@@ -7,6 +7,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -47,7 +48,7 @@ public class websocketHandler extends TextWebSocketHandler{
 		Chat chat = objectMapper.readValue(msg, Chat.class);
 		int result = service.insertChat(chat);
 		
-		if(result == 1)
+		if(result == -1)
 			Logger.info("메세지 전송 및 db 저장 성공");
 		else
 			Logger.info("메시지 전송 실패!!! db 저장 실패!!!!");

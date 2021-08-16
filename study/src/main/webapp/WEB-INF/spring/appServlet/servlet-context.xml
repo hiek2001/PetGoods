@@ -37,7 +37,7 @@
 	
 	<!-- 웹 소켓 사용을 위한 bean 객체 등록 -->
 	<websocket:handlers>
-		<websocket:mapping handler="websocketHandler" path="/websocket" />
+		<websocket:mapping handler="websocketHandler" path="/websocket/" />
 		<websocket:sockjs />
 	</websocket:handlers>
 	<beans:bean id="websocketHandler" class="com.practive.study.websocketHandler"/>

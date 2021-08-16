@@ -130,11 +130,6 @@ window.onload = function() {
 		$('div.chatMiddle ul').append(html);
 		$('#div_'+index).addClass(LR);
 	}
-	
-	// 메세지 태그 생성
-	//function createMessageTag(userEmail, message) {
-		
-	//}
 
 
 </script>
@@ -159,7 +154,7 @@ window.onload = function() {
  	<!-- 채팅창 -->
  	<div class="black_bg"></div>
 		<div class="modal_wrap">
-			 <div id="modal_close" class="modal_close"><a href="#">close</a></div>
+			 <div id="modal_close" class="modal_close"><a href="">close</a></div>
 			  <div>
 			     <div class="row">
 			     	<div class="col">
@@ -189,6 +184,7 @@ window.onload = function() {
                   </div>
 			  </div>
 		<div>
+	</div>
 </div>
 
 </body>
