@@ -38,7 +38,7 @@ window.onload = function() {
 			async: false,
 			dataType: "json",
 			success:function(data) {
-				console.log("성공적으로 목록 불러옴!");
+				console.log("성공적으로 목록 불러옴!!!");
 				$('div.chatMiddle ul').append("");
 				$.each(data, function(index, item){
 					console.log(index+":"+item.USEREMAIL);
