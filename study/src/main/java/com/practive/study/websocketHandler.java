@@ -22,7 +22,7 @@ import com.practive.study.model.vo.Chat;
 public class websocketHandler extends TextWebSocketHandler{
 	// 웹 소켓 세션을 저장할 리스트 생성
 	private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
-	
+
 	private static final Logger Logger = LoggerFactory.getLogger(MemberController.class);
 	
 	private static final ObjectMapper objectMapper = new ObjectMapper();
@@ -48,12 +48,12 @@ public class websocketHandler extends TextWebSocketHandler{
 		Chat chat = objectMapper.readValue(mssg, Chat.class);
 		
 		Logger.info("Controller::"+chat);
-		// 해당 채팅방에 session에 뿌려줌
+		// 해당 채팅방 session에 뿌려줌
 		for(WebSocketSession sess : sessionList) {
 			TextMessage msg = new TextMessage(message.getPayload());
 			sess.sendMessage(msg);
 		}
-		
+		// 채팅 메시지 삽입
 		int result = service.insertChat(chat);
 		
 		if(result == -1)

@@ -150,9 +150,6 @@ window.onload = function() {
 		$('div.chatMiddle ul').append(html);
 		$('#div_'+index).addClass(LR);
 	}
-
-
-	
 </script>
 <div>
 	<div style="position:relative;">
