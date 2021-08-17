@@ -25,8 +25,8 @@ public class ChatService {
 		return dao.insertChat(sqlSession, chat);
 	}
 	
+	// 채팅방의 message list 가져오기
 	public List<Chat> messageList(String userEmail) {
 		return dao.messageList(sqlSession, userEmail);
 	}
-		
 }

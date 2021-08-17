@@ -19,6 +19,7 @@ public class ChatController {
 	@Autowired
 	public ChatService service;
 
+	// 채팅방 메시지 목록 불러오기
 	@RequestMapping(value="/messageList.do")
 	public void messageList(String userEmail, HttpServletResponse response) throws Exception{
 		

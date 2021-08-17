@@ -9,6 +9,7 @@ public class Chat {
 	private String userEmail;
 	private String message;
 	private Date chatDate;
+	private String userName;
 	
 	public Chat() {}
 
@@ -52,10 +53,21 @@ public class Chat {
 		this.chatDate = chatDate;
 	}
 
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	@Override
 	public String toString() {
 		return "Chat [chatNo=" + chatNo + ", roomNo=" + roomNo + ", userEmail=" + userEmail + ", message=" + message
-				+ ", chatDate=" + chatDate + "]";
+				+ ", chatDate=" + chatDate + ", userName=" + userName + "]";
 	}
+
+	
 
 }

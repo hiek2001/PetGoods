@@ -42,10 +42,18 @@ public class websocketHandler extends TextWebSocketHandler{
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		
 		// 전달받은 메세지
-		String msg = message.getPayload();
+		String mssg = message.getPayload();
 		Logger.info("{} 번호, {} 받음", session.getId(), message.getPayload());
 		// json -> java		
-		Chat chat = objectMapper.readValue(msg, Chat.class);
+		Chat chat = objectMapper.readValue(mssg, Chat.class);
+		
+		Logger.info("Controller::"+chat);
+		// 해당 채팅방에 session에 뿌려줌
+		for(WebSocketSession sess : sessionList) {
+			TextMessage msg = new TextMessage(message.getPayload());
+			sess.sendMessage(msg);
+		}
+		
 		int result = service.insertChat(chat);
 		
 		if(result == -1)

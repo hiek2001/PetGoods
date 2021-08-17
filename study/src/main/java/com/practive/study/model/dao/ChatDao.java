@@ -11,4 +11,5 @@ public interface ChatDao {
 	int insertChat(SqlSessionTemplate sqlSession, Chat chat);
 	
 	List<Chat> messageList(SqlSessionTemplate sqlSession, String userEmail);
+	
 }

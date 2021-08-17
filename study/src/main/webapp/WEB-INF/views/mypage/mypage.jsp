@@ -41,7 +41,7 @@ window.onload = function() {
 				console.log("성공적으로 목록 불러옴!!!");
 				$('div.chatMiddle ul').append("");
 				$.each(data, function(index, item){
-					console.log(index+":"+item.USEREMAIL);
+					console.log(index+":"+item.userEmail);
 					console.log(item);
 					CheckLR(index,item);
 				});
@@ -78,6 +78,7 @@ window.onload = function() {
 		var message = $("#message").val();
 		const data = {
 			"userEmail" : "${member.userEmail}",
+			"userName" : "${member.userName}",
 			"message" : message
 		};
 		
@@ -85,18 +86,18 @@ window.onload = function() {
 		let jsonData = JSON.stringify(data);
 		// 웹 소켓으로 메시지를 보냄
 		websocket.send(jsonData);
+		// message 입력 창 지우기
+		$("#message").val('');
+		
 	}
 	
-	// 메시지 수신 : 소켓에서 정보를 수신했을 때 실행됨
+	let idx = 999;
+	// 메시지 받으면 발동
 	function onMessage(evt) {
-		let receive = evt.data.split(",");
-		console.log("function onMessage::"+receive);
-		
-		const data = {
-			"userEmail" : receive[0],
-			"message" : receive[1]
-		};
-		
+		var data = JSON.parse(evt.data);
+		idx = idx-1; 
+		console.log("function onMessage::"+"idx::"+idx+"::"+data.userEmail);
+		CheckLR(idx, data);
 	}
 	
 	function onClose(evt) {
@@ -107,12 +108,9 @@ window.onload = function() {
 	// 내가 보낸 것인지, 상대방이 보낸 것인지 확인하기
 	function CheckLR(index,item) {
 		// email이 loginSession의 email과 다르면 왼쪽, 같으면 오른쪽
-		console.log("CheckLR::"+index+":::"+item.USEREMAIL);
-		var LR = " ";
-		if("${member.userEmail}" != item.USEREMAIL)
-			LR = "speech-right";
-		else
-			LR = "speech-left";
+		console.log("CheckLR::"+index+":::"+item.userEmail);
+		const LR = (item.userEmail != "${member.userEmail}") ? "speech-left" : "speech-right";
+	
 		console.log(index+":::"+LR);
 		// 메세지 추가
 		appendMessageTag(LR, index, item);
@@ -120,18 +118,40 @@ window.onload = function() {
 	
 	// 메세지 태그 append
 	function appendMessageTag(LR, index, item) {
-		//const chatDiv = createMessageTag(LR, item);
+		var userName = " ";
+		console.log(item);
+		if("${member.userEmail}" != item.userEmail)
+			userName = item.userName;
+		else
+			userName = "${member.userName}";
+		
+		console.log(userName);
+		var now = new Date();
+		var nowTime = now.getFullYear();
+		nowTime += '-' + (now.getMonth() + 1);
+		nowTime += '-' + now.getDate();
+		nowTime += ' ' + now.getHours();
+		nowTime += ':' + now.getMinutes();
+		nowTime += ':' + now.getSeconds();
+
 		var html ='';
 		html += '<li class="mar-btm"><div class="media-body pad-hor" id=div_'+index+'><div class="speech">';
-		html += '<p class="media-heading">' + item.USERNAME + '</p>';
-		html += '<p>' + item.MESSAGE + '</p>';
-		html += '<p class="speech-time"><i class="fa fa-clock-o fa-fw"></i>' + item.CHATDATE + '</p>';
+		html += '<p class="media-heading">' + userName + '</p>';
+		html += '<p>' + item.message + '</p>';
+		if(typeof item.chatDate == "undefined") {
+			html += '<p class="speech-time"><i class="fa fa-clock-o fa-fw"></i>' + nowTime + '</p>';
+		}
+		else {
+			html += '<p class="speech-time"><i class="fa fa-clock-o fa-fw"></i>' + item.chatDate + '</p>';
+		}
 		html += '</div></div></li>';
 		$('div.chatMiddle ul').append(html);
 		$('#div_'+index).addClass(LR);
+	//	$("div.chatMiddle").scrollTop($("div.chatMiddle")[0].scrollHeight);
 	}
 
 
+	
 </script>
 <div>
 	<div style="position:relative;">
@@ -158,9 +178,18 @@ window.onload = function() {
 			  <div>
 			     <div class="row">
 			     	<div class="col">
+			     	<c:choose>
+			     	  <c:when test="${member.userEmail != 'admin@naver.com'}">
 			     		<div class="portlet-title">
 			     			<h4>상담원에게 질문하기</h4>
 			     		</div>
+			     	  </c:when>
+			     	  <c:otherwise>
+			     		<div class="portlet-title">
+			     			<h4>회원 상담창</h4>
+			     		</div>
+			     	  </c:otherwise>
+			     	</c:choose>
 			     		<div class="clearfix"></div>
 			     	</div>
 			     </div>

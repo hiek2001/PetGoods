@@ -20,5 +20,4 @@ public class ChatDaoImpl implements ChatDao{
 	public List<Chat> messageList(SqlSessionTemplate sqlSession, String userEmail) {
 		return sqlSession.selectList("chat.messageList");
 	}
-
 }
