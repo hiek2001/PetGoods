@@ -44,6 +44,7 @@ window.onload = function() {
 					console.log(index+":"+item.userEmail);
 					console.log(item);
 					CheckLR(index,item);
+					$("div.chatMiddle").scrollTop($("div.chatMiddle")[0].scrollHeight);
 				});
 			},
 			error:function(request, status, error) {
@@ -109,11 +110,12 @@ window.onload = function() {
 	function CheckLR(index,item) {
 		// email이 loginSession의 email과 다르면 왼쪽, 같으면 오른쪽
 		console.log("CheckLR::"+index+":::"+item.userEmail);
-		const LR = (item.userEmail != "${member.userEmail}") ? "speech-left" : "speech-right";
+		const LR = (item.userEmail != "${member.userEmail}") ? "speech-right" : "speech-left";
 	
 		console.log(index+":::"+LR);
 		// 메세지 추가
 		appendMessageTag(LR, index, item);
+		
 	}
 	
 	// 메세지 태그 append
@@ -147,7 +149,6 @@ window.onload = function() {
 		html += '</div></div></li>';
 		$('div.chatMiddle ul').append(html);
 		$('#div_'+index).addClass(LR);
-	//	$("div.chatMiddle").scrollTop($("div.chatMiddle")[0].scrollHeight);
 	}
 
 
@@ -194,10 +195,9 @@ window.onload = function() {
 			     	</div>
 			     </div>
 			     <!-- 채팅 메세지 나오는 부분 -->
-			     <div class="chatMiddle" style="overflow: auto;">
+			     <div class="chatMiddle" style="overflow: auto; display:flex; flex-direction:column-reverse;">
 			     	<ul>
-			     		<!-- 동적 생성 
-			     		<div class="hr-sect">08월 10일</div>-->
+			     		<!-- 동적 생성 -->
 			     	  </ul>
 			     </div>
 			     <div class="portlet-footer">
