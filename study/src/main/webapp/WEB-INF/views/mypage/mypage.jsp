@@ -81,7 +81,7 @@ window.onload = function() {
 			"message" : message
 		};
 		
-	//	CheckLR(data);
+		//CheckLR(data);
 		let jsonData = JSON.stringify(data);
 		// 웹 소켓으로 메시지를 보냄
 		websocket.send(jsonData);
@@ -90,13 +90,13 @@ window.onload = function() {
 	// 메시지 수신 : 소켓에서 정보를 수신했을 때 실행됨
 	function onMessage(evt) {
 		let receive = evt.data.split(",");
-		console.log(receive);
+		console.log("function onMessage::"+receive);
 		
 		const data = {
 			"userEmail" : receive[0],
 			"message" : receive[1]
 		};
-		createMessageTag(data.userEmail, data.message);
+		
 	}
 	
 	function onClose(evt) {
@@ -165,7 +165,7 @@ window.onload = function() {
 			     	</div>
 			     </div>
 			     <!-- 채팅 메세지 나오는 부분 -->
-			     <div class="chatMiddle">
+			     <div class="chatMiddle" style="overflow: auto;">
 			     	<ul>
 			     		<!-- 동적 생성 
 			     		<div class="hr-sect">08월 10일</div>-->
