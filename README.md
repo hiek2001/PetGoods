@@ -36,8 +36,8 @@
 
 ![image](https://user-images.githubusercontent.com/40787456/129844789-e9f284bd-02e1-4f45-8400-56e16d7c6cb7.png)
 
-* 1:1 실시간 상담 채팅방 화면
+* 1:1 실시간 상담 채팅방 화면<br>
+아래 화면에서 왼쪽이 회원, 오른쪽이 관리자의 채팅 화면입니다.
 
-<img width="80%" src="https://user-images.githubusercontent.com/16822641/109461495-913fc480-7aa5-11eb-9d0e-aff762669f98.gif"/>
-
+<img width="80%" src="https://user-images.githubusercontent.com/40787456/129847196-fa905c71-d20d-46d0-aa31-5370e41c689a.gif"/>
 
