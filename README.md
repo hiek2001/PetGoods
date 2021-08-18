@@ -39,5 +39,5 @@
 * 1:1 실시간 상담 채팅방 화면<br>
 아래 화면에서 왼쪽이 회원, 오른쪽이 관리자의 채팅 화면입니다.
 
-<img width="80%" src="https://user-images.githubusercontent.com/40787456/129847196-fa905c71-d20d-46d0-aa31-5370e41c689a.gif"/>
+<img width="80%" src="https://user-images.githubusercontent.com/40787456/129847959-0c63f8b8-9b40-4012-ad27-b1d71da0fb82.gif"/>
 
