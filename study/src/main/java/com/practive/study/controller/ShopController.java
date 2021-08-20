@@ -11,10 +11,17 @@ public class ShopController {
 
 	private static final Logger Logger = LoggerFactory.getLogger(MemberController.class);
 	
-	//01 mainShop 페이지로 이동
+	//01 snackShop 페이지로 이동
 	@RequestMapping(value="/snackShop.do", method=RequestMethod.GET)
 	public String snackShop() {
 		Logger.info("snackShop 페이지로 이동");
 		return "shop/snackShop";
+	}
+	
+	//02 snackShopDetail 페이지로 이동
+	@RequestMapping(value="/snackShopDetail.do", method=RequestMethod.GET)
+	public String snackShopDetail() {
+		Logger.info("snackShopDetail 페이지로 이동");
+		return "shop/snackShopDetail";
 	}
 }

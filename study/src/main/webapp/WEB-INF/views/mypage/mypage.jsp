@@ -213,5 +213,4 @@ window.onload = function() {
 	</div>
 </div>
 
-</body>
-</html>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
