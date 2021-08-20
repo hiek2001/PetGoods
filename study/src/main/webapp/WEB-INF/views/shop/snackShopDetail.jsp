@@ -83,7 +83,7 @@
                         <div class="media-body">
                             <h5 class="mt-0 font400 clearfix">
                                         <a href="#" class="float-right">Reply</a>
-                                        Jane Doe</h5> Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                        Jane Doe</h5> Nulla vel metus scelerisque sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
                         </div>
                     </div>
                 </div>
