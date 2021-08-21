@@ -169,7 +169,7 @@ window.onload = function() {
 			<p>장바구니</p>
 		</div>
 	</div>
- 	<!-- 채팅창 -->
+ 	<!-- 채팅 모달창-->
  	<div class="black_bg"></div>
 		<div class="modal_wrap">
 			 <div id="modal_close" class="modal_close"><a href="">close</a></div>
