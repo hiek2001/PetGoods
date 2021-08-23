@@ -7,9 +7,6 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <link href="${path}/resources/css/snackshop.main.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-<script type="text/javascript">
-
-</script>
 <div id="rs-team" class="rs-team fullwidth-team pt-100 pb-70">
 <div>
 	<div style="position:relative;">

@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
-
-import com.practive.study.snackShopPagination;
 import com.practive.study.model.vo.Snack;
 
 @Repository

@@ -38,7 +38,7 @@
               </div>
               <p>
                   <button class="btn btn-round btn-danger" type="button"><i class="fa fa-shopping-cart" ></i> Add to Cart</button>
-                  <button class="btn btn-round btn-success" type="button"><i class="fa"></i> Buy Now</button>
+                  <button class="btn btn-round btn-success" type="button" onclick="location.href='${path}/payment.do'"><i class="fa"></i> Buy Now</button>
               </p>
           </div>
       </div>

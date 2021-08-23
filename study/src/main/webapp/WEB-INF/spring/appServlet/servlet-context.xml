@@ -28,9 +28,16 @@
 	<!-- 베이스패키지 하위 모든 어노테이션을 스캔해서 빈으로 등록하겠다는 것-->
 
 	<interceptors>
+		<!-- 로그인이 되어 있어야 하는 페이지 : 현재 사용자의 로그인 체크-->
+		<interceptor>
+			<mapping path="/payment.do" />
+			<beans:bean id="LoginCheckInterceptor" class="com.practive.study.common.Interceptor.LoginCheckInterceptor"></beans:bean>
+		</interceptor>
+		<!-- loggerInterceptor -->
 		<interceptor>
 			<mapping path="/**" />
 			<mapping path="/**/*.do" />
+			<exclude-mapping path="/member.do" />
 			<beans:bean id="loggerInterceptor" class="com.practive.study.common.Interceptor.LoggerInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>
@@ -41,6 +48,7 @@
 		<websocket:sockjs />
 	</websocket:handlers>
 	<beans:bean id="websocketHandler" class="com.practive.study.websocketHandler"/>
+
 </beans:beans>
 
 	
