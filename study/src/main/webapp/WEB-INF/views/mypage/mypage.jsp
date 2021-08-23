@@ -44,7 +44,6 @@ window.onload = function() {
 					console.log(index+":"+item.userEmail);
 					console.log(item);
 					CheckLR(index,item);
-					$("div.chatMiddle").scrollTop($("div.chatMiddle")[0].scrollHeight);
 				});
 			},
 			error:function(request, status, error) {
@@ -159,7 +158,7 @@ window.onload = function() {
 <div class="container">
 	<!-- Menu -->
 	<div class="row">
-		<div id="chatIcon" class="big-btn col-6 col-md-3">
+		<div id="chatIcon" class="member-chat big-btn col-6 col-md-3">
 			<p id="modal_btn" onclick="openSocket();">1:1 상담</p>
 		</div>
 		<div class="big-btn col-6 col-md-3">

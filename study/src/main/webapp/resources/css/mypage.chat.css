@@ -21,7 +21,7 @@
         width: 700px;
         height: 600px;
         position: absolute;
-        top:40%;
+        top:50%;
         left: 50%;
         margin: -250px 0 0 -250px;
         background:#eee;
@@ -177,4 +177,7 @@
 	font-size: 0px;
 	line-height: 0px;
 	margin: 0px 16px;
+}
+.green {
+	background-color: rgba(22,160,133,0.3);
 }
