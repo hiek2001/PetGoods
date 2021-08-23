@@ -7,9 +7,6 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"/> 
 <link href="${path}/resources/css/snackshop.detail.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script type="text/javascript">
-
-</script>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container bootdey margin">
 <div class="row">
@@ -34,15 +31,28 @@
               <div class="m-bot15"> <strong>Price : </strong> <span class="pro-price"><fmt:formatNumber value="${snack.price}" pattern="#,###원"/></span></div>
               <div class="form-group">
                   <label>Quantity</label>
-                  <input type="quantiy" placeholder="1" class="form-control quantity">
+                  <input type="quantity" placeholder="1" class="form-control quantity">
               </div>
               <p>
                   <button class="btn btn-round btn-danger" type="button"><i class="fa fa-shopping-cart" ></i> Add to Cart</button>
-                  <button class="btn btn-round btn-success" type="button" onclick="location.href='${path}/payment.do'"><i class="fa"></i> Buy Now</button>
+                  <button class="pay-btn btn btn-round btn-success" type="button"><i class="fa"></i> Buy Now</button>
               </p>
           </div>
       </div>
   </section>
   </div>
   </div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.pay-btn').click(function(){
+		var quantity = $('.quantity').val();
+		if(quantity == '')
+			quantity = 1;
+		var snackNo = ${snack.snackNo};
+		console.log(snackNo);
+		
+		location.href='${path}/payment.do?snackNo='+snackNo+'&count='+quantity;
+	});
+});
+</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

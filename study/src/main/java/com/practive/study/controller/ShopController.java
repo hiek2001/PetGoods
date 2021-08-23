@@ -43,7 +43,11 @@ public class ShopController {
 	
 	//03 payment 페이지로 이동
 	@RequestMapping(value="/payment.do", method=RequestMethod.GET)
-	public String payment() {
+	public String payment(int snackNo, int count, Model model) {
+		Logger.info("payment 페이지로 이동"+snackNo+"count::"+count);
+		Snack snack = service.snack(snackNo);
+		model.addAttribute("snack", snack);
+		model.addAttribute("skcount", count);
 		return "shop/payment";
 	}
 }

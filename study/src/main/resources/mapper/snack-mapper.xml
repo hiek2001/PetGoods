@@ -7,7 +7,7 @@
 	</select>
 	
 	<select id="snack" parameterType="int" resultType="snack">
-		SELECT SKNAME AS "snackName", SKIMG AS "snackImg", SKDETAILS AS "snackDetail", PRICE AS "price", SALES AS "sales"
+		SELECT SKNO AS "snackNo", SKNAME AS "snackName", SKIMG AS "snackImg", SKDETAILS AS "snackDetail", PRICE AS "price", SALES AS "sales"
 		FROM SNACK
 		WHERE SKNO = #{snackNo}
 	</select>
