@@ -2,7 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="snack">
 	<select id="snackList" resultType="hashmap">
-		SELECT SKNAME AS "snackName", SKDETAILS AS "snackDetail", SKIMG AS "snackImg", PRICE AS "price", SALES AS "sales", SKDATE AS "snackDate"
+		SELECT SKNO AS "snackNo", SKNAME AS "snackName", SKIMG AS "snackImg", PRICE AS "price", SALES AS "sales", SKDATE AS "snackDate"
 		FROM SNACK
+	</select>
+	
+	<select id="snack" parameterType="int" resultType="snack">
+		SELECT SKNAME AS "snackName", SKIMG AS "snackImg", SKDETAILS AS "snackDetail", PRICE AS "price", SALES AS "sales"
+		FROM SNACK
+		WHERE SKNO = #{snackNo}
 	</select>
 </mapper>

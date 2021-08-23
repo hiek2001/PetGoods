@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.practive.study.snackShopPagination;
 import com.practive.study.model.dao.ShopDao;
 import com.practive.study.model.vo.Snack;
 
@@ -21,5 +22,9 @@ public class ShopService {
 	public List<Snack> snackList() {
 		return dao.snackList(sqlSession);
 				
+	}
+	
+	public Snack snack(int snackNo) {
+		return dao.snack(sqlSession, snackNo);
 	}
 }

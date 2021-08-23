@@ -17,27 +17,27 @@
       <div class="panel-body">
           <div class="col-md-6">
               <div class="pro-img-details">
-                  <img src="${path}/resources/img/snackshop/배변판_big.png" alt="">
+                  <img src="${path}/resources/img/snackshop/${snack.snackImg}">
               </div>
           </div>
           <div class="col-md-6">
               <h4 class="pro-d-title" style="font-size: 25px;">                  
-                  <strong>제로슬립매트 강아지 배변판</strong>                 
+                  <strong>${snack.snackName}</strong>                 
               </h4>
               <p>
-                  Praesent ac condimentum felis. Nulla at nisl orci, at dignissim dolor, The best product descriptions address your ideal buyer directly and personally. The best product descriptions address your ideal buyer directly and personally.
+                  ${snack.snackDetail}
               </p>
               <div class="product_meta">
                   <span class="posted_in">국내배송</span>
                   <span class="tagged_as">배송비 3,000원</span>
               </div>
-              <div class="m-bot15"> <strong>Price : </strong> <span class="amount-old">$544</span>  <span class="pro-price"> $300.00</span></div>
+              <div class="m-bot15"> <strong>Price : </strong> <span class="pro-price"><fmt:formatNumber value="${snack.price}" pattern="#,###원"/></span></div>
               <div class="form-group">
                   <label>Quantity</label>
                   <input type="quantiy" placeholder="1" class="form-control quantity">
               </div>
               <p>
-                  <button class="btn btn-round btn-danger" type="button"><i class="fa"></i> Add to Cart</button>
+                  <button class="btn btn-round btn-danger" type="button"><i class="fa fa-shopping-cart" ></i> Add to Cart</button>
                   <button class="btn btn-round btn-success" type="button"><i class="fa"></i> Buy Now</button>
               </p>
           </div>

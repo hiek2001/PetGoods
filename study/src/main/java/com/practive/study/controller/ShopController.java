@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.practive.study.snackShopPagination;
 import com.practive.study.model.service.ShopService;
 import com.practive.study.model.vo.Snack;
 
@@ -25,6 +27,7 @@ public class ShopController {
 	@RequestMapping(value="/snackShop.do", method=RequestMethod.GET)
 	public String snackShop(Model model) throws Exception{
 		Logger.info("snackShop 페이지로 이동");
+		// snackList 가져오기
 		List<Snack> snackList = service.snackList();
 		Logger.info("snack 확인"+snackList);
 		model.addAttribute("snack", snackList);
@@ -33,8 +36,11 @@ public class ShopController {
 	
 	//02 snackShopDetail 페이지로 이동
 	@RequestMapping(value="/snackShopDetail.do", method=RequestMethod.GET)
-	public String snackShopDetail() {
+	public String snackShopDetail(int snackNo, Model model) {
 		Logger.info("snackShopDetail 페이지로 이동");
+		Snack snack = service.snack(snackNo);
+		Logger.info("snack 확인"+snack);
+		model.addAttribute("snack", snack);
 		return "shop/snackShopDetail";
 	}
 }
