@@ -1,0 +1,53 @@
+@charset "UTF-8";
+table, td {
+	border-collapse: collapse;
+	margin: 0px;
+	padding: 0px;
+}
+img {
+	display: block;
+}
+/* 레이아웃 틀 */
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    background: #f5f6f7;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+}
+
+h3 {
+    margin: 19px 0 8px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Noto Sans KR';
+}
+
+h5 {
+	font-family: 'Noto Sans KR';
+}
+
+.input-fm {
+	width: 30%;
+}
+
+.font-weight {
+	font-weight: 700;
+}
+
+.gap {
+	margin-left: 20%;
+}
+
+.dev-gap {
+	margin-left: 30%;
+}
+.kgcard {
+	color: white; 
+	width:200px; 
+	height:50px; 
+	background-color: #4A0BA3;
+}

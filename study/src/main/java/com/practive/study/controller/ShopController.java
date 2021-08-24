@@ -17,6 +17,9 @@ public class ShopController {
 
 	private static final Logger Logger = LoggerFactory.getLogger(MemberController.class);
 	
+	//IamportClient api = new IamportClient("0364377215218055","ff08558eef6ca8c2a09b0d6be51e5daddd5ceb82b9a994a447efbe7d31888a92d0b060c660ae196b");
+	
+	
 	@Autowired
 	public ShopService service;
 	
@@ -50,4 +53,9 @@ public class ShopController {
 		model.addAttribute("skcount", count);
 		return "shop/payment";
 	}
+	
+	// 04 결제API : 결제 검증 
+	//@ResponseBody
+	//@ReqeustMapping(value="/verifyIamport/{imp_uid}")
+	//ublic Iamport
 }
