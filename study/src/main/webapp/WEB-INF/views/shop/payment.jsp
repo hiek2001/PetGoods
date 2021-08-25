@@ -28,29 +28,31 @@ function requestPay(){
 		  //  buyer_postcode : '123-456'
 		}, function(rsp) {
 			console.log(rsp);
-			// 결제 검증
+			// 01 서버단에서 결제정보 조회를 위해 ajax로 imp_uid 전달
 			$.ajax({
 				type: "POST",
-				url: "/verifyIamport/"+rsp.imp_uid
+				url: "/verifyIamport"	
 			}).done(function(data){
 				console.log(data);
 				
 				//위의 rsp.paid_amount와 data.response.amout를 비교한 후 로직 실행 (import 서버 검증)
-				if(rsp.paid_amount == data.response.amount) 
-					alert("결제 및 결제검증완료");
-				else
-					alert("결제 실패");
+				//if(rsp.paid_amount == data.response.amount) 
+				//	alert("결제 및 결제검증완료");
+				//else
+				//	alert("결제 실패");
 			});
-		   // if ( rsp.success ) {
-		   // 	var msg = '결제가 완료되었습니다.';
-		   //     msg += '고유ID : ' + rsp.imp_uid;
-		   //     msg += '상점 거래ID : ' + rsp.merchant_uid;
-		   //     msg += '결제 금액 : ' + rsp.paid_amount;
-		   //     msg += '카드 승인번호 : ' + rsp.apply_num;
-		    //} else {
-		    //	 var msg = '결제에 실패하였습니다.';
-		    //     msg += '에러내용 : ' + rsp.error_msg;
-		    //}
+			// 02 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
+		    if ( rsp.success ) {
+		    	var msg = '결제가 완료되었습니다.';
+		        msg += '고유ID : ' + rsp.imp_uid;
+		        msg += '상점 거래ID : ' + rsp.merchant_uid;
+		        msg += '결제 금액 : ' + rsp.paid_amount;
+		        msg += '카드 승인번호 : ' + rsp.apply_num;
+		   } else {
+			    // 03 결제 되지 않음
+		   	    var msg = '결제에 실패하였습니다.';
+		        msg += '에러내용 : ' + rsp.error_msg;
+		   }
 		   // alert(msg);
 		});
 	}
