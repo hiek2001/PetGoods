@@ -27,8 +27,12 @@ public class ShopService {
 		return dao.snack(sqlSession, snackNo);
 	}
 	
-	public int payEnd(Order order) {
-		System.out.println("2) Service 진입~~~");
+	public int payEnd(Order order) {	
 		return dao.payEnd(sqlSession, order);
+	}
+	
+	public Order shopEnd(String orderUid) {
+		System.out.println("2) Service 진입~~~");
+		return dao.shopEnd(sqlSession, orderUid);
 	}
 }

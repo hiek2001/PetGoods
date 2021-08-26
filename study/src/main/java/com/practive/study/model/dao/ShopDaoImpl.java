@@ -23,8 +23,13 @@ public class ShopDaoImpl implements ShopDao {
 	
 	@Override
 	public int payEnd(SqlSessionTemplate sqlSession, Order order) {
-		System.out.println("3) DAO 진입~~~");
-		System.out.println("order::"+order);
 		return sqlSession.insert("order.orderEnd", order);
+	}
+	
+	@Override
+	public Order shopEnd(SqlSessionTemplate sqlSession, String orderUid) {
+		System.out.println("3) DAO 진입~~~");
+		System.out.println("order::"+orderUid);
+		return sqlSession.selectOne("order.shopEnd", orderUid);
 	}
 }

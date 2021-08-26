@@ -8,4 +8,12 @@
 		INSERT INTO ORDERDETAIL VALUES (#{orderNo}, #{orderEmail}, #{orderName}, #{orderPhone}, 
 			#{orderAddr1}, #{orderAddr2}, #{orderAddr3}, #{allPrice}, #{orderNote}, sysdate, #{orderUid})
 	</insert>
+	
+	<select id="shopEnd" parameterType="String" resultType="order">
+		SELECT ORDERNAME AS "orderName", ORDEREMAIL AS "orderEmail", ORDERPHONE AS "orderPhone", 
+				ORDERADDR1 AS "orderAddr1", ORDERADDR2 AS "orderAddr2", ORDERADDR3 AS "orderAddr3", ALLPRICE AS "allPrice",
+				ORDERUID AS "orderUid"
+		FROM ORDERDETAIL
+		WHERE ORDERUID = #{orderUid}
+	</select>
 </mapper>

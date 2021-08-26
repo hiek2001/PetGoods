@@ -12,7 +12,10 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script> <!-- 아임포트 결제API -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
+
+
 function payEnd(uid) {
+	var result = "N";
     // 결제 정보 저장
 	var all = '${snack.price*skcount}';
 	var note = $("select[name=orderNote]").val();
@@ -42,16 +45,20 @@ function payEnd(uid) {
         dataType: 'json',
         contentType: "application/json",
         data: JSON.stringify(param),
+        async: false, // ajax는 기본 동기식이기에 return을 보내려면 비동기식으로 설정해야함
         success:function(data) {
 			console.log("성공적으로 보냄");
-			
-		},
-		error:function(request, status, error) {
-			console.log(request.status);
-			console.log(request.reponseText);
-			console.log(error);
+			// 성공시 이동할 페이지
+			//location.href="${path}/shopEnd.do?orderUid="+uid;
+			result = "Y";
 		}
+		//error:function(request, status, error) {
+			//console.log(request.status);
+			//console.log(request.reponseText);
+			//console.log(error);
+		//}
 	});
+	return result;
 }
 
 // 아임포트 API 호출
@@ -66,25 +73,24 @@ function requestPay(){
 		    amount : 100, //실제 결제되는 가격
 		    buyer_email : '${member.userEmail}',
 		    buyer_name : '${member.userName}'
-		  //  buyer_tel : ${member.userPhone},
-		  //  buyer_addr : '서울 강남구 도곡동',
-		  //  buyer_postcode : '123-456'
-		  //  m_redirect_url : '결제 완료 후 이동할 페이지'
 		}, function(rsp) {
 			console.log(rsp);
 			if (rsp.success) {
 	        
 	           var uid = rsp.imp_uid;
-			   payEnd(uid);
-			   
-			   var msg = '결제가 완료되었습니다.';
-	           msg += '고유ID : ' + rsp.imp_uid;
-	           msg += '상점 거래ID : ' + rsp.merchant_uid;
-	           msg += '결제 금액 : ' + rsp.paid_amount;
-	           msg += '카드 승인번호 : ' + rsp.apply_num;
-	                  
-			// 성공시 이동할 페이지
-			//location.href="${path}/";
+			   var result2 = payEnd(uid);
+			   console.log(result2);
+			   if(result2 == "Y"){
+				   var msg = '결제가 완료되었습니다.';
+		           msg += '고유ID : ' + rsp.imp_uid;
+		           msg += '상점 거래ID : ' + rsp.merchant_uid;
+		           msg += '결제 금액 : ' + rsp.paid_amount;
+		           msg += '카드 승인번호 : ' + rsp.apply_num;
+		           
+		           alert(msg);
+					// 성공시 이동할 페이지
+					location.href="${path}/shopEnd.do?orderUid="+uid;
+			   }
 		} else {
 			msg = '결제에 실패하였습니다.';
 			msg += '에러내용 : '+rsp.error_msg;
@@ -179,7 +185,7 @@ function requestPay(){
 				</div>
 			</div>
 		</div>
-		<div class="col-md-3" style="height: 700px; width: auto; background-color: #F4F4F3;  box-shadow: 5px 5px 5px 5px #E9E9EA;">
+		<div class="col-md-3" style="height: 700px; width: auto; margin-bottom: 50px; background-color: #F4F4F3;  box-shadow: 5px 5px 5px 5px #E9E9EA;">
 			<div style="height:500px;"></div>
 			<div>
 				<h5><strong>결제상세</strong></h5>
@@ -197,13 +203,12 @@ function requestPay(){
 				</div>
 			</div>
 		</div>
-		<!-- submit 버튼 -->
+		<!-- submit 버튼
 		<div style="padding: 30px 0px 0px 30px; margin-bottom: 50px; margin-left: 37%;">
 			<button type="button" id="pay-btn" class="btn" style="width:200px; height:50px; background-color: green; color: white;">결제하기</button>
-		</div>
+		</div>  -->
 	</div>
 </div>
 
 
-</body>
-</html>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.practive.study.IamportApi;
 import com.practive.study.model.service.ShopService;
@@ -83,13 +84,28 @@ public class ShopController {
 	
 	// 05 결제 완료 후 배송 정보 저장
 	@RequestMapping(value="/payEnd.do", method=RequestMethod.POST)
-	public void PayEnd(@RequestBody Order order) throws Exception{
+	@ResponseBody
+	public int PayEnd(@RequestBody Order order) throws Exception{
 		Logger.info("PayEnd Controller 진입::order::"+order);
 		int result = service.payEnd(order);
 		Logger.info("result:::"+result);
-		if(result == 1) 
+		if(result == 1) {
 			Logger.info("db 저장 완료~~");
-		else
+		}
+		else {
 			Logger.info("db 저장 실패ㅜㅜㅜㅜㅜ");
+		}
+		return result;
+	}
+	
+	// 06 결제 완료 페이지 이동
+	@RequestMapping(value="/shopEnd.do", method=RequestMethod.GET) 
+	public ModelAndView ShopEnd(String orderUid) {
+		ModelAndView mv = new ModelAndView();
+		Order order = service.shopEnd(orderUid);
+		mv.addObject(order);
+		Logger.info("order::"+order);
+		mv.setViewName("shop/shopEnd");
+		return mv;
 	}
 }

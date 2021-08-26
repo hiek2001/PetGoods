@@ -12,4 +12,6 @@ public interface ShopDao {
 	Snack snack(SqlSessionTemplate sqlSession, int snackNo);
 	
 	int payEnd(SqlSessionTemplate sqlSession, Order order);
+	
+	Order shopEnd(SqlSessionTemplate sqlSession, String orderUid);
 }
