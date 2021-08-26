@@ -14,6 +14,7 @@ public class Order {
 	private int allPrice;
 	private String orderNote;
 	private Date oDate;
+	private String orderUid;
 	
 	public Order () {}
 
@@ -97,11 +98,20 @@ public class Order {
 		this.oDate = oDate;
 	}
 
+	public String getOrderUid() {
+		return orderUid;
+	}
+
+	public void setOrderUid(String orderUid) {
+		this.orderUid = orderUid;
+	}
+
 	@Override
 	public String toString() {
 		return "Order [orderNo=" + orderNo + ", orderEmail=" + orderEmail + ", orderName=" + orderName + ", orderPhone="
 				+ orderPhone + ", orderAddr1=" + orderAddr1 + ", orderAddr2=" + orderAddr2 + ", orderAddr3="
-				+ orderAddr3 + ", allPrice=" + allPrice + ", orderNote=" + orderNote + ", oDate=" + oDate + "]";
+				+ orderAddr3 + ", allPrice=" + allPrice + ", orderNote=" + orderNote + ", oDate=" + oDate
+				+ ", orderUid=" + orderUid + "]";
 	}
 	
 }

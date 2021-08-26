@@ -6,6 +6,6 @@
 			SELECT ORDERDETAIL_SEQ.NEXTVAL FROM SYS.DUAL
 		</selectKey>
 		INSERT INTO ORDERDETAIL VALUES (#{orderNo}, #{orderEmail}, #{orderName}, #{orderPhone}, 
-			#{orderAddr1}, #{orderAddr2}, #{orderAddr3}, #{allPrice}, #{orderNote}, sysdate)
+			#{orderAddr1}, #{orderAddr2}, #{orderAddr3}, #{allPrice}, #{orderNote}, sysdate, #{orderUid})
 	</insert>
 </mapper>

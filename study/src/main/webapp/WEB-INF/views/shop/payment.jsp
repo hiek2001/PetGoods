@@ -12,48 +12,47 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script> <!-- 아임포트 결제API -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-$(function(){
-	$('#pay-btn').click(function(){
-		var all = '${snack.price*skcount}';
-		var note = $("select[name=orderNote]").val();
-		var name = $("#orderName").val();
-		var email = '${member.userEmail}';
-		var addr1 = $("#orderAddr1").val();
-		var addr2 = $("#orderAddr2").val();
-		var addr3 = $("#orderAddr3").val();
-		var phone = $("#orderPhone").val();
-		var param = {
-				"orderNo" : 1,
-				"orderName" : name,
-	          	"orderEmail" : email,
-	          	"orderPhone" : phone,
-	          	"orderAddr1" : addr1,
-	          	"orderAddr2" : addr2,
-	          	"orderAddr3" : addr3,
-	          	"allPrice" : all,
-	          	"orderNote" : note
+function payEnd(uid) {
+    // 결제 정보 저장
+	var all = '${snack.price*skcount}';
+	var note = $("select[name=orderNote]").val();
+	var name = $("#orderName").val();
+	var email = '${member.userEmail}';
+	var addr1 = $("#orderAddr1").val();
+	var addr2 = $("#orderAddr2").val();
+	var addr3 = $("#orderAddr3").val();
+	var phone = $("#orderPhone").val();
+	var param = {
+			"orderNo" : 1,
+			"orderName" : name,
+          	"orderEmail" : email,
+          	"orderPhone" : phone,
+          	"orderAddr1" : addr1,
+          	"orderAddr2" : addr2,
+          	"orderAddr3" : addr3,
+          	"allPrice" : all,
+          	"orderNote" : note,
+          	"orderUid" : uid
 
-	    }
-		console.log(param);
-		$.ajax({
-            url: "/payEnd.do",
-            type: 'POST', 
-            dataType: 'json',
-            contentType: "application/json",
-            data: JSON.stringify(param),
-         //   async: false,
-            success:function(data) {
-				console.log("성공적으로 보냄");
-				
-			},
-			error:function(request, status, error) {
-				console.log(request.status);
-				console.log(request.reponseText);
-				console.log(error);
-			}
-		});
-	})
-});
+    }
+	console.log(param);
+	$.ajax({
+        url: "/payEnd.do",
+        type: 'POST', 
+        dataType: 'json',
+        contentType: "application/json",
+        data: JSON.stringify(param),
+        success:function(data) {
+			console.log("성공적으로 보냄");
+			
+		},
+		error:function(request, status, error) {
+			console.log(request.status);
+			console.log(request.reponseText);
+			console.log(error);
+		}
+	});
+}
 
 // 아임포트 API 호출
 function requestPay(){
@@ -74,41 +73,18 @@ function requestPay(){
 		}, function(rsp) {
 			console.log(rsp);
 			if (rsp.success) {
-	           var msg = '결제가 완료되었습니다.';
+	        
+	           var uid = rsp.imp_uid;
+			   payEnd(uid);
+			   
+			   var msg = '결제가 완료되었습니다.';
 	           msg += '고유ID : ' + rsp.imp_uid;
 	           msg += '상점 거래ID : ' + rsp.merchant_uid;
 	           msg += '결제 금액 : ' + rsp.paid_amount;
 	           msg += '카드 승인번호 : ' + rsp.apply_num;
-	           
-	        //   var note = $("select[name=orderNote]").val();
-	       	//$.ajax({
-	       	//        type: "POST", 
-	       	//        url: "/PayEnd", 
-	       	//        dataType: "json",
-	       	//        data: {
-	       	//      	  "orderName" : orderName,
-	       	//      	  "orderEmail" : orderEmail,
-	       	//      	  "orderPhone" : orderPhone,
-	       	//      	  "orderAddr1" : orderAddr1,
-	       	//      	  "orderAddr2" : orderAddr2,
-	       	//      	  "orderAddr3" : orderAddr3,
-	       	//      	  "allPrice" : ${snack.price*skcount},
-	       	//      	  "orderNote" : note
-	       	//        },
-	       	//        success:function(data) {
-	       	//  		console.log("성공적으로 보냄");
-	       	//  		
-	       	//  	},
-	       	//  	error:function(request, status, error) {
-	       	//  		console.log(request.status);
-	       	//  		console.log(request.reponseText);
-	       	//  		console.log(error);
-	       	//  	}
-	       	//});
-	              
-	         
+	                  
 			// 성공시 이동할 페이지
-			location.href="${path}/";
+			//location.href="${path}/";
 		} else {
 			msg = '결제에 실패하였습니다.';
 			msg += '에러내용 : '+rsp.error_msg;
