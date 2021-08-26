@@ -5,20 +5,13 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.json.simple.parser.*;
 import org.json.simple.JSONObject;
 
 
 
 public class IamportApi {
-	/**
-	 *  HttpServletRequest : HTTP프로토콜의 request 정보를 servlet에게 전달하기 위한 목적으로 사용/ 헤더정보, 파라미터, 쿠키, URL등을 읽어들일 수 있음
-	 *  HttpServletResponse : WAS는 어떤 client가 요청을 보냈는지 알고 있고, 해당 client에게 응답을 보내기 위한 HttpServletResponse객체를 생성하여 servlet에게 전달
-	**/	
+	
 	public static String getToken(JSONObject json, String reqeustURL) throws Exception {
 		
 		String _token = "";
@@ -62,7 +55,9 @@ public class IamportApi {
 			os.flush();
 			conn.disconnect();	
 			
+			// json 타입으로 파싱할 때 사용 
 			JSONParser jsonParser = new JSONParser();
+			// 읽어온 문자열을 json 형식으로 변환
 			JSONObject jsonObj = (JSONObject) jsonParser.parse(requestString);
 
 			if((Long)jsonObj.get("code")  == 0){

@@ -10,7 +10,51 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>  <!-- 다음 주소API -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script> <!-- 아임포트 결제API -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
+$(function(){
+	$('#pay-btn').click(function(){
+		var all = '${snack.price*skcount}';
+		var note = $("select[name=orderNote]").val();
+		var name = $("#orderName").val();
+		var email = '${member.userEmail}';
+		var addr1 = $("#orderAddr1").val();
+		var addr2 = $("#orderAddr2").val();
+		var addr3 = $("#orderAddr3").val();
+		var phone = $("#orderPhone").val();
+		var param = {
+				"orderNo" : 1,
+				"orderName" : name,
+	          	"orderEmail" : email,
+	          	"orderPhone" : phone,
+	          	"orderAddr1" : addr1,
+	          	"orderAddr2" : addr2,
+	          	"orderAddr3" : addr3,
+	          	"allPrice" : all,
+	          	"orderNote" : note
+
+	    }
+		console.log(param);
+		$.ajax({
+            url: "/payEnd.do",
+            type: 'POST', 
+            dataType: 'json',
+            contentType: "application/json",
+            data: JSON.stringify(param),
+         //   async: false,
+            success:function(data) {
+				console.log("성공적으로 보냄");
+				
+			},
+			error:function(request, status, error) {
+				console.log(request.status);
+				console.log(request.reponseText);
+				console.log(error);
+			}
+		});
+	})
+});
+
 // 아임포트 API 호출
 function requestPay(){
 		//가맹점 식별코드
@@ -26,36 +70,54 @@ function requestPay(){
 		  //  buyer_tel : ${member.userPhone},
 		  //  buyer_addr : '서울 강남구 도곡동',
 		  //  buyer_postcode : '123-456'
+		  //  m_redirect_url : '결제 완료 후 이동할 페이지'
 		}, function(rsp) {
 			console.log(rsp);
-			// 01 서버단에서 결제정보 조회를 위해 ajax로 imp_uid 전달
-			$.ajax({
-				type: "POST",
-				url: "/verifyIamport"	
-			}).done(function(data){
-				console.log(data);
-				
-				//위의 rsp.paid_amount와 data.response.amout를 비교한 후 로직 실행 (import 서버 검증)
-				//if(rsp.paid_amount == data.response.amount) 
-				//	alert("결제 및 결제검증완료");
-				//else
-				//	alert("결제 실패");
-			});
-			// 02 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
-		    if ( rsp.success ) {
-		    	var msg = '결제가 완료되었습니다.';
-		        msg += '고유ID : ' + rsp.imp_uid;
-		        msg += '상점 거래ID : ' + rsp.merchant_uid;
-		        msg += '결제 금액 : ' + rsp.paid_amount;
-		        msg += '카드 승인번호 : ' + rsp.apply_num;
-		   } else {
-			    // 03 결제 되지 않음
-		   	    var msg = '결제에 실패하였습니다.';
-		        msg += '에러내용 : ' + rsp.error_msg;
-		   }
-		   // alert(msg);
-		});
-	}
+			if (rsp.success) {
+	           var msg = '결제가 완료되었습니다.';
+	           msg += '고유ID : ' + rsp.imp_uid;
+	           msg += '상점 거래ID : ' + rsp.merchant_uid;
+	           msg += '결제 금액 : ' + rsp.paid_amount;
+	           msg += '카드 승인번호 : ' + rsp.apply_num;
+	           
+	        //   var note = $("select[name=orderNote]").val();
+	       	//$.ajax({
+	       	//        type: "POST", 
+	       	//        url: "/PayEnd", 
+	       	//        dataType: "json",
+	       	//        data: {
+	       	//      	  "orderName" : orderName,
+	       	//      	  "orderEmail" : orderEmail,
+	       	//      	  "orderPhone" : orderPhone,
+	       	//      	  "orderAddr1" : orderAddr1,
+	       	//      	  "orderAddr2" : orderAddr2,
+	       	//      	  "orderAddr3" : orderAddr3,
+	       	//      	  "allPrice" : ${snack.price*skcount},
+	       	//      	  "orderNote" : note
+	       	//        },
+	       	//        success:function(data) {
+	       	//  		console.log("성공적으로 보냄");
+	       	//  		
+	       	//  	},
+	       	//  	error:function(request, status, error) {
+	       	//  		console.log(request.status);
+	       	//  		console.log(request.reponseText);
+	       	//  		console.log(error);
+	       	//  	}
+	       	//});
+	              
+	         
+			// 성공시 이동할 페이지
+			location.href="${path}/";
+		} else {
+			msg = '결제에 실패하였습니다.';
+			msg += '에러내용 : '+rsp.error_msg;
+			// 실패시 이동할 페이지
+			alert(msg);
+		}
+	});
+}
+
 </script>
 <div class="container">
 	<div class="row">
@@ -89,10 +151,10 @@ function requestPay(){
 				<h5><strong>배송지정보</strong></h5>
 				<div class="form-group">
 					<h3>
-						<label for="orderName">이름</label>
+						<label for="name">이름</label>
 					</h3>
 					<span class="box">
-						<input type="text" name="orderName" class="input-fm form-control" required>
+						<input type="text" name="orderName" id="orderName" class="input-fm form-control">
 					</span>
 				</div>
 				<div class="form-group">
@@ -100,7 +162,7 @@ function requestPay(){
 						<label for="orderPhone">휴대전화</label>
 					</h3>
 					<span class="box">
-						<input type="text" name="orderPhone" placeholder="전화번호 입력"  class="input-fm form-control" required>
+						<input type="text" name="orderPhone" id="orderPhone" placeholder="전화번호 입력"  class="input-fm form-control">
 					</span>
 				</div>
 				<div class="form-group">
@@ -108,14 +170,14 @@ function requestPay(){
 						<label for="orderAddr">배송지</label>
 					</h3>
 					<div class="form-group">                   
-						<input class="form-control" style="width: 40%; display: inline;" placeholder="우편번호" name="Addr1" id="addr1" type="text" readonly="readonly" >
+						<input class="form-control" style="width: 40%; display: inline;" placeholder="우편번호" name="orderAddr1" id="orderAddr1" type="text" readonly="readonly" >
 						<button type="button" class="btn btn-default" onclick="execPostCode();"><i class="fa fa-search"></i> 우편번호 찾기</button>                               
 					</div>
 					<div class="form-group">
-						<input class="form-control" style="top: 5px;" placeholder="도로명 주소" name="Addr2" id="addr2" type="text" readonly="readonly" />
+						<input class="form-control" style="top: 5px;" placeholder="도로명 주소" name="orderAddr2" id="orderAddr2" type="text" readonly="readonly" />
 					</div>
 					<div class="form-group">
-						<input class="form-control" placeholder="상세주소" name="Addr3" id="addr3" type="text"  />
+						<input class="form-control" placeholder="상세주소" name="orderAddr3" id="orderAddr3" type="text"  />
 					</div>
 				</div>
 				<div>
@@ -123,7 +185,7 @@ function requestPay(){
 						<label for="orderNote">요청사항</label>
 					</h3>
 					<div class="input-fm input-group">
-						<select class="custom-select">
+						<select name="orderNote" class="custom-select">
 							<option>요청사항을 선택하세요</option>
 							<option value="문 앞에 두고 가세요">문 앞에 두고 가세요</option>
 							<option value="경비실에 맡겨 주세요">경비실에 맡겨 주세요</option>
@@ -147,7 +209,7 @@ function requestPay(){
 				<h5><strong>결제상세</strong></h5>
 				<div>
 					<span class="font-weight">주문금액</span>
-					<span class="font-weight gap"><!--<fmt:formatNumber value="${snack.price*skcount+3000}" pattern="#,###원"/>--> 100</span>
+					<span class="font-weight gap"><fmt:formatNumber value="${snack.price*skcount+3000}" pattern="#,###원"/></span>
 				</div>
 				<div style="margin-top: 5px;">
 					<span class="fa fa-angle-right">상품금액</span>
@@ -161,7 +223,7 @@ function requestPay(){
 		</div>
 		<!-- submit 버튼 -->
 		<div style="padding: 30px 0px 0px 30px; margin-bottom: 50px; margin-left: 37%;">
-			<button type="button" class="btn" style="width:200px; height:50px; background-color: green; color: white;">결제하기</button>
+			<button type="button" id="pay-btn" class="btn" style="width:200px; height:50px; background-color: green; color: white;">결제하기</button>
 		</div>
 	</div>
 </div>

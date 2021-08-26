@@ -31,7 +31,7 @@
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
-		<async-suppoerted>true</async-suppoerted> <!-- 웹소켓을 위한 설정(비동기 지원) -->
+		<!--<async-suppoerted>true</async-suppoerted>  웹소켓을 위한 설정(비동기 지원) -->
 	</servlet>
 
 		

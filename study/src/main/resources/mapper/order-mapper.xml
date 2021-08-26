@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="order">		
+	<insert id="orderEnd" parameterType="order">
+		<selectKey keyProperty="orderNo" resultType="int" order="BEFORE">
+			SELECT ORDERDETAIL_SEQ.NEXTVAL FROM SYS.DUAL
+		</selectKey>
+		INSERT INTO ORDERDETAIL VALUES (#{orderNo}, #{orderEmail}, #{orderName}, #{orderPhone}, 
+			#{orderAddr1}, #{orderAddr2}, #{orderAddr3}, #{allPrice}, #{orderNote}, sysdate)
+	</insert>
+</mapper>

@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
+	<settings> 
+		<setting name="jdbcTypeForNull" value="VARCHAR" /> 
+		<setting name="jdbcTypeForNull" value="INTEGER" /> 
+	</settings>	
 	<!-- 여기서 등록해야 member-mapper.xml에서 alias로 등록된 member를 사용할 수 있음 -->
 	<typeAliases>
 		<typeAlias alias="member" type="com.practive.study.model.vo.Member"/>
 		<typeAlias alias="chat" type="com.practive.study.model.vo.Chat"/>
 		<typeAlias alias="snack" type="com.practive.study.model.vo.Snack"/>
+		<typeAlias alias="order" type="com.practive.study.model.vo.Order"/>
 	</typeAliases>
 </configuration>

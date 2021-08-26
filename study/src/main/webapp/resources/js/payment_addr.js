@@ -31,12 +31,13 @@
             console.log(data.zonecode);
             console.log(fullRoadAddr);            
             
-            $("[name=addr1]").val(data.zonecode);
-            $("[name=addr2]").val(fullRoadAddr);        
+            $("[name=orderAddr1]").val(data.zonecode);
+            $("[name=orderAddr2]").val(fullRoadAddr);        
             
-         // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('addr1').value = data.zonecode; //5자리 새우편번호 사용
-            document.getElementById('addr2').value = fullAddr;
+         	// 우편번호와 주소 정보를 해당 필드에 넣는다.
+			// 5자리 새우편번호 사용
+            document.getElementById('orderAddr1').value = data.zonecode; 
+            document.getElementById('orderAddr2').value = fullRoadAddr;
         }
 		}).open();
 	}

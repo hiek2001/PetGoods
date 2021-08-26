@@ -2,6 +2,7 @@ package com.practive.study.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,13 +18,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.practive.study.IamportApi;
 import com.practive.study.model.service.ShopService;
+import com.practive.study.model.vo.Order;
 import com.practive.study.model.vo.Snack;
 
 @Controller
@@ -67,9 +65,11 @@ public class ShopController {
 	}
 	
 	// 04 결제API : 결제 검증 
+	@ResponseBody
 	@RequestMapping(value="/verifyIamport")
-	public void Iamport() throws Exception{
+	public void Iamport(@RequestBody HashMap<String,String> map) throws Exception{
 		Logger.info("/verifyIamport Controller로 진입~~~");
+		// token 인증
 		String reqeustURL = "https://api.iamport.kr/users/getToken";
 		JSONObject json = new JSONObject();
 		String imp_key = URLEncoder.encode("0364377215218055","UTF-8");
@@ -78,6 +78,18 @@ public class ShopController {
 		json.put("imp_secret", imp_secret);
 		Logger.info("Controller::json::"+json);
 		String token = IamportApi.getToken(json, reqeustURL);
-		Logger.info("token::"+token);
+		
+	}
+	
+	// 05 결제 완료 후 배송 정보 저장
+	@RequestMapping(value="/payEnd.do", method=RequestMethod.POST)
+	public void PayEnd(@RequestBody Order order) throws Exception{
+		Logger.info("PayEnd Controller 진입::order::"+order);
+		int result = service.payEnd(order);
+		Logger.info("result:::"+result);
+		if(result == 1) 
+			Logger.info("db 저장 완료~~");
+		else
+			Logger.info("db 저장 실패ㅜㅜㅜㅜㅜ");
 	}
 }
