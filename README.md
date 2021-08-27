@@ -41,3 +41,11 @@
 
 <img width="80%" src="https://user-images.githubusercontent.com/40787456/129847959-0c63f8b8-9b40-4012-ad27-b1d71da0fb82.gif"/>
 
+* 결제 API와 Ajax를 활용한 결제 기능 개발<br>
+(화면에서 결제는 모바일을 이용했기에 약 10초 정도 소요되었습니다.)
+
+<img width="80%" src="https://user-images.githubusercontent.com/40787456/131102405-3f2b75dd-9478-4a32-95db-821bedbb118e.gif"/>
+
+
+
+### 끝까지 봐주셔서 감사합니다.:smiley:
