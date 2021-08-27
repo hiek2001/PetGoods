@@ -9,8 +9,7 @@
 <script type="text/javascript">
 $(function(){
 	$('#home-btn').click(function(){
-		location.href="${path}/";
-		
+		location.href="${path}/";		
 	});
 });
 </script>

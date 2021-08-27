@@ -63,7 +63,7 @@ function requestPay(){
 		    pay_method : 'card',
 		    merchant_uid : 'merchant_' + new Date().getTime(),
 		    name : '${snack.snackName}' , //결제창에서 보여질 이름
-		    amount : 100, //실제 결제되는 가격
+		    amount : '${snack.price*skcount+3000}', //실제 결제되는 가격
 		    buyer_email : '${member.userEmail}',
 		    buyer_name : '${member.userName}'
 		}, function(rsp) {
@@ -107,8 +107,6 @@ $(function(){
 				async: false,
 				data: userEmail,
 				success: function(data) {
-					console.log("성공::"+data);
-					console.log(data.item);
 					$('#orderName').val(data.userName);
 					$('#orderPhone').val(data.userPhone);
 				},
