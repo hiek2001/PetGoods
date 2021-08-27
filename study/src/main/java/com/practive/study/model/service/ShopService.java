@@ -1,5 +1,6 @@
 package com.practive.study.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -31,8 +32,8 @@ public class ShopService {
 		return dao.payEnd(sqlSession, order);
 	}
 	
-	public Order shopEnd(String orderUid) {
+	public Order shopEnd(HashMap map) {
 		System.out.println("2) Service 진입~~~");
-		return dao.shopEnd(sqlSession, orderUid);
+		return dao.shopEnd(sqlSession, map);
 	}
 }

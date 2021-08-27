@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -100,9 +101,13 @@ public class ShopController {
 	
 	// 06 결제 완료 페이지 이동
 	@RequestMapping(value="/shopEnd.do", method=RequestMethod.GET) 
-	public ModelAndView ShopEnd(String orderUid) {
+	public ModelAndView ShopEnd(String orderUid, int snackNo) {
 		ModelAndView mv = new ModelAndView();
-		Order order = service.shopEnd(orderUid);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("orderUid", orderUid);
+		map.put("snackNo", snackNo);		
+		Logger.info("map:::"+map);
+		Order order = service.shopEnd(map);
 		mv.addObject(order);
 		Logger.info("order::"+order);
 		mv.setViewName("shop/shopEnd");

@@ -12,9 +12,7 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script> <!-- 아임포트 결제API -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-
-
-function payEnd(uid) {
+function payEnd(uid, skno) {
 	var result = "N";
     // 결제 정보 저장
 	var all = '${snack.price*skcount}';
@@ -35,7 +33,8 @@ function payEnd(uid) {
           	"orderAddr3" : addr3,
           	"allPrice" : all,
           	"orderNote" : note,
-          	"orderUid" : uid
+          	"orderUid" : uid,
+          	"snackNo" : skno
 
     }
 	console.log(param);
@@ -48,15 +47,8 @@ function payEnd(uid) {
         async: false, // ajax는 기본 동기식이기에 return을 보내려면 비동기식으로 설정해야함
         success:function(data) {
 			console.log("성공적으로 보냄");
-			// 성공시 이동할 페이지
-			//location.href="${path}/shopEnd.do?orderUid="+uid;
 			result = "Y";
 		}
-		//error:function(request, status, error) {
-			//console.log(request.status);
-			//console.log(request.reponseText);
-			//console.log(error);
-		//}
 	});
 	return result;
 }
@@ -78,7 +70,8 @@ function requestPay(){
 			if (rsp.success) {
 	        
 	           var uid = rsp.imp_uid;
-			   var result2 = payEnd(uid);
+	           var skno = '${snack.snackNo}';
+			   var result2 = payEnd(uid, skno);
 			   console.log(result2);
 			   if(result2 == "Y"){
 				   var msg = '결제가 완료되었습니다.';
@@ -89,7 +82,7 @@ function requestPay(){
 		           
 		           alert(msg);
 					// 성공시 이동할 페이지
-					location.href="${path}/shopEnd.do?orderUid="+uid;
+					location.href="${path}/shopEnd.do?orderUid="+uid+"&snackNo="+skno;
 			   }
 		} else {
 			msg = '결제에 실패하였습니다.';
@@ -203,10 +196,6 @@ function requestPay(){
 				</div>
 			</div>
 		</div>
-		<!-- submit 버튼
-		<div style="padding: 30px 0px 0px 30px; margin-bottom: 50px; margin-left: 37%;">
-			<button type="button" id="pay-btn" class="btn" style="width:200px; height:50px; background-color: green; color: white;">결제하기</button>
-		</div>  -->
 	</div>
 </div>
 

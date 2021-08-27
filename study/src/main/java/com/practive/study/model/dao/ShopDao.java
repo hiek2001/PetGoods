@@ -1,5 +1,6 @@
 package com.practive.study.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import com.practive.study.model.vo.Order;
@@ -13,5 +14,5 @@ public interface ShopDao {
 	
 	int payEnd(SqlSessionTemplate sqlSession, Order order);
 	
-	Order shopEnd(SqlSessionTemplate sqlSession, String orderUid);
+	Order shopEnd(SqlSessionTemplate sqlSession, HashMap map);
 }

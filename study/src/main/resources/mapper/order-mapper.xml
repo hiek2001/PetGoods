@@ -6,14 +6,16 @@
 			SELECT ORDERDETAIL_SEQ.NEXTVAL FROM SYS.DUAL
 		</selectKey>
 		INSERT INTO ORDERDETAIL VALUES (#{orderNo}, #{orderEmail}, #{orderName}, #{orderPhone}, 
-			#{orderAddr1}, #{orderAddr2}, #{orderAddr3}, #{allPrice}, #{orderNote}, sysdate, #{orderUid})
+			#{orderAddr1}, #{orderAddr2}, #{orderAddr3}, #{allPrice}, #{orderNote}, sysdate, #{orderUid}, #{snackNo})
 	</insert>
 	
-	<select id="shopEnd" parameterType="String" resultType="order">
-		SELECT ORDERNAME AS "orderName", ORDEREMAIL AS "orderEmail", ORDERPHONE AS "orderPhone", 
-				ORDERADDR1 AS "orderAddr1", ORDERADDR2 AS "orderAddr2", ORDERADDR3 AS "orderAddr3", ALLPRICE AS "allPrice",
-				ORDERUID AS "orderUid"
-		FROM ORDERDETAIL
+	<select id="shopEnd" parameterType="hashmap" resultType="order">
+		SELECT O.ORDERNAME AS "orderName", O.ORDEREMAIL AS "orderEmail", O.ORDERPHONE AS "orderPhone", 
+				O.ORDERADDR1 AS "orderAddr1", O.ORDERADDR2 AS "orderAddr2", O.ORDERADDR3 AS "orderAddr3", O.ALLPRICE AS "allPrice",
+				O.ORDERUID AS "orderUid", S.SKNAME AS "snackName"
+		FROM ORDERDETAIL O
+		JOIN SNACK S
+		ON S.SKNO = #{snackNo}
 		WHERE ORDERUID = #{orderUid}
 	</select>
 </mapper>

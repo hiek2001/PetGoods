@@ -15,8 +15,26 @@ public class Order {
 	private String orderNote;
 	private Date oDate;
 	private String orderUid;
+	private int snackNo;
+	private String snackName;
 	
 	public Order () {}
+
+	public int getSnackNo() {
+		return snackNo;
+	}
+
+	public void setSnackNo(int snackNo) {
+		this.snackNo = snackNo;
+	}
+	
+	public String getSnackName() {
+		return snackName;
+	}
+
+	public void setSnackName(String snackName) {
+		this.snackName = snackName;
+	}
 
 	public int getOrderNo() {
 		return orderNo;
@@ -111,7 +129,7 @@ public class Order {
 		return "Order [orderNo=" + orderNo + ", orderEmail=" + orderEmail + ", orderName=" + orderName + ", orderPhone="
 				+ orderPhone + ", orderAddr1=" + orderAddr1 + ", orderAddr2=" + orderAddr2 + ", orderAddr3="
 				+ orderAddr3 + ", allPrice=" + allPrice + ", orderNote=" + orderNote + ", oDate=" + oDate
-				+ ", orderUid=" + orderUid + "]";
+				+ ", orderUid=" + orderUid + ", snackNo=" + snackNo + ", snackName=" + snackName + "]";
 	}
 	
 }

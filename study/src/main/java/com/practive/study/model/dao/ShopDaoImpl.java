@@ -1,5 +1,6 @@
 package com.practive.study.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -27,9 +28,9 @@ public class ShopDaoImpl implements ShopDao {
 	}
 	
 	@Override
-	public Order shopEnd(SqlSessionTemplate sqlSession, String orderUid) {
+	public Order shopEnd(SqlSessionTemplate sqlSession, HashMap map) {
 		System.out.println("3) DAO 진입~~~");
-		System.out.println("order::"+orderUid);
-		return sqlSession.selectOne("order.shopEnd", orderUid);
+		System.out.println("order::"+map);
+		return sqlSession.selectOne("order.shopEnd", map);
 	}
 }
