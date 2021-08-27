@@ -12,9 +12,10 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script> <!-- 아임포트 결제API -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
+// 결제 정보 저장
 function payEnd(uid, skno) {
 	var result = "N";
-    // 결제 정보 저장
+
 	var all = '${snack.price*skcount}';
 	var note = $("select[name=orderNote]").val();
 	var name = $("#orderName").val();
@@ -93,6 +94,31 @@ function requestPay(){
 	});
 }
 
+$(function(){
+	$("#checkbox").click(function(){
+		var userEmail = '${member.userEmail}';
+		var chk = $("input[type=checkbox]");
+		if(chk.prop("checked") == true) {
+			$.ajax({
+				url: "${path}/userSame.do",
+				type: 'POST',
+				dataType: 'json',
+				contentType: 'application/json; charset=utf-8',
+				async: false,
+				data: userEmail,
+				success: function(data) {
+					console.log("성공::"+data);
+					console.log(data.item);
+					$('#orderName').val(data.userName);
+					$('#orderPhone').val(data.userPhone);
+				},
+				error: function(error) {
+					console.log(error);
+				}
+			})
+		}
+	});
+});
 </script>
 <div class="container">
 	<div class="row">
@@ -124,6 +150,9 @@ function requestPay(){
 		<div class="col-md-9" style="background-color: #FBFBFB; height: 700px; width: auto;  box-shadow: 5px 5px 5px 5px #E9E9EA;">
 			<div style="margin-top: 20px;">
 				<h5><strong>배송지정보</strong></h5>
+				<div style="float:right; position: relative; left: -50%;">
+					<label><input type="checkbox" id="checkbox" name="same"> 주문자와 동일</label>
+				</div>
 				<div class="form-group">
 					<h3>
 						<label for="name">이름</label>

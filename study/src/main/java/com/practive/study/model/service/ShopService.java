@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.practive.study.model.dao.ShopDao;
+import com.practive.study.model.vo.Member;
 import com.practive.study.model.vo.Order;
 import com.practive.study.model.vo.Snack;
 
@@ -33,7 +34,11 @@ public class ShopService {
 	}
 	
 	public Order shopEnd(HashMap map) {
-		System.out.println("2) Service 진입~~~");
 		return dao.shopEnd(sqlSession, map);
+	}
+	
+	public Member userSame(String userEmail) {
+		System.out.println("2) Service 진입~~~");
+		return dao.userSame(sqlSession, userEmail);
 	}
 }

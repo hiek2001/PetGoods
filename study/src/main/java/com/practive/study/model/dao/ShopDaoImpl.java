@@ -6,6 +6,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.practive.study.model.vo.Member;
 import com.practive.study.model.vo.Order;
 import com.practive.study.model.vo.Snack;
 
@@ -29,8 +30,13 @@ public class ShopDaoImpl implements ShopDao {
 	
 	@Override
 	public Order shopEnd(SqlSessionTemplate sqlSession, HashMap map) {
-		System.out.println("3) DAO 진입~~~");
-		System.out.println("order::"+map);
 		return sqlSession.selectOne("order.shopEnd", map);
+	}
+	
+	@Override
+	public Member userSame(SqlSessionTemplate sqlSession, String userEmail) {
+		System.out.println("3) DAO 진입~~~");
+		System.out.println("userEmail::"+userEmail);
+		return sqlSession.selectOne("member.userSame", userEmail);
 	}
 }

@@ -15,4 +15,8 @@
 	<select id="loginPw" parameterType="String" resultType="String">
 		SELECT USERPW FROM SHOP_USER WHERE USEREMAIL = #{userEmail}
 	</select>
+	
+	<select id="userSame" parameterType="String" resultType="member">
+		SELECT USERNAME, USERPHONE FROM SHOP_USER WHERE USEREMAIL = #{userEmail}
+	</select>
 </mapper>

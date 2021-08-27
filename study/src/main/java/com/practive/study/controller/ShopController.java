@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.practive.study.IamportApi;
 import com.practive.study.model.service.ShopService;
+import com.practive.study.model.vo.Member;
 import com.practive.study.model.vo.Order;
 import com.practive.study.model.vo.Snack;
 
@@ -113,4 +114,13 @@ public class ShopController {
 		mv.setViewName("shop/shopEnd");
 		return mv;
 	}
+	
+	// 07 payment 페이지에서 주문자 동일할 경우 이름, 휴대번호 가져오기
+	@RequestMapping(value="/userSame.do", method=RequestMethod.POST)
+	@ResponseBody
+	public Member userSame(@RequestBody String userEmail) {
+		Member member = service.userSame(userEmail);
+		return member;
+	}
+	
 }
