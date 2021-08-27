@@ -20,14 +20,14 @@
 <hr/>
 
 ### 3. :bulb: 개발 완료 
-:heavy_check_mark: 기획 및 DB 설계 참여<br>
 :heavy_check_mark: 회원가입, 로그인 기능 개발<br>
 :heavy_check_mark: 1:1 실시간 상담 채팅방 개발(회원)<br>
+:heavy_check_mark: 결제 API 활용한 결제 기능 개발<br>
 ### 진행 예정 기능
 * 카카오API 라이브러리를 활용한 회원가입, 로그인 기능 개발
 * 리뷰 게시판
 * Q&A 게시판
-* 결제 API 사용한 결제 프로그램 개발
+* 구매 내역 
 * 구글 차트 API 활용한 판매율 시각화
 <hr/>
  
