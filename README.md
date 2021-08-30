@@ -27,8 +27,8 @@
 * 카카오API 라이브러리를 활용한 회원가입, 로그인 기능 개발
 * 리뷰 게시판
 * Q&A 게시판
-* 구매 내역 
-* 구글 차트 API 활용한 판매율 시각화
+* 장바구니 및 구매 내역
+* 웹 크롤링을 통해 REST API 구현 및 차트 API 활용한 시각화 개발
 <hr/>
  
 ### 4. :four_leaf_clover: 결과 화면
@@ -40,4 +40,14 @@
 아래 화면에서 왼쪽이 회원, 오른쪽이 관리자의 채팅 화면입니다.
 
 <img width="80%" src="https://user-images.githubusercontent.com/40787456/129847959-0c63f8b8-9b40-4012-ad27-b1d71da0fb82.gif"/>
+
+* 결제 API와 Ajax를 활용한 결제 기능 개발<br>
+(화면에서 결제는 모바일을 이용했기에 약 10초 정도 소요되었습니다.)
+
+<img width="80%" src="https://user-images.githubusercontent.com/40787456/131102405-3f2b75dd-9478-4a32-95db-821bedbb118e.gif"/>
+
+
+
+### 계속 업데이터 될 예정입니다. 끝까지 봐주셔서 감사합니다.:smiley:
+
 
