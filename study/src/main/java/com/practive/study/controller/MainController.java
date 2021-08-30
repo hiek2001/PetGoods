@@ -47,7 +47,7 @@ public class MainController {
 		 
 		 // 상품명
 		 String picName = element.select("div.pname p").text();
-		 System.out.println("상품명:::"+ picName);
+		 System.out.println("상품명::"+ picName);
 		
 		 
 		 // 가격
