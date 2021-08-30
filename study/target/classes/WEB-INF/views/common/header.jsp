@@ -39,7 +39,7 @@
             <a class="nav-link" href="${path}/snackShop.do">간식</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">용품</a>
+            <a class="nav-link" href="${path}/goodsShop.do">용품</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="services.html">리뷰/Q&A</a> 

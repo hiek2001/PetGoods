@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.practive.study.IamportApi;
+import com.practive.study.NaverShoppingCrawling;
 import com.practive.study.model.service.ShopService;
 import com.practive.study.model.vo.Member;
 import com.practive.study.model.vo.Order;
@@ -39,7 +40,7 @@ public class ShopController {
 	//01 snackShop 페이지로 이동
 	@RequestMapping(value="/snackShop.do", method=RequestMethod.GET)
 	public String snackShop(Model model) throws Exception{
-		Logger.info("snackShop 페이지로 이동");
+		Logger.info("snackShop 페이지로 이동");		
 		// snackList 가져오기
 		List<Snack> snackList = service.snackList();
 		//Logger.info("snack 확인"+snackList);
@@ -123,4 +124,9 @@ public class ShopController {
 		return member;
 	}
 	
+	// 08 용품 화면으로 이동
+	@RequestMapping(value="/goodsShop.do", method=RequestMethod.GET)
+	public String goodsShop() throws Exception{		
+		return "shop/goodsShop";
+	}
 }

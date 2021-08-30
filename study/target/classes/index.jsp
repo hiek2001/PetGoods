@@ -64,7 +64,7 @@
 </div>
   <!-- Page Content -->
   <div class="container">
-    <h1 style="font-family: 'Noto Sans KR';">당신께 추천합니다</h2>
+    <h1 style="font-family: 'Noto Sans KR';"><a href="${path}/crawling.do">당신께 추천합니다</a></h2>
 
     <div class="row">
       <div class="col-lg-4 col-sm-6 portfolio-item">
