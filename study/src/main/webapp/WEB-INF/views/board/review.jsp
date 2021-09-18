@@ -35,6 +35,7 @@ div .btn-list {
 				    </tr>
 				</thead>
 				<tbody>
+					<c:forEach items="${review}" var="review">
 				    <tr>
 				      <th scope="row">${review.reviewNo}</th>
 				      <td>${review.title}</td>
@@ -42,17 +43,7 @@ div .btn-list {
 				      <td>${review.createDate}</td>
 				      <td>${review.viewCnt}</td>
 				    </tr>
-				    <tr>
-				      <th scope="row">2</th>
-				      <td>Jacob</td>
-				      <td>Thornton</td>
-				      <td>@fat</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">3</th>
-				      <td colspan="2">Larry the Bird</td>
-				      <td>@twitter</td>
-				    </tr>
+				    </c:forEach>
 				</tbody>
 			</table>
 		</div>

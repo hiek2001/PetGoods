@@ -7,9 +7,10 @@ public class Review {
 	private int reviewNo;
 	private String title;
 	private String content;
-	private String writer;
+	private String userEmail;
 	private Date createDate;
 	private int viewCnt;
+	private String writer;
 	
 	public Review() {}
 	
@@ -31,11 +32,11 @@ public class Review {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getWriter() {
-		return writer;
+	public String getUserEmail() {
+		return userEmail;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 	public Date getCreateDate() {
 		return createDate;
@@ -53,7 +54,7 @@ public class Review {
 
 	@Override
 	public String toString() {
-		return "Review [reviewNo=" + reviewNo + ", title=" + title + ", content=" + content + ", writer=" + writer
+		return "Review [reviewNo=" + reviewNo + ", title=" + title + ", content=" + content + ", userEmail=" + userEmail
 				+ ", createDate=" + createDate + ", viewCnt=" + viewCnt + "]";
 	}
 	

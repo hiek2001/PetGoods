@@ -15,12 +15,9 @@
 				    <input type="text" class="form-control" name="title" id="title">
 			   </div>
 			   <div class="form-group">
-				    <label>작성자</label>
-				    <input type="text" class="form-control" name="writer" id="writer" value="${member.userName}" readonly>
-			   </div>
-			   <div class="form-group">
 			    <label>내용</label>
 			    <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+			     <input type="hidden" name="userEmail" id="userEmail" value="${member.userEmail}">
 			  </div>
 			  <div>	
 			  	<button type="submit" class="btn btn-info">저장</button>

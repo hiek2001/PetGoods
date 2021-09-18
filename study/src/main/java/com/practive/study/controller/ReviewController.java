@@ -26,7 +26,8 @@ public class ReviewController {
 		Logger.info("Controller로 진입!!!!");
 		ModelAndView mv = new ModelAndView();
 		List<Review> review = service.reviewList();
-		mv.addObject(review);
+		Logger.info("review::"+review);
+		mv.addObject("review",review);
 		mv.setViewName("board/review");
 		return mv;
 	}
@@ -48,6 +49,6 @@ public class ReviewController {
 			Logger.info("db 저장 실패ㅠㅠ 다시 확인하기~~");
 		}
 		
-		return "board/review";
+		return "redirect:/";
 	}
 }

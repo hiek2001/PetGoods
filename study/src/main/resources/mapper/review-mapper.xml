@@ -2,7 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="review">
 	<select id="reviewList" resultType="hashmap">
-		SELECT REVIEWNO, TITLE, WRITER, CREATEDATE, VIEWCNT FROM REVIEW
+		SELECT 
+		R.REVIEWNO AS "reviewNo"
+		, R.TITLE AS "title"
+		, S.USERNAME AS "writer"
+		, R.CREATEDATE AS "createDate"
+		, R.VIEWCNT AS "viewCnt"
+		FROM REVIEW R
+		JOIN SHOP_USER S
+		ON R.USEREMAIL = S.USEREMAIL		
 	</select>
 	<insert id="insertEnd" parameterType="review">
 		<selectKey keyProperty="reviewNo" resultType="int" order="BEFORE">
@@ -12,13 +20,13 @@
 			REVIEWNO,
 			TITLE,
 			CONTENT,
-			WRITER,
+			USEREMAIL,
 			CREATEDATE
 		) VALUES (
 			#{reviewNo},
 			#{title},
 			#{content},
-			#{writer},
+			#{userEmail},
 			sysdate
 		)	
 	</insert>
