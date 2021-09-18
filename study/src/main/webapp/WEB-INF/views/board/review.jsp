@@ -36,7 +36,7 @@ div .btn-list {
 				</thead>
 				<tbody>
 					<c:forEach items="${review}" var="review">
-				    <tr>
+				    <tr onclick="location.href='${path}/reviewDetail.do?reviewNo='+reviewNo">
 				      <th scope="row">${review.reviewNo}</th>
 				      <td>${review.title}</td>
 				      <td>${review.writer}</td>

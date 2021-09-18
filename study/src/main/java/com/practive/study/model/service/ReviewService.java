@@ -18,7 +18,7 @@ public class ReviewService {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	public List reviewList() {
+	public List<Review> reviewList() {
 		System.out.println("Service 지난다아아~~");
 		return dao.reviewList(sqlSessionTemplate);
 	}

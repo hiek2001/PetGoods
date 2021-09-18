@@ -2,6 +2,8 @@ package com.practive.study.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +27,9 @@ public class ReviewController {
 	public ModelAndView reviewList() {
 		Logger.info("Controller로 진입!!!!");
 		ModelAndView mv = new ModelAndView();
-		List<Review> review = service.reviewList();
-		Logger.info("review::"+review);
-		mv.addObject("review",review);
+		List<Review> reviewList = service.reviewList();
+		Logger.info("review::"+reviewList);
+		mv.addObject("review",reviewList);
 		mv.setViewName("board/review");
 		return mv;
 	}
@@ -38,9 +40,8 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="/insertEnd.do", method=RequestMethod.POST)
-	public String writeEnd(Review review) {
+	public ModelAndView writeEnd(Review review, HttpServletRequest request) {
 		Logger.info("write Controller로 진입~~~");
-		Logger.info("review 내용"+review);
 		int result = service.insertEnd(review);
 		if(result>0) {
 			Logger.info("db 저장 완료~~");
@@ -48,7 +49,16 @@ public class ReviewController {
 		else {
 			Logger.info("db 저장 실패ㅠㅠ 다시 확인하기~~");
 		}
-		
-		return "redirect:/";
+		ModelAndView mv = new ModelAndView();
+		List<Review> reviewList = service.reviewList();
+		Logger.info("review::"+reviewList);
+		mv.addObject("review",reviewList);
+		mv.setViewName("board/review");
+		return mv;
 	}
+	
+	//@RequestMapping(value="/reviewDetail.do", method=RequestMethod.GET)
+	//public String reviewDetail(int reviewNo) {
+		//Review review = service.reviewDetail(reviewNo);
+	//}
 }

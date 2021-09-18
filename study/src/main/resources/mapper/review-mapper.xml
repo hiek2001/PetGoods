@@ -10,7 +10,8 @@
 		, R.VIEWCNT AS "viewCnt"
 		FROM REVIEW R
 		JOIN SHOP_USER S
-		ON R.USEREMAIL = S.USEREMAIL		
+		ON R.USEREMAIL = S.USEREMAIL
+		ORDER BY REVIEWNO		
 	</select>
 	<insert id="insertEnd" parameterType="review">
 		<selectKey keyProperty="reviewNo" resultType="int" order="BEFORE">
