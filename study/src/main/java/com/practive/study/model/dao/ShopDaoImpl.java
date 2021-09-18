@@ -34,9 +34,13 @@ public class ShopDaoImpl implements ShopDao {
 	}
 	
 	@Override
-	public Member userSame(SqlSessionTemplate sqlSession, String userEmail) {
-		System.out.println("3) DAO 진입~~~");
-		System.out.println("userEmail::"+userEmail);
+	public Member userSame(SqlSessionTemplate sqlSession, String userEmail) {		
 		return sqlSession.selectOne("member.userSame", userEmail);
+	}
+	
+	@Override
+	public int setSnack(SqlSessionTemplate sqlSession, Snack snack) {
+		System.out.println("3) DAO 진입~~~");
+		return sqlSession.insert("snack.setSnack", snack);
 	}
 }

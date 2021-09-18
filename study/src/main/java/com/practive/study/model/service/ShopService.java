@@ -38,7 +38,11 @@ public class ShopService {
 	}
 	
 	public Member userSame(String userEmail) {
-		System.out.println("2) Service 진입~~~");
 		return dao.userSame(sqlSession, userEmail);
+	}
+	
+	public int setSnack(Snack snack) {
+		System.out.println("2) Service 진입~~~");
+		return dao.setSnack(sqlSession, snack);
 	}
 }

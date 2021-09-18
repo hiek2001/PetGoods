@@ -11,5 +11,6 @@
 		<typeAlias alias="chat" type="com.practive.study.model.vo.Chat"/>
 		<typeAlias alias="snack" type="com.practive.study.model.vo.Snack"/>
 		<typeAlias alias="order" type="com.practive.study.model.vo.Order"/>
+		<typeAlias alias="review" type="com.practive.study.model.vo.Review"/>
 	</typeAliases>
 </configuration>

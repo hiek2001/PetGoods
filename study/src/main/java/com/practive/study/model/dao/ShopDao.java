@@ -19,4 +19,6 @@ public interface ShopDao {
 	Order shopEnd(SqlSessionTemplate sqlSession, HashMap map);
 	
 	Member userSame(SqlSessionTemplate sqlSession, String userEmail);
+	
+	int setSnack(SqlSessionTemplate sqlSession, Snack snack);
 }

@@ -1,21 +1,30 @@
 package com.practive.study.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.practive.study.NaverShoppingCrawling;
+import com.practive.study.model.service.ShopService;
+import com.practive.study.model.vo.Snack;
 
 @Controller
 public class MainController {
 	//로그를 남기기 위한 것
 	private static final Logger Logger = LoggerFactory.getLogger(MainController.class);
+	
+	@Autowired
+	public ShopService shopservice;
 	
 	//메인 GET 공통
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
@@ -35,14 +44,16 @@ public class MainController {
 		Document doc = Jsoup.connect(URL).get();		
 		Elements element = doc.select("li[id^='thisClick_']");
 	    
+		List<Snack> list = new ArrayList<Snack>();
 		
 		 Elements picEle = element.select("div.img_plot");
 		 // 상품사진 주소
 		 Elements picAddr = doc.getElementsByTag("img");
-		
+		 String src = " ";
+		 Snack product = new Snack();
 		 for(int i=0 ; i<picAddr.size() ; i++) {
-			 String src = picAddr.get(i).attr("src");
-			 System.out.println("상품사진 주소::"+src);
+			 src = picAddr.get(i).attr("src");
+			 product.setSnackImg(src);
 		 }
 		 
 		 // 상품명
@@ -54,17 +65,13 @@ public class MainController {
 		 Elements priceEle = element.select("div.price_info");
 		 String price = priceEle.select("strong.sale_price").text();
 		 System.out.println("가격::"+price);
-		
-		
-		
-	
-		
 
-		// 약 30개		
-		//for(Element e : element) {
-			//System.out.println("상품명 : "+e.select("div strong").attr("name"));
-			//System.out.println("가격 : "+e.select("div span").attr("won"));
-			//System.out.println("상품사진 : "+e.select("li a.link[href]"));
-		//}
+		 
+		 product.setCategoryNo(2);
+		 product.setSnackName(picName);		
+		 product.setPrice(Integer.parseInt(price));
+		 list.add(product);
+		 Logger.info("product::"+list);
+		//int result = shopservice.setSnack(product);
 	}
 }

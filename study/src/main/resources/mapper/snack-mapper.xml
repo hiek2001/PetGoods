@@ -11,4 +11,12 @@
 		FROM SNACK
 		WHERE SKNO = #{snackNo}
 	</select>
+	
+	<insert id="setSnack" parameterType="snack">
+		<selectKey keyProperty="snackNo" resultType="int" order="BEFORE">
+			SELECT SNACK_SEQ.NEXTVAL FROM SYS.DUAL
+		</selectKey>
+		INSERT INTO SNACK (SKNO, CGNO, SKNAME, SKIMG, PRICE, SKDATE) 
+		VALUES (#{snackNo}, #{categoryNo}, #{snackName}, #{snackImg}, #{price}, sysdate)
+	</insert>
 </mapper>

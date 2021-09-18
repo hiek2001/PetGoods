@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="review">
+	<select id="reviewList" resultType="hashmap">
+		SELECT REVIEWNO, TITLE, WRITER, CREATEDATE, VIEWCNT FROM REVIEW
+	</select>
+	<insert id="insertEnd" parameterType="review">
+		<selectKey keyProperty="reviewNo" resultType="int" order="BEFORE">
+				SELECT REVIEWNO_SEQ.NEXTVAL FROM SYS.DUAL
+		</selectKey>
+		INSERT INTO review(
+			REVIEWNO,
+			TITLE,
+			CONTENT,
+			WRITER,
+			CREATEDATE
+		) VALUES (
+			#{reviewNo},
+			#{title},
+			#{content},
+			#{writer},
+			sysdate
+		)	
+	</insert>
+</mapper>

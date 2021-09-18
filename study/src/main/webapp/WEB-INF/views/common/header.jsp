@@ -42,7 +42,7 @@
             <a class="nav-link" href="${path}/goodsShop.do">용품</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="services.html">리뷰/Q&A</a> 
+            <a class="nav-link" href="${path}/board.do">리뷰/Q&A</a> 
           </li>
           <c:if test="${member == null}">
 	          <li class="nav-item">
