@@ -18,7 +18,7 @@ div .btn-list {
 	</div>
 	<div class="container">
 		<div class="row">
-			<c:if test="${member != null }">
+			<c:if test="${member!=null }">
 			<div class="btn-list">
 				<button style="margin-right: 5px;" type="button" class="btn btn-secondary">수정</button>
 				<button type="button" class="btn btn-info" onclick="location.href='${path}/reviewWrite.do'">글쓰기</button>
