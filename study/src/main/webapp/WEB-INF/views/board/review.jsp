@@ -10,6 +10,13 @@ div .btn-list {
 	float: right;
 }
 </style>
+<script type="text/javascript">
+//$(function(){
+//	$("tr").click(function(){
+//		location.href=""
+//	});
+//});
+</script>
 <div>
 	<div>
 		<div style="position:relative;">
@@ -36,7 +43,7 @@ div .btn-list {
 				</thead>
 				<tbody>
 					<c:forEach items="${review}" var="review">
-				    <tr onclick="location.href='${path}/reviewDetail.do?reviewNo='+reviewNo">
+				    <tr onclick="location.href='${path}/reviewDetail.do?reviewNo=${review.reviewNo}'">
 				      <th scope="row">${review.reviewNo}</th>
 				      <td>${review.title}</td>
 				      <td>${review.writer}</td>

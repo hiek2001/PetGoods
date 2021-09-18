@@ -20,6 +20,14 @@ public class Review {
 	public void setReviewNo(int reviewNo) {
 		this.reviewNo = reviewNo;
 	}
+	
+	public String getWriter() {
+		return writer;
+	}
+	
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 	public String getTitle() {
 		return title;
 	}

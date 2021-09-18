@@ -15,7 +15,7 @@
 	</select>
 	<insert id="insertEnd" parameterType="review">
 		<selectKey keyProperty="reviewNo" resultType="int" order="BEFORE">
-				SELECT REVIEWNO_SEQ.NEXTVAL FROM SYS.DUAL
+			SELECT REVIEWNO_SEQ.NEXTVAL FROM SYS.DUAL
 		</selectKey>
 		INSERT INTO review(
 			REVIEWNO,
@@ -31,4 +31,22 @@
 			sysdate
 		)	
 	</insert>
+	<select id="reviewDetail" resultType="review" parameterType="int">
+		SELECT 
+		R.TITLE AS "title"
+		, R.CONTENT AS "content"
+		, S.USERNAME AS "writer"
+		, R.USEREMAIL AS "userEmail"
+		, R.CREATEDATE AS "createDate"
+		, R.VIEWCNT AS "viewCnt" 
+		FROM REVIEW R
+		JOIN SHOP_USER S
+		ON R.USEREMAIL = S.USEREMAIL
+		WHERE R.REVIEWNO = #{reviewNo}
+	</select>
+	<update id="reviewUpdate" parameterType="hashmap">
+		UPDATE REVIEW
+		SET VIEWCNT = #{cnt} + 1
+		WHERE REVIEWNO = #{reviewNo}
+	</update>
 </mapper>

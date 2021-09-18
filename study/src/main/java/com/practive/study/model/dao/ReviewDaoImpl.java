@@ -1,5 +1,6 @@
 package com.practive.study.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -20,4 +21,13 @@ public class ReviewDaoImpl implements ReviewDao{
 		return sqlSession.insert("review.insertEnd", review);
 	}
 	
+	@Override
+	public Review reviewDetail(SqlSessionTemplate sqlSession, int reviewNo) {
+		return sqlSession.selectOne("review.reviewDetail", reviewNo);
+	}
+	
+	@Override
+	public int reviewUpdate(SqlSessionTemplate sqlSession, HashMap map) {
+		return sqlSession.update("review.reviewUpdate", map);
+	}
 }

@@ -1,5 +1,6 @@
 package com.practive.study.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -18,13 +19,24 @@ public class ReviewService {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
+	// 리뷰 게시물 리스트 가져오기
 	public List<Review> reviewList() {
-		System.out.println("Service 지난다아아~~");
 		return dao.reviewList(sqlSessionTemplate);
 	}
 	
+	// 리뷰 게시물 등록
 	public int insertEnd(Review review) {
-		System.out.println("insert Service 지난다아`~~~");
 		return dao.insertEnd(sqlSessionTemplate, review);
+	}
+	
+	// 리뷰 게시물 상세 보기
+	public Review reviewDetail(int reviewNo) throws Exception{
+		return dao.reviewDetail(sqlSessionTemplate, reviewNo);
+	}
+	
+	// 리뷰 게시물 조회수 업데이트
+	public int reviewUpdate(HashMap map) {
+		System.out.println("insert Service 지난다아`~~~");
+		return dao.reviewUpdate(sqlSessionTemplate, map);
 	}
 }
