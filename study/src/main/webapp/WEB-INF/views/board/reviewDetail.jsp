@@ -30,8 +30,9 @@ p {
 			  </div>
 			  <c:if test="${member.userName == review.writer}">
 				  <div>	
-				  	<button type="submit" class="btn btn-info">변경</button>
-					<button style="margin-right: 5px;" type="button" class="btn btn-secondary" onclick="${path}/board.do">취소</button>  
+				  	<button type="submit" class="btn btn-success">변경</button>
+				  	<button type="submit" class="btn btn-warning">삭제</button>
+					<button style="margin-right: 5px;" type="button" class="btn btn-secondary" onclick="location.href='${path}/board.do'">취소</button>  
 				 </div>
 			 </c:if>
 	  		</form>

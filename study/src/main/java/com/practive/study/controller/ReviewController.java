@@ -3,6 +3,8 @@ package com.practive.study.controller;
 import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.practive.study.model.service.ReviewService;
+import com.practive.study.model.vo.Member;
 import com.practive.study.model.vo.Review;
 
 @Controller
@@ -60,16 +63,16 @@ public class ReviewController {
 	
 	// 04 리뷰 게시물 상세보기, 조회수 업데이트
 	@RequestMapping(value="/reviewDetail.do", method=RequestMethod.GET)
-	public ModelAndView reviewDetail(int reviewNo, ModelMap model) throws Exception{
+	public ModelAndView reviewDetail(int reviewNo, HttpSession session) throws Exception{
 		Logger.info("write Controller로 진입~~~");
 		// 리뷰게시판 번호에 알맞은 내용 가져오기
 		Review review = service.reviewDetail(reviewNo);
 		Logger.info("review"+review);
 		// 조회수 업데이트
-		Logger.info("userEmail::"+review.getUserEmail());
-		String userEmail = (String)model.get("userEmail");
+		Member member = (Member)session.getAttribute("member");
+		Logger.info("userEmail::"+member);
 		int result = 0;
-		if(!review.getUserEmail().equals(userEmail)) {
+		if(!review.getUserEmail().equals(member.getUserEmail())) {
 			HashMap<String,Integer> map = new HashMap<String,Integer>();
 			int cnt = review.getViewCnt();
 			map.put("cnt", cnt);
