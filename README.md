@@ -23,12 +23,7 @@
 :heavy_check_mark: 회원가입, 로그인 기능 개발<br>
 :heavy_check_mark: 1:1 실시간 상담 채팅방 개발(회원)<br>
 :heavy_check_mark: 결제 API 활용한 결제 기능 개발<br>
-### 진행 예정 기능
-* 카카오API 라이브러리를 활용한 회원가입, 로그인 기능 개발
-* 리뷰 게시판
-* Q&A 게시판
-* 장바구니 및 구매 내역
-* 웹 크롤링을 통해 REST API 구현 및 차트 API 활용한 시각화 개발
+
 <hr/>
  
 ### 4. :four_leaf_clover: 결과 화면
